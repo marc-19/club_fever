@@ -1,0 +1,104 @@
+$white: #F9FAFA;
+$dark-blue: #0C161C;
+$blue: #1A2329;
+$yellow: #DEE517;
+$red: #D72626;
+
+// General style of card
+.blue-card {
+  background-color: $blue;
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 500px;
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  color: $white;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .quiniela-footer {
+    display: flex;
+    justify-content: center;
+  }
+
+  // Quiniela matches section
+  .quiniela-matches {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+
+    .match {
+      margin: 0-auto;
+      padding: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.2); // Light border for separation
+      border-radius: 8px;
+      gap: 10px;
+
+      p {
+        margin-bottom: 7px;
+        text-align: center; // Center align text
+      }
+
+      .buttons {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        gap: 5px;
+
+        .result-button {
+          width: 40px; // Button size
+          height: 40px;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          font-size: 14px;
+          font-weight: bold;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: 0.3s ease-in-out;
+          color: $white;
+
+          &:hover {
+            filter: brightness(80%);
+          }
+
+          &.selected { // will need to do stimulus here
+            background-color: $yellow;
+            color: $dark-blue;
+          }
+
+          &.btn-local {
+            background-color: #424EFF; // Blue for local
+          }
+
+          &.btn-visitor {
+            background-color: #FF4242; // Red for visitor
+          }
+
+          &.btn-draw {
+            background-color: #FFD342; // Yellow for draw
+          }
+        }
+      }
+    }
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  .quiniela-footer {
+    .btn-red {
+      width: 60%;
+    }
+  }
+}
