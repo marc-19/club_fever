@@ -1,12 +1,104 @@
+$white: #F9FAFA;
+$dark-blue: #0C161C;
+$blue: #1A2329;
+$yellow: #DEE517;
+$red: #D72626;
+
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
-}
+  background: $blue;
+  padding: 10px 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
-}
+  .navbar-brand img {
+    width: 40px;
+    height: auto;
+    transition: transform 0.2s ease-in-out;
+  }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+  .navbar-toggler {
+    border: none;
+
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml;charset=UTF8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba%28255,255,255,1%29' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    }
+  }
+
+  .navbar-nav {
+    list-style: none;
+    display: flex; //to display item (li) hortitzontally not in rows
+    align-items: center;
+    gap: 15px;
+
+    .nav-item {
+      position: relative;
+
+      .nav-link {
+        text-decoration: none;
+        font-size: 18px;
+        color: $white;
+        padding: 8px 12px;
+        border-radius: 4px;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+          background-color: lighten($blue, 10%);
+          color: $yellow;
+        }
+      }
+
+      &.dropdown {
+        .dropdown-menu {
+          background: $blue;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+          .dropdown-item {
+            color: $white;
+            padding: 8px 12px;
+            font-size: 14px;
+            transition: background 0.3s ease-in-out;
+
+            &:hover {
+              background: lighten($blue, 10%);
+              color: $yellow;
+            }
+          }
+        }
+
+        .avatar {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          border: 2px solid $white;
+          transition: transform 0.2s ease-in-out;
+
+          &:hover {
+            transform: scale(1.1);
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .navbar-collapse {
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-item {
+      width: 100%;
+
+      .nav-link {
+        width: 100%;
+        text-align: center;
+      }
+
+      .dropdown-menu {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  }
 }
