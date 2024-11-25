@@ -13,50 +13,9 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body><%= render "shared/navbar" %>
-<%= render "shared/flashes" %>
-
-<h1>Heello</h1>
-<h2>Heelo</h2>
-<h3>Heello</h3>
-<p>Helolo</p>
-
-<div class="blue-card">
-  <!-- Header Section -->
-  <div class="card-header">
-    <div>
-      <p class="quiniela-date">End date: 19-12-2024</p>
-      <p class="quiniela-winners">Total winners: 3</p>
-    </div>
-  </div>
-
-  <!-- Matches Section -->
-  <div class="quiniela-matches">
-    <div class="match">
-      <p>Home Team <span>vs</span> Away Team</p>
-      <div class="buttons">
-        <button class="result-button btn-local">1</button>
-        <button class="result-button btn-draw">X</button>
-        <button class="result-button btn-visitor">2</button>
-      </div>
-    </div>
-    <div class="match">
-      <p>Home Team <span>vs</span> Away Team</p>
-      <div class="buttons">
-        <button class="result-button btn-local">1</button>
-        <button class="result-button btn-draw">X</button>
-        <button class="result-button btn-visitor">2</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Footer Section -->
-  <div class="quiniela-footer">
-    <button class="btn-red">Back</button>
-  </div>
-</div>
-
-</body>
+  <body>
+    <%= render "shared/navbar" %>
+    <%= render "shared/flashes" %>
 
     <%= yield %>
   </body>
