@@ -10,3 +10,38 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+
+$white: #F9FAFA;
+$dark-blue: #0C161C;
+$blue: #1A2329;
+$yellow: #DEE517;
+$red: #D72626;
+
+body {
+  background-color: $dark-blue;
+}
+
+h1 {
+  color: $white;
+  font-family: "Inter";
+  font-size: 48px;
+}
+
+h2 {
+  color: $white;
+  font-family: "Inter";
+  font-size: 32px;
+}
+
+h3 {
+  color: $white;
+  font-family: "Inter";
+  font-size: 20px;
+}
+
+p {
+  color: $white;
+  font-family: "Inter";
+  font-size: 14px;
+}
