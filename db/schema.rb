@@ -10,9 +10,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_11_25_141954) do
+ActiveRecord::Schema[7.1].define(version: 2024_11_25_152020) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "clubs", force: :cascade do |t|
+    t.string "name"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_clubs_on_user_id"
+  end
+
+  create_table "predictions", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "quiniela_id", null: false
+    t.string "result"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["quiniela_id"], name: "index_predictions_on_quiniela_id"
+    t.index ["user_id"], name: "index_predictions_on_user_id"
+  end
+
+  create_table "quinielas", force: :cascade do |t|
+    t.string "title"
+    t.bigint "club_id", null: false
+    t.string "reward"
+    t.date "start_date"
+    t.date "end_date"
+    t.string "result"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["club_id"], name: "index_quinielas_on_club_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,8 +52,27 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_25_141954) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "phone_number"
+    t.boolean "is_admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "wins", force: :cascade do |t|
+    t.bigint "quiniela_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["quiniela_id"], name: "index_wins_on_quiniela_id"
+    t.index ["user_id"], name: "index_wins_on_user_id"
+  end
+
+  add_foreign_key "clubs", "users"
+  add_foreign_key "predictions", "quinielas"
+  add_foreign_key "predictions", "users"
+  add_foreign_key "quinielas", "clubs"
+  add_foreign_key "wins", "quinielas"
+  add_foreign_key "wins", "users"
 end
