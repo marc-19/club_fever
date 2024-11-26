@@ -1,0 +1,98 @@
+section {
+  margin: 20px 0;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #1e1e1e;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#profile-page {
+  font-family: Arial, sans-serif;
+  color: white;
+  background-color: #101010;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+#clubs-followed .clubs img {
+  width: 50px;
+  height: 50px;
+  margin: 0 10px;
+  border-radius: 10px;
+}
+
+#search-club {
+  margin-top: 10px;
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  background: #1e1e1e;
+}
+
+.search-bar {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  margin: 20px auto;
+}
+
+#search-club::placeholder {
+  color: #888;
+}
+
+.quiniela-card {
+  background: #2a2a2a;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+}
+
+.quiniela-card h3 {
+  font-size: 1.2rem;
+  color: #ffc107;
+}
+
+.quiniela-card p {
+  font-size: 1rem;
+  color: #ccc;
+}
+
+.play-button, .results-button, .edit-profile {
+  background: linear-gradient(90deg, #ffc107, #ff5722);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.play-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.profile-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin: auto;
+  margin-bottom: 10px;
+}
+
+.profile-title {
+  color: $red;
+}

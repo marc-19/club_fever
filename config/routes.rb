@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   resources :clubs, only: [:index]
   devise_for :users
-  root "clubs#index"
+  root "pages#home"
   get "/search", to: "clubs#search"
+  get '/user/:id', to: 'users#show', as: 'user_profile'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
