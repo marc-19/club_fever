@@ -1,0 +1,54 @@
+<div id="profile-page">
+  <!-- Título -->
+  <h1 class='profile-title'>Club Fever</h1>
+  <!-- Clubes Seguidos -->
+  <div id="clubs-followed">
+    <h2>Clubs you follow</h2>
+    <div class="clubs">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRj7kHgyd9GHcPpVcJ8FMmOjOQVk6JyHMq3Rw&s" alt="Club Logo" />
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2BbQk-mYW4VgUkiL_vuEOWXtVBFyRNPcvCQ&s" alt="Club Logo" />
+    </div>
+    <div class="search-bar">
+  <input type="text" id="search-club" placeholder="Search for new club" />
+</div>
+
+  <!-- Quinielas ativas -->
+  <div id="active-quinielas">
+    <h2>Active Quinielas</h2>
+    <div class="quiniela-card">
+      <h3>Quiniela 3</h3>
+      <p>Starting in: 12h 30min 12s</p>
+      <div class="prize">
+        <p>You can win:</p>
+        <p>Prize not provided</p>
+      </div>
+      <button class="play-button">PLAY</button>
+    </div>
+  </div>
+
+  <!-- Quinielas finalizadas -->
+  <div id="done-quinielas">
+    <h2>Your Done Quinielas</h2>
+    <div class="quiniela-card">
+      <h3>Past Quiniela</h3>
+      <p>Ended: 21st November</p>
+      <p>340 Participants</p>
+      <p>5 Winners</p>
+      <button class="results-button">RESULTS</button>
+    </div>
+  </div>
+
+  <!-- Perfil do usuário -->
+  <div id="user-profile">
+  <h1>Your profile</h1>
+  <h2><%= @user.username %></h2>
+  <div class="profile-info">
+    <% if @user.avatar.attached? %>
+  <img src="<%= url_for(@user.avatar) %>" alt="<%= @user.username %>'s Avatar" class="profile-avatar" />
+<% else %>
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2BbQk-mYW4VgUkiL_vuEOWXtVBFyRNPcvCQ&s" alt="Default Avatar" class="profile-avatar" />
+<% end %>
+    <p>10 quinielas</p>
+  </div>
+  <button class="edit-profile">Edit Profile</button>
+</div>
