@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_11_25_152020) do
+ActiveRecord::Schema[7.1].define(version: 2024_11_26_111646) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -25,7 +25,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_25_152020) do
   create_table "predictions", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "quiniela_id", null: false
-    t.string "result"
+    t.string "result", default: [], array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["quiniela_id"], name: "index_predictions_on_quiniela_id"
@@ -38,9 +38,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_25_152020) do
     t.string "reward"
     t.date "start_date"
     t.date "end_date"
-    t.string "result"
+    t.string "result", default: [], array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "local_teams", default: [], array: true
+    t.string "visitor_teams", default: [], array: true
     t.index ["club_id"], name: "index_quinielas_on_club_id"
   end
 

@@ -18,12 +18,14 @@ $red: #D72626;
   color: $white;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 
-  .card-header {
+  // use this in the html if you need a flex header
+  .card-header-flex {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
 
+  // use this if in the html if you need flex footer
   .quiniela-footer {
     display: flex;
     justify-content: center;
@@ -102,6 +104,8 @@ $red: #D72626;
     }
   }
 }
+
+
 
 .authenticate-card {
   background-color: $blue;

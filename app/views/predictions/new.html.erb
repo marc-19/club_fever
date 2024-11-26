@@ -1,0 +1,25 @@
+<div class="blue-card">
+  <h2><%= @quiniela.title %></h2>
+  <p>Reward: <%= @quiniela.reward %></p>
+  <p>Start Date: <%= @quiniela.start_date %> | End Date: <%= @quiniela.end_date %></p>
+
+  <%= simple_form_for [@quiniela, @prediction], html: { class: "prediction-form" } do |f| %>
+    <% @local_teams.zip(@visitor_teams).each_with_index do |(local, visitor), index| %>
+      <div class="match">
+        <p>Match <%= index + 1 %>: <%= local %> vs <%= visitor %></p>
+        <div class="options">
+          <%= f.radio_button :result, "1", id: "result_1_#{index}" %>
+          <%= f.label "result_1_#{index}", "1 (Local Wins)" %>
+          <%= f.radio_button :result, "X", id: "result_x_#{index}" %>
+          <%= f.label "result_x_#{index}", "X (Draw)" %>
+          <%= f.radio_button :result, "2", id: "result_2_#{index}" %>
+          <%= f.label "result_2_#{index}", "2 (Visitor Wins)" %>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="form-actions">
+      <%= f.submit "Submit Prediction", class: "btn-yellow" %>
+    </div>
+  <% end %>
+</div>
