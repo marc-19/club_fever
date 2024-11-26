@@ -1,0 +1,59 @@
+/* Container do carrossel */
+#carousel-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 90%;
+  margin: 20px auto;
+  overflow: hidden;
+}
+
+/* Carrossel */
+#carousel {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  width: 100%;
+  padding: 10px 0;
+}
+
+/* Botões de navegação */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 20px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+#prev-btn {
+  left: 10px;
+}
+
+#next-btn {
+  right: 10px;
+}
+
+/* Remove a barra de rolagem do carrossel */
+#carousel::-webkit-scrollbar {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  #carousel-container {
+    flex-direction: column;
+  }
+
+  #footer-message {
+    font-size: 1.2rem;
+  }
+}
