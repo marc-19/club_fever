@@ -137,9 +137,13 @@ $red: #D72626;
             filter: brightness(70%);
           }
 
-          &.selected { // do stimulus later
-            background-color: $yellow;
+          &.selected { // linked to selection_controller.js
             color: $dark-blue;
+            border: 2px solid darken($yellow, 10%);
+            border-radius: 4px;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transform: scale(1.15);
           }
 
           &.btn-local {
