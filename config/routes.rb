@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  get 'predictions/new'
-  get 'predictions/create'
-  get 'quinielas/show'
+  resources :clubs, only: [:index]
   devise_for :users
-  root to: "pages#home"
+  root "pages#home"
+  get "/search", to: "clubs#search"
+  get '/user/:id', to: 'users#show', as: 'user_profile'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
 
-  resources :quinielas, only: [] do
+  resources :quinielas, only: [:show] do
     resources :predictions, only: [:new, :create]
   end
 
