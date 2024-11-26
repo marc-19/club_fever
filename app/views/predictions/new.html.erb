@@ -1,22 +1,40 @@
-<div class="blue-card">
+<div class="quiniela-details-card">
   <h2><%= @quiniela.title %></h2>
-  <p>Reward: <%= @quiniela.reward %></p>
-  <p>Start Date: <%= @quiniela.start_date %> | End Date: <%= @quiniela.end_date %></p>
+
+  <div class="quiniela-header">
+  <h3 class="reward-title">Reward</h3>
+  <p class="reward-text"><%= @quiniela.reward %></p>
+
+  <div class="quiniela-dates">
+    <div class="start-end">
+      <p class="label">STARTS</p>
+      <p class="label">ENDS</p>
+
+    </div>
+    <div class="dates">
+      <p class="date"><%= @quiniela.start_date.strftime("%d %B") %></p>
+      <p class="date"><%= @quiniela.end_date.strftime("%d %B") %></p>
+    </div>
+  </div>
+</div>
 
   <%= simple_form_for [@quiniela, @prediction], html: { class: "prediction-form" } do |f| %>
-    <% @local_teams.zip(@visitor_teams).each_with_index do |(local, visitor), index| %>
-      <div class="match">
-        <p>Match <%= index + 1 %>: <%= local %> vs <%= visitor %></p>
-        <div class="options">
-          <%= f.radio_button :result, "1", id: "result_1_#{index}" %>
-          <%= f.label "result_1_#{index}", "1 (Local Wins)" %>
-          <%= f.radio_button :result, "X", id: "result_x_#{index}" %>
-          <%= f.label "result_x_#{index}", "X (Draw)" %>
-          <%= f.radio_button :result, "2", id: "result_2_#{index}" %>
-          <%= f.label "result_2_#{index}", "2 (Visitor Wins)" %>
+    <div class="quiniela-matches">
+      <% @local_teams.zip(@visitor_teams).each_with_index do |(local, visitor), index| %>
+        <div class="match">
+          <p><%= local %> vs <%= visitor %></p>
+          <div class="options">
+            <%# add hidden-radio class when all is working %>
+            <%= f.radio_button :result, "1", name: "prediction[result][#{index}]", id: "result_1_#{index}", class: "" %>
+            <%= f.label "result_1_#{index}", "1", class: "result-button btn-local" %>
+            <%= f.radio_button :result, "X", name: "prediction[result][#{index}]", id: "result_x_#{index}", class: "" %>
+            <%= f.label "result_x_#{index}", "X", class: "result-button btn-draw" %>
+            <%= f.radio_button :result, "2", name: "prediction[result][#{index}]", id: "result_2_#{index}", class: "" %>
+            <%= f.label "result_2_#{index}", "2", class: "result-button btn-visitor" %>
+          </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
 
     <div class="form-actions">
       <%= f.submit "Submit Prediction", class: "btn-yellow" %>

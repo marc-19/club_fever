@@ -4,76 +4,140 @@ $blue: #1A2329;
 $yellow: #DEE517;
 $red: #D72626;
 
-// General style of card
-.blue-card {
+
+.quiniela-details-card {
   background-color: $blue;
   border-radius: 10px;
   padding: 20px;
-  max-width: 500px;
+  max-width: 600px;
   width: 90%;
-  margin: 0 auto;
+  margin: 20px auto;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 5px;
   color: $white;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 
-  // use this in the html if you need a flex header
-  .card-header-flex {
+  .quiniela-header {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
+    background-color: $blue;
+    padding: 20px;
+    color: $white;
+    margin-top: -10px;
+
+    .reward-title {
+      font-size: 18px;
+      font-weight: bold;
+      color: $yellow;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+    }
+
+    .reward-text {
+      font-size: 16px;
+      text-align: center;
+      margin-top: -5px;
+      color: $white;
+
+    }
+
+    .quiniela-dates {
+      width: 100%;
+      margin-top: -10px;
+
+      .start-end,
+      .dates {
+        display: flex;
+        justify-content: space-between;
+
+
+        .label {
+          font-size: 14px;
+          font-weight: bold;
+          color: $yellow;
+          text-transform: uppercase;
+          margin-bottom: 5px;
+        }
+
+        .date {
+          font-size: 14px;
+          font-weight: normal;
+          color: lighten($white, 10%);
+        }
+      }
+    }
   }
 
-  // use this if in the html if you need flex footer
-  .quiniela-footer {
-    display: flex;
-    justify-content: center;
+  // Header styling for title and details
+  h2 {
+    text-align: center;
+    color: $white;
+    font-size: 24px;
   }
 
-  // Quiniela matches section
+  p {
+    font-size: 14px;
+    text-align: center;
+    margin: 5px 0;
+
+    &:nth-child(2) {
+      font-weight: bold; // Highlight reward
+      color: $yellow;
+    }
+  }
+
+  // Matches section
   .quiniela-matches {
     display: flex;
     flex-direction: column;
-    gap: 7px;
+    gap: 10px;
 
     .match {
-      margin: 0-auto;
-      padding: 10px;
-      border: 1px solid rgba(255, 255, 255, 0.2); // Light border for separation
+      padding: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
       border-radius: 8px;
+      background-color: darken($blue, 5%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       gap: 10px;
 
       p {
-        margin-bottom: 7px;
-        text-align: center; // Center align text
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 5px;
       }
 
-      .buttons {
+      .options {
         display: flex;
-        justify-content: space-evenly;
-        align-items: center;
-        gap: 5px;
+        justify-content: center;
+        gap: 10px;
+
+        .hidden-radio {
+          display: none;
+        }
 
         .result-button {
-          width: 40px; // Button size
+          width: 40px;
           height: 40px;
           border: none;
-          border-radius: 4px;
+          border-radius: 5px;
           cursor: pointer;
           font-size: 14px;
           font-weight: bold;
           display: flex;
           align-items: center;
           justify-content: center;
-          transition: 0.3s ease-in-out;
+          transition: all 0.3s ease-in-out;
           color: $white;
 
           &:hover {
-            filter: brightness(80%);
+            filter: brightness(70%);
           }
 
-          &.selected { // will need to do stimulus here
+          &.selected { // do stimulus later
             background-color: $yellow;
             color: $dark-blue;
           }
@@ -93,7 +157,12 @@ $red: #D72626;
       }
     }
   }
-
+  .form-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px; // Optional: Adds some spacing above the button
+  }
 }
 
 @media (max-width: 768px) {
