@@ -1,2 +1,27 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Club Fever</title>
+</head>
+<body>
+  <h1>Club Fever</h1>
+  <p>Participate in your club's betting pool</p>
+  <input
+    type="text"
+    id="search-bar"
+    placeholder="Search for your club..."
+    oninput="searchClubs(this.value)"
+  />
+  <div id="results">
+    <% @clubs.each do |club| %>
+      <div class="club-item">
+        <img src="<%= club.logo %>" alt="<%= club.name %> Logo" />
+        <span><%= club.name %></span>
+      </div>
+    <% end %>
+  </div>
+<script src="script.js"></script>
+</body>
+</html>
