@@ -18,16 +18,6 @@
     oninput="searchClubs(this.value)"
   />
 
-  <!-- Resultados da busca -->
-  <div id="results">
-    <% @clubs.each do |club| %>
-      <div class="club-item">
-        <img src="<%= club.logo %>" alt="<%= club.name %> Logo" />
-        <span><%= club.name %></span>
-      </div>
-    <% end %>
-  </div>
-
   <!-- Exemplo de clubes abaixo da barra de busca -->
   <div id="carousel-container">
   <!-- Botão para a esquerda -->
