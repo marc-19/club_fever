@@ -10,6 +10,7 @@ class UsersController < ApplicationController
     end
 
     @active_quinielas = [] # Lógica para buscar quinielas ativas
-    @done_quinielas = [] # Lógica para buscar quinielas encerradas
+    @done_quinielas = []
+    @past_quinielas = [] # Lógica para buscar quinielas encerradas
   end
 end

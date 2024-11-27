@@ -10,13 +10,24 @@
   <h1 id="main-title">Club Fever</h1>
   <p>Participate in your club's betting pool</p>
 
-  <!-- Barra de busca -->
-  <input
-    type="text"
-    id="search-bar"
-    placeholder="Search for your club..."
-    oninput="searchClubs(this.value)"
-  />
+<div class="search-container">
+  <%= simple_form_for :search, url: clubs_path, method: :get do |f| %>
+    <%= f.input :search, placeholder: "Search for your club...", label: false %>
+  <% end %>
+</div>
+
+<div id="clubs-list">
+  <% if @clubs.present? %>
+    <% @clubs.each do |club| %>
+      <div class="club-item">
+        <p><%= club.name %></p>
+      </div>
+    <% end %>
+  <% else %>
+    <p>No clubs found</p>
+  <% end %>
+</div>
+
 
   <!-- Exemplo de clubes abaixo da barra de busca -->
   <div id="carousel-container">
