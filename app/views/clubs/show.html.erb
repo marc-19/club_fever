@@ -2,10 +2,10 @@
 
 <div class="club-profile-images">
   <div class="club-picture">
-    <%= image_tag @club.picture if @club.picture.present? %>
+    <%= cl_image_tag @club.header_img.key if @club.header_img.attached? %>
 
     <div class="club-logo">
-      <%= image_tag @club.logo if @club.logo.present? %>
+      <%= cl_image_tag @club.logo.key if @club.logo.attached? %>
     </div>
   </div>
 </div>
@@ -27,7 +27,7 @@
       <div class="quiniela-card">
         <div class="quiniela-header">
           <div class="quiniela-logo">
-            <%= image_tag @club.logo if @club.logo.present? %>
+            <%= cl_image_tag @club.logo.key if @club.logo.attached? %>
           </div>
           <h3><%= quiniela.title %> <p>Starts in: <%= distance_of_time_in_words(Time.now, quiniela.start_date) %></p></h3>
         </div>
@@ -54,7 +54,7 @@
       <div class="quiniela-card">
         <div class="quiniela-header">
           <div class="quiniela-logo">
-            <%= image_tag @club.logo if @club.logo.present? %>
+            <%= cl_image_tag @club.logo.key if @club.logo.attached? %>
           </div>
         <h3><%= quiniela.title %><p>Ended on: <%= quiniela.end_date.strftime("%B %d, %Y") %></p></h3>
       </div>
