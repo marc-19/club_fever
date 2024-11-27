@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :clubs, only: [:index]
+
+  resources :clubs, only: [:index, :show]
+
   devise_for :users
   root "pages#home"
   get "/search", to: "clubs#search"
@@ -19,4 +21,5 @@ Rails.application.routes.draw do
 
 
   # root "posts#index"
+  resources :clubs, only: :show
 end
