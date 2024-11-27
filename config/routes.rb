@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :clubs, only: [:index :show]
+  resources :clubs, only: [:index, :show]
 
   devise_for :users
   root "pages#home"
