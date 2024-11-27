@@ -1,14 +1,57 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
-# db/seeds.rb
-Club.create([
-  { name: "CE RealMadrid", logo_url: "https://summa.es/wp-content/uploads/2022/07/barc%CC%A7a-thumbnail-1.png" },
-  { name: "CE Barcelona", logo_url: "https://upload.wikimedia.org/wikipedia/en/thumb/5/56/Real_Madrid_CF.svg/1200px-Real_Madrid_CF.svg.png" }
-])
+# Clear previous data
+User.destroy_all
+Club.destroy_all
+Quiniela.destroy_all
+
+# Seed data
+users = []
+5.times do |i|
+  user = User.create(
+    email: "user#{i + 1}@example.com",
+    password: 'password123',
+    first_name: "User#{i + 1}",
+    last_name: "Last#{i + 1}",
+    phone_number: "123456789#{i}"
+  )
+  users << user if user.persisted?
+end
+
+if users.size == 5
+  puts "5 users created successfully!"
+else
+  puts "Error creating users."
+end
+
+clubs = []
+users.each_with_index do |user, i|
+  club = Club.create(
+    name: "Club#{i + 1}",
+    description: "Welcome to Club#{i + 1}!",
+    logo: "CEElogo.jpg",
+    picture: "CEEimage.jpg",
+    user: user
+  )
+  clubs << club if club.persisted?
+end
+
+if clubs.size == 5
+  puts "5 clubs created successfully!"
+else
+  puts "Error creating clubs."
+end
+
+clubs.each_with_index do |club, i|
+  quiniela = club.quinielas.create(
+    title: "Quiniela for #{club.name}",
+    start_date: Date.today + i.days,
+    end_date: Date.today + (i + 7).days,
+    reward: "#{(i + 1) * 100} Euros",
+    local_teams: ["Team A#{i}", "Team B#{i}", "Team C#{i}", "Team D#{i}"],
+    visitor_teams: ["Team X#{i}", "Team Y#{i}", "Team Z#{i}", "Team W#{i}"]
+  )
+  if quiniela.persisted?
+    puts "Quiniela for #{club.name} created successfully!"
+  else
+    puts "Error creating quiniela for #{club.name}: #{quiniela.errors.full_messages.join(", ")}"
+  end
+end

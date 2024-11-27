@@ -19,4 +19,5 @@ Rails.application.routes.draw do
 
 
   # root "posts#index"
+  resources :clubs, only: :show
 end

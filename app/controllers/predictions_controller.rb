@@ -8,19 +8,27 @@ class PredictionsController < ApplicationController
   def create
     @quiniela = Quiniela.find(params[:quiniela_id])
     set_teams
-    @prediction = current_user.predictions.new(prediction_params)
 
-    # Extract and assign the result array
-    @prediction.result = params[:prediction][:result].values
-    @prediction.quiniela = @quiniela
+    # Check if the user already has a prediction for this quiniela
+    existing_prediction = current_user.predictions.find_by(quiniela: @quiniela)
 
-    if @prediction.save
-      redirect_to home_path, notice: "Your prediction has been submitted!"
+    if existing_prediction
+      redirect_to quiniela_path(@quiniela), alert: "You have already submitted a prediction for this quiniela."
     else
-      flash.now[:alert] = "There was an error submitting your prediction."
-      render :new, status: :unprocessable_entity
+      # Create a new prediction
+      @prediction = current_user.predictions.new(prediction_params)
+      @prediction.result = params[:prediction][:result].values # Assign result array
+      @prediction.quiniela = @quiniela
+
+      if @prediction.save
+        redirect_to root_path, notice: "Your prediction has been submitted!"
+      else
+        flash.now[:alert] = "There was an error submitting your prediction."
+        render :new, status: :unprocessable_entity
+      end
     end
   end
+
 
   private
 
