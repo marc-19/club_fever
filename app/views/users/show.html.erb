@@ -37,14 +37,18 @@
     <% end %>
 </div>
 
-<div class="past-quinielas-show">
+<div class="past-quinielas">
   <h2>Played Quinielas</h2>
 <% if @past_predictions.any? %>
   <% @past_predictions.each do |prediction| %>
     <div class="quiniela-card">
+    <div class='quiniela-header'>
       <h3><%= prediction.quiniela.title %></h3>
+      </div>
       <p><strong>Submitted:</strong> <%= prediction.created_at.strftime("%d %B %Y") %></p>
       <p><strong>Your Prediction:</strong> <%= prediction.result.join(", ") %></p>
+      <button class="results-btn">Results</button>
+    </div>
     </div>
   <% end %>
 <% else %>
@@ -53,16 +57,23 @@
 </div>
 
   <!-- Perfil do usuário -->
-  <div id="user-profile">
-  <h1>Your profile</h1>
-  <h2><%= @user.first_name %></h2>
-  <div class="profile-info">
+<div class="profile-section">
+  <div class="profile-card">
+  <h2>Your Profile</h2>
+    <!-- Avatar -->
     <% if @user.avatar.attached? %>
-  <img src="<%= url_for(@user.avatar) %>" alt="<%= @user.first_name %>'s Avatar" class="profile-avatar" />
-<% else %>
-  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2BbQk-mYW4VgUkiL_vuEOWXtVBFyRNPcvCQ&s" alt="Default Avatar" class="profile-avatar" />
-<% end %>
-    <p>10 quinielas</p>
+      <img src="<%= url_for(@user.avatar) %>" alt="<%= @user.first_name %>'s Avatar" class="profile-avatar" />
+    <% else %>
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2BbQk-mYW4VgUkiL_vuEOWXtVBFyRNPcvCQ&s" alt="Default Avatar" class="profile-avatar" />
+    <% end %>
+
+    <!-- Username -->
+    <h3 class="profile-username"><%= @user.first_name %></h3>
+
+    <!-- Quinielas Information -->
+    <p class="profile-details">10 quinielas played</p>
+
+    <!-- Edit Profile Button -->
+    <button class="btn-yellow">Edit Profile</button>
   </div>
-  <button class="edit-profile">Edit Profile</button>
 </div>

@@ -2,97 +2,148 @@ section {
   margin: 20px 0;
   padding: 20px;
   border-radius: 10px;
-  background-color: #1e1e1e;
+  background-color: transparent;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 #profile-page {
   font-family: Arial, sans-serif;
-  color: white;
-  background-color: #101010;
+  background-color: transparent;
   padding: 20px;
+
+  h1 {
+    text-align: center;
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+
+  #clubs-followed .clubs img {
+    width: 50px;
+    height: 50px;
+    margin: 0 10px;
+    border-radius: 10px;
+  }
+
+  #search-club {
+    margin-top: 10px;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    background: #1e1e1e;
+  }
+
+  .search-bar {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto;
+  }
+
+  #search-club::placeholder {
+    color: #888;
+  }
+
+  .past-quinielas{
+    h2 {
+    margin-left: 25px;
+    font-weight: 400;
+    }
+  }
 }
 
-h1 {
-  text-align: center;
-  font-size: 2rem;
-}
-
-h2 {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-}
-
-#clubs-followed .clubs img {
-  width: 50px;
-  height: 50px;
-  margin: 0 10px;
-  border-radius: 10px;
-}
-
-#search-club {
-  margin-top: 10px;
-  width: 100%;
-  padding: 10px;
-  border-radius: 5px;
-  border: none;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  background: #1e1e1e;
-}
-
-.search-bar {
-  position: relative;
-  width: 100%;
-  max-width: 500px;
+.quiniela-card {
+  background-color: $blue;
+  border-style: solid;
+  border-color: $grey;
+  border-radius: 12px;
+  padding: 25px;
+  max-width: 400px;
+  width: 90%;
   margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  color: $white;
+
+
+  .quiniela-header{
+    display: flex;
+  }
+
+  h3 {
+    margin-left: 10px;
+    margin-top: 7px;
+    color: $yellow;
+  }
 }
 
-#search-club::placeholder {
-  color: #888;
-}
 
-.quiniela-card1 {
-  background: #2a2a2a;
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  margin-bottom: 20px;
-}
-
-.quiniela-card h3 {
-  font-size: 1.2rem;
-  color: #ffc107;
-}
-
-.quiniela-card p {
-  font-size: 1rem;
-  color: #ccc;
-}
-
-.play-button, .results-button, .edit-profile {
-  background: linear-gradient(90deg, #ffc107, #ff5722);
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.play-button:hover {
+.play-button:hover, .results-button:hover, .edit-profile:hover {
   transform: scale(1.05);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
-.profile-avatar {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  margin: auto;
-  margin-bottom: 10px;
-}
+/* Seção Geral do Perfil */
+.profile-section {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 
-.profile-title {
-  color: $red;
+  .profile-card {
+    background-color: #101010;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 400px;
+  }
+
+  /* Avatar */
+  .profile-avatar {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 15px;
+    border: 2px solid #ffcc00;
+  }
+
+  /* Nome do Usuário */
+  .profile-username {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #ffcc00;
+  }
+
+  /* Informações do Perfil */
+  .profile-details {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: #ddd;
+  }
+
+  /* Botão de Edição */
+  .edit-profile-button {
+    background-color: #ffcc00;
+    color: #101010;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+
+  .edit-profile-button:hover {
+    background-color: #e6b800;
+  }
+
+  .profile-title {
+    color:$red;
+  }
 }
