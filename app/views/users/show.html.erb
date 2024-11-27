@@ -12,31 +12,45 @@
   <input type="text" id="search-club" placeholder="Search for new club" />
 </div>
 
-  <!-- Quinielas ativas -->
-  <div id="active-quinielas">
-    <h2>Active Quinielas</h2>
-    <div class="quiniela-card">
-      <h3>Quiniela 3</h3>
-      <p>Starting in: 12h 30min 12s</p>
-      <div class="prize">
-        <p>You can win:</p>
-        <p>Prize not provided</p>
+<div class="active-quinielas-show">
+  <h2 class="h2-show">Active Quinielas</h2>
+  <% if @active_quinielas.any? %>
+    <% @active_quinielas.each do |quiniela| %>
+      <div class="quiniela-card-show">
+        <div class="quiniela-header-show">
+          <div class="quiniela-logo">
+            <%= image_tag @club.logo if @club.logo.present? %>
+          </div>
+          <h3 class="h3-show"><%= quiniela.title %> <p>Starts in: <%= distance_of_time_in_words(Time.now, quiniela.start_date) %></p></h3>
+        </div>
+        <div class="prize-card">
+          <p>You can win: </p>
+          <div class="prize">
+            <p><%= quiniela.reward %></p>
+          </div>
+        </div>
+      <button class="btn-yellow">PLAY</button>
       </div>
-      <button class="play-button">PLAY</button>
-    </div>
-  </div>
+      <% end %>
+    <% else %>
+      <p>No active quinielas at the moment.</p>
+    <% end %>
+</div>
 
-  <!-- Quinielas finalizadas -->
-  <div id="done-quinielas">
-    <h2>Your Done Quinielas</h2>
+<div class="past-quinielas-show">
+  <h2>Played Quinielas</h2>
+<% if @past_predictions.any? %>
+  <% @past_predictions.each do |prediction| %>
     <div class="quiniela-card">
-      <h3>Past Quiniela</h3>
-      <p>Ended: 21st November</p>
-      <p>340 Participants</p>
-      <p>5 Winners</p>
-      <button class="results-button">RESULTS</button>
+      <h3><%= prediction.quiniela.title %></h3>
+      <p><strong>Submitted:</strong> <%= prediction.created_at.strftime("%d %B %Y") %></p>
+      <p><strong>Your Prediction:</strong> <%= prediction.result.join(", ") %></p>
     </div>
-  </div>
+  <% end %>
+<% else %>
+  <p>No past predictions recorded.</p>
+<% end %>
+</div>
 
   <!-- Perfil do usuário -->
   <div id="user-profile">

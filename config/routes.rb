@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
   resources :clubs, only: [:index, :show]
+  resources :users, only: [:show]
+
 
   devise_for :users
   root "pages#home"
@@ -13,7 +15,6 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
-  resources :clubs, only: [:index]
 
   resources :quinielas, only: [:show] do
     resources :predictions, only: [:new, :create]

@@ -1,72 +1,60 @@
-
-
-<div class="club-profile-images">
-  <div class="club-picture">
+<div class=“club-profile-images”>
+  <div class=“club-picture”>
     <%= image_tag @club.picture if @club.picture.present? %>
-
-    <div class="club-logo">
+    <div class=“club-logo”>
       <%= image_tag @club.logo if @club.logo.present? %>
     </div>
   </div>
 </div>
-
-<div class="club-information">
-  <h1 class="club-name"><%= @club.name %></h1>
-
+<div class=“club-information”>
+  <h1 class=“club-name”><%= @club.name %></h1>
   <p><%= @club.description %></p>
-
-  <div class="club-action">
-    <button class="bnt-follow">Follow</button>
+  <div class=“club-action”>
+    <button class=“bnt-follow”>Follow</button>
   </div>
 </div>
-
-<div class="active-quinielas">
+<div class=“active-quinielas”>
   <h2>Active Quinielas</h2>
   <% if @active_quinielas.any? %>
     <% @active_quinielas.each do |quiniela| %>
-      <div class="quiniela-card">
-        <div class="quiniela-header">
-          <div class="quiniela-logo">
+      <div class=“quiniela-card”>
+        <div class=“quiniela-header”>
+          <div class=“quiniela-logo”>
             <%= image_tag @club.logo if @club.logo.present? %>
           </div>
           <h3><%= quiniela.title %> <p>Starts in: <%= distance_of_time_in_words(Time.now, quiniela.start_date) %></p></h3>
         </div>
-
-        <div class="prize-card">
+        <div class=“prize-card”>
           <p>You can win: </p>
-          <div class="prize">
+          <div class=“prize”>
             <p><%= quiniela.reward %></p>
           </div>
         </div>
-
-      <button class="btn-yellow">PLAY</button>
+      <button class=“btn-yellow”>PLAY</button>
       </div>
       <% end %>
     <% else %>
       <p>No active quinielas at the moment.</p>
     <% end %>
 </div>
-
-<div class="past-quinielas">
+<div class=“past-quinielas”>
   <h2>Past Quinielas</h2>
   <% if @past_quinielas.any? %>
     <% @past_quinielas.each do |quiniela| %>
-      <div class="quiniela-card">
-        <div class="quiniela-header">
-          <div class="quiniela-logo">
+      <div class=“quiniela-card”>
+        <div class=“quiniela-header”>
+          <div class=“quiniela-logo”>
             <%= image_tag @club.logo if @club.logo.present? %>
           </div>
-        <h3><%= quiniela.title %><p>Ended on: <%= quiniela.end_date.strftime("%B %d, %Y") %></p></h3>
+        <h3><%= quiniela.title %><p>Ended on: <%= quiniela.end_date.strftime(“%B %d, %Y”) %></p></h3>
       </div>
-        <button class="results-btn">Results</button>
+        <button class=“results-btn”>Results</button>
       </div>
     <% end %>
   <% else %>
     <p>No past quinielas recorded.</p>
   <% end %>
 </div>
-
-
 <%#
 <p><%= quiniela.participants_count Participants<br> %>
     <%# <%= quiniela.winners_count %>

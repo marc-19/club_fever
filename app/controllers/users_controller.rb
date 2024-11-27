@@ -3,11 +3,11 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-
     # Verifica se o usuário atual é o dono do perfil
     if @user != current_user
       redirect_to root_path, alert: "You are not authorized to access this page."
     end
+    @past_predictions = @user.predictions.includes(:quiniela)
 
     @active_quinielas = [] # Lógica para buscar quinielas ativas
     @done_quinielas = []

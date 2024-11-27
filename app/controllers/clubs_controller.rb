@@ -5,7 +5,7 @@ class ClubsController < ApplicationController
       query = params[:search][:search] # Acessa o campo da busca dentro do form
       @clubs = Club.where('name ILIKE ?', "%#{query}%") # Busca insensível a maiúsculas/minúsculas
     else
-      @clubs = Club.all # Mostra todos os clubes se a busca estiver vazia
+      @clubs = [] # Mostra todos os clubes se a busca estiver vazia
     end
   end
 
