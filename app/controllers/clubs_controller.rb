@@ -5,7 +5,7 @@ class ClubsController < ApplicationController
     query = params[:query]
     @clubs = Club.where("name ILIKE ?", "%#{query}%")
   end
-
+  
   def show
     @club = Club.find(params[:id])
     @active_quinielas = @club.quinielas.where("start_date > ?", DateTime.now)
