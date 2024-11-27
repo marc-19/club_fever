@@ -1,0 +1,145 @@
+@import "config/fonts";
+$white: #F9FAFA;
+$dark-blue: #0C161C;
+$blue: #1A2329;
+$yellow: #DEE517;
+$red: #D72626;
+$grey: #D9D9D9;
+
+.create-title {
+  h3 {
+  color: $yellow;
+  font-family: "Inter";
+  margin-top: 15px;
+  font-weight: 900;
+  }
+}
+
+.top-container {
+  background-color: $blue;
+  border-radius: 10px;
+  margin: 20px;
+  align-items: center;
+  justify-content: center;
+  line-height: 30px;
+
+  .quiniela-title {
+    font-weight: bold;
+    padding-top: 10px;
+    text-align: left;
+    margin-left: 37px;
+    color: $yellow;
+    text-align: center;
+
+    input {
+      border-radius: 5px;
+      border-style: solid;
+      border-color: $dark-blue;
+      margin-left: 13px;
+    }
+  }
+
+  .reward-input {
+    font-weight: bold;
+    text-align: left;
+    margin-left: 37px;
+    color: $yellow;
+    text-align: center;
+
+    input {
+      margin-left: 53px;
+      border-radius: 5px;
+      border-style: solid;
+      border-color: $dark-blue;
+    }
+  }
+
+  .start-date {
+    font-weight: bold;
+    text-align: left;
+    color: $yellow;
+    text-align: center;
+
+    input {
+      margin-left: 35px;
+      border-radius: 5px;
+      border-style: solid;
+      border-color: $dark-blue;
+    }
+  }
+
+  .end-date {
+    font-weight: bold;
+    text-align: left;
+    color: $yellow;
+    padding-bottom: 10px;
+    text-align: center;
+
+    input {
+      margin-left: 40px;
+      border-radius: 5px;
+      border-style: solid;
+      border-color: $dark-blue;
+    }
+  }
+}
+
+.matches-container {
+
+  background-color: $blue;
+  margin: 15px;
+  border-radius: 10px;
+  padding-bottom: 15px;
+  padding-top: 10px;
+  color: $yellow;
+
+  h3 {
+    color: $yellow;
+  }
+
+  tr {
+    font-size: 14px;
+  }
+
+  tbody {
+    margin-bottom: 10px;
+  }
+}
+
+.create-button {
+
+  input {
+    display: inline-block;
+    min-width: 100px;
+    padding: 10px 16px;
+    font-size: 16px;
+    font-weight: bold;
+    color: $dark-blue;
+    background-color: $yellow;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+
+  }
+}
+
+.back-button {
+
+  a {
+    margin-top: 20px;
+    display: inline-block;
+    min-width: 100px;
+    padding: 10px 16px;
+    font-size: 16px;
+    font-weight: bold;
+    color: $white;
+    background-color: $red;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+  }
+}
