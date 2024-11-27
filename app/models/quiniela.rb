@@ -1,6 +1,5 @@
 class Quiniela < ApplicationRecord
   belongs_to :club
-
   has_many :predictions
   has_many :wins
 

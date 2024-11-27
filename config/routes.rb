@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  resources :clubs, only: [:index]
+  resources :clubs, only: [:index, :show]
+    resources :quinielas, only: [:new, :create]
   devise_for :users
   root "pages#home"
   get "/search", to: "clubs#search"
