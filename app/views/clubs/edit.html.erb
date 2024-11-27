@@ -1,0 +1,36 @@
+  <%# <div class="link-to-quinielas">
+    link_to "Manage Quinielas", new_club_quiniela_path(@club), class: "btn-quinielas"
+  </div> %>
+
+
+<div class="club-edit-card">
+  <h2>Edit Club Information</h2>
+  <%= simple_form_for @club, html: { class: "club-edit-form" } do |f| %>
+    <div class="form-group">
+      <%= f.label :name, "Club Name" %>
+      <%= f.input_field :name, placeholder: "Enter club name"  %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :description, "Club Description" %>
+      <%= f.text_area :description, rows: 4, placeholder: "Write a brief description of your club" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :logo, "Club Logo" %>
+      <%= f.file_field :logo, accept: "image/*" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :header_img, "Header Image" %>
+      <%= f.file_field :header_img, accept: "image/*" %>
+    </div>
+
+    <div class="card-footer">
+      <div class="form-actions">
+        <%= f.submit "Save Changes", class: "btn-yellow" %>
+      </div>
+    </div>
+  <% end %>
+
+</div>
