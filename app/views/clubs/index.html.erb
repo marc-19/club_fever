@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Club Fever</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1 id="main-title">Club Fever</h1>
+  <p>Participate in your club's betting pool</p>
+
+  <!-- Barra de busca -->
+  <input
+    type="text"
+    id="search-bar"
+    placeholder="Search for your club..."
+    oninput="searchClubs(this.value)"
+  />
+
+  <!-- Exemplo de clubes abaixo da barra de busca -->
+  <div id="carousel-container">
+  <!-- Botão para a esquerda -->
+  <button id="prev-btn" class="carousel-btn">&#9664;</button>
+
+  <!-- Carrossel -->
+  <div id="carousel">
+    <div class="club-item">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRj7kHgyd9GHcPpVcJ8FMmOjOQVk6JyHMq3Rw&s" alt="Club 1" />
+      <p>Barcelona</p>
+    </div>
+    <div class="club-item">
+      <img src="https://logodetimes.com/wp-content/uploads/flamengo.png" alt="Club 2" />
+      <p>Flamengo</p>
+    </div>
+    <div class="club-item">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2BbQk-mYW4VgUkiL_vuEOWXtVBFyRNPcvCQ&s" alt="Club 3 Logo" />
+      <p>Sant Adria</p>
+    </div>
+    <div class="club-item">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Palmeiras_logo.svg/2048px-Palmeiras_logo.svg.png" alt="Club 4 Logo" />
+      <p>Palmeiras</p>
+    </div>
+    <div class="club-item">
+      <img src="https://cdn.worldvectorlogo.com/logos/corinthians.svg" alt="Club 5 Logo" />
+      <p>Corinthias</p>
+    </div>
+  </div>
+
+  <!-- Botão para a direita -->
+  <button id="next-btn" class="carousel-btn">&#9654;</button>
+</div>
+<div id="footer-message">
+  <h2>Support your Club!⚽</h2>
+</div>
+  <script src="script.js"></script>
+</body>
+</html>

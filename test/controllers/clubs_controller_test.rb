@@ -5,4 +5,7 @@ class ClubsControllerTest < ActionDispatch::IntegrationTest
     get clubs_show_url
     assert_response :success
   end
+  # test "the truth" do
+  #   assert true
+  # end
 end
