@@ -1,6 +1,12 @@
 class QuinielasController < ApplicationController
-  before_action :set_club
-  before_action :set_quiniela, only: [:edit, :update]
+  before_action :set_club, except: [:show]
+  before_action :set_quiniela, only: [:edit, :show, :update]
+
+  def show
+    @local_teams = @quiniela.local_teams
+    @visitor_teams = @quiniela.visitor_teams
+    @results = @quiniela.result
+  end
 
   def new
     @quiniela = @club.quinielas.new
@@ -8,7 +14,6 @@ class QuinielasController < ApplicationController
 
   def create
     @quiniela = @club.quinielas.new(quiniela_params)
-     Rails.logger.debug "Quiniela Params: #{quiniela_params.inspect}"
 
     if valid_matches?(@quiniela.local_teams, @quiniela.visitor_teams) && @quiniela.save
       redirect_to club_path(@club), notice: "Quiniela was successfully created!"
@@ -25,11 +30,10 @@ class QuinielasController < ApplicationController
 
   def update
     if @quiniela.result.present? || @quiniela.end_date > Date.today
-      redirect_to edit_club_path(@club), alert: "This quiniela has either already been solved or it hasn't ended"
+      redirect_to edit_club_path(@club), alert: "This quiniela has either already been solved or it hasn't ended."
       return
     end
 
-    # Assign result array to quiniela result
     @quiniela.result = params[:quiniela][:result].values
 
     if @quiniela.save
@@ -40,7 +44,6 @@ class QuinielasController < ApplicationController
     end
   end
 
-
   private
 
   def set_club
@@ -48,7 +51,7 @@ class QuinielasController < ApplicationController
   end
 
   def set_quiniela
-    @quiniela = @club.quinielas.find(params[:id])
+    @quiniela = Quiniela.find(params[:id])
   end
 
   def quiniela_params

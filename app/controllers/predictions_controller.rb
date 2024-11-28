@@ -1,15 +1,12 @@
 class PredictionsController < ApplicationController
+  before_action :set_quiniela
+  before_action :set_teams
+
   def new
-    @quiniela = Quiniela.find(params[:quiniela_id])
-    set_teams
     @prediction = Prediction.new
   end
 
   def create
-    @quiniela = Quiniela.find(params[:quiniela_id])
-    set_teams
-
-    # Check if the user already has a prediction for this quiniela
     existing_prediction = current_user.predictions.find_by(quiniela: @quiniela)
 
     if existing_prediction
@@ -29,15 +26,17 @@ class PredictionsController < ApplicationController
     end
   end
 
-
   private
+
+  def set_quiniela
+    @quiniela = Quiniela.find(params[:quiniela_id])
+  end
 
   def prediction_params
     params.require(:prediction).permit(result: []) # Permit an array of results
   end
 
   def set_teams
-    # Clean the local and visitor teams arrays
     @local_teams = @quiniela.local_teams.map(&:strip)
     @visitor_teams = @quiniela.visitor_teams.map(&:strip)
   end

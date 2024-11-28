@@ -8,7 +8,7 @@
 
 <div class = club-edit-card>
   <h2>Active Quinielas</h2>
-    <% @club.quinielas.where(result: []).each do |quiniela| %>
+    <% @club.quinielas.where(result: []).order(:end_date).each do |quiniela| %>
     <div class="solve-quiniela-card">
       <h3><%= quiniela.title %></h3>
       <p>Reward: <%= quiniela.reward %></p>
@@ -16,7 +16,11 @@
       <p>End: <%= quiniela.end_date.strftime("%d %B %Y") %></p>
 
       <div class="card-footer">
-        <%= link_to "Solve", edit_club_quiniela_path(@club, quiniela), class: "btn-yellow" %>
+        <% if quiniela.end_date <= Date.today %>
+          <%= link_to "Solve", edit_club_quiniela_path(@club, quiniela), class: "btn-yellow" %>
+        <% else %>
+        <p class="not-finished"> Quiniela not finished </p>
+        <% end %>
       </div>
     </div>
   <% end %>

@@ -59,7 +59,7 @@
           </div>
         <h3 class="h3-show"><%= quiniela.title %><p>Ended on: <%= quiniela.end_date.strftime("%B %d, %Y") %></p></h3>
       </div>
-        <button class=“results-btn”>Results</button>
+        <%= link_to "Results", quiniela_path(quiniela), class: "results-btn" %> 
       </div>
     <% end %>
   <% else %>
