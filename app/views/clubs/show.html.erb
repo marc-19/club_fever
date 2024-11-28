@@ -15,10 +15,12 @@
     </div>
   </div>
 </div>
+
+
 <div class=“club-information”>
   <h1 class=“club-name”><%= @club.name %></h1>
-  <p><%= @club.description %></p>
-  <div class=“club-action”>
+    <p><%= @club.description %></p>
+    <div class=“club-action”>
     <button class=“bnt-follow”>Follow</button>
   </div>
 </div>
@@ -26,7 +28,7 @@
 
 <div class="active-quinielas-show">
   <h2 class="h2-show">Active Quinielas</h2>
-  <% if @active_quinielas.any? %>
+    <% if @active_quinielas.any? %>
     <% @active_quinielas.each do |quiniela| %>
       <div class="quiniela-card-show">
         <div class="quiniela-header-show">
@@ -35,43 +37,38 @@
           </div>
           <h3 class="h3-show"><%= quiniela.title %> <p>Starts in: <%= distance_of_time_in_words(Time.now, quiniela.start_date) %></p></h3>
         </div>
-        <div class=“prize-card”>
+        <div class=“prize-card-show”>
           <p>You can win: </p>
           <div class=“prize”>
             <p><%= quiniela.reward %></p>
           </div>
         </div>
-<<<<<<< HEAD
-      <div class="btn-play">
-
-        <%= link_to 'PLAY',  new_quiniela_prediction_path(quiniela), class: 'btn-yellow' %>
+        <div class="btn-play">
+          <%= link_to 'PLAY',  new_quiniela_prediction_path(quiniela), class: 'btn-yellow' %>
+        </div>
       </div>
-
-=======
-      <button class=“btn-yellow”>PLAY</button>
->>>>>>> master
-      </div>
-      <% end %>
-    <% else %>
-      <p>No active quinielas at the moment.</p>
     <% end %>
+  <% else %>
+    <p>No active quinielas at the moment.</p>
+  <% end %>
 </div>
+
 <div class="past-quinielas-show">
   <h2 class="h2-show">Past Quinielas</h2>
-  <% if @past_quinielas.any? %>
+    <% if @past_quinielas.any? %>
     <% @past_quinielas.each do |quiniela| %>
       <div class="quiniela-card-show">
         <div class="quiniela-header-show">
           <div class="quiniela-logo">
             <%= cl_image_tag @club.logo.key if @club.logo.attached? %>
           </div>
-        <h3 class="h3-show"><%= quiniela.title %><p>Ended on: <%= quiniela.end_date.strftime("%B %d, %Y") %></p></h3>
-      </div>
-        <button class=“results-btn”>Results</button>
-      </div>
-    <% end %>
-  <% else %>
-    <p>No past quinielas recorded.</p>
+          <h3 class="h3-show"><%= quiniela.title %><p>Ended on: <%= quiniela.end_date.strftime("%B %d, %Y") %></p></h3>
+          </div>
+            <button class=“results-btn”>Results</button>
+          </div>
+        <% end %>
+      <% else %>
+      <p>No past quinielas recorded.</p>
   <% end %>
 </div>
 <%#

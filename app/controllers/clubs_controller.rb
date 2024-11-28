@@ -15,7 +15,7 @@ class ClubsController < ApplicationController
       @clubs = Club.all # Mostra todos os clubes se a busca estiver vazia
     end
   end
-  
+
   def show
     @quinielas = @club.quinielas
     @active_quinielas = @club.quinielas.where("start_date >= ?", DateTime.now)

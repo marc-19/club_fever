@@ -7,9 +7,7 @@ class QuinielasController < ApplicationController
   end
 
   def show
-    # No need for authentication here; user can view the quiniela
-    # Check if user is logged in when they try to submit a prediction
-    @prediction = Prediction.new  # Prepare a new prediction instance
+    @prediction = Prediction.new
   end
 
   def create
