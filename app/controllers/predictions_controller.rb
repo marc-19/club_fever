@@ -4,9 +4,24 @@ class PredictionsController < ApplicationController
 
   def new
     @prediction = Prediction.new
+
+    # Load predictions from session if present
+    if session[:results].present?
+      Rails.logger.debug "Session Results: #{session[:results]}"
+      @prediction.result = session.delete(:results)
+      Rails.logger.debug "Prediction Results: #{@prediction.result}"
+    end
   end
 
   def create
+    if current_user.nil?
+      # Save selected predictions in session
+      session[:results] = params[:prediction][:result].values
+      session[:return_to] = new_quiniela_prediction_path(@quiniela)
+      redirect_to new_user_session_path, alert: "Please log in to submit your prediction."
+      return
+    end
+
     existing_prediction = current_user.predictions.find_by(quiniela: @quiniela)
 
     if existing_prediction
