@@ -7,10 +7,19 @@
 </div>
 
 <div class = club-edit-card>
-  <h2>Solve Quinielas</h2>
-    <div class="card-footer">
-    <%= link_to "Solve",root_path, class: "btn-yellow" %>
+  <h2>Active Quinielas</h2>
+    <% @club.quinielas.where(result: []).each do |quiniela| %>
+    <div class="solve-quiniela-card">
+      <h3><%= quiniela.title %></h3>
+      <p>Reward: <%= quiniela.reward %></p>
+      <p>Start: <%= quiniela.start_date.strftime("%d %B %Y") %></p>
+      <p>End: <%= quiniela.end_date.strftime("%d %B %Y") %></p>
+
+      <div class="card-footer">
+        <%= link_to "Solve", edit_club_quiniela_path(@club, quiniela), class: "btn-yellow" %>
+      </div>
     </div>
+  <% end %>
 </div>
 
 <div class = club-edit-card>

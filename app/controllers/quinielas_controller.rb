@@ -24,8 +24,8 @@ class QuinielasController < ApplicationController
   end
 
   def update
-    if @quiniela.result.present?
-      redirect_to edit_club_path(@club), alert: "This quiniela has already been solved and cannot be edited."
+    if @quiniela.result.present? || @quiniela.end_date > Date.today
+      redirect_to edit_club_path(@club), alert: "This quiniela has either already been solved or it hasn't ended"
       return
     end
 
