@@ -1,7 +1,7 @@
 <div class="club-profile-images">
   <div class="club-picture">
     <% if @club.header_img.attached? %>
-      <%= cl_image_tag @club.header_img.key, transformation: { width: 800, height: 400, crop: :fill, gravity: :center } %> %>
+      <%= cl_image_tag @club.header_img.key, transformation: { width: 800, height: 400, crop: :fill, gravity: :center } %>
     <% else %>
       <img src="/default_header.jpg" alt="Default Header Image">
     <% end %>

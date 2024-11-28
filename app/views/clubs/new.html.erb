@@ -1,0 +1,15 @@
+<div class="club-create-form">
+  <h2>Create a New Club</h2>
+  <%= simple_form_for @club, html: { multipart: true } do |f| %>
+    <div class="form-group">
+      <%= f.input :name, required: true, label: "Club Name" %>
+      <%= f.input :description, as: :text, required: true, label: "Club Description" %>
+      <%= f.input :logo, as: :file, required: true, label: "Club Logo" %>
+      <%= f.input :header_img, as: :file, required: true, label: "Background Image for you club profile" %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit, "Create Club", class: "btn-yellow" %>
+    </div>
+  <% end %>
+</div>

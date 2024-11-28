@@ -3,8 +3,18 @@ class ClubsController < ApplicationController
   before_action :set_club, only: [:show, :edit, :update]
   before_action :authorize_admin, only: [:edit, :update]
 
-  def authorize_admin
-    redirect_to root_path, alert: "Not authorized" unless current_user.is_admin?
+  def new
+    @club = Club.new
+  end
+
+  def create
+    @club = current_user.clubs.build(club_params)
+    if @club.save
+      redirect_to club_path(@club), notice: "Club created successfully!"
+    else
+      flash.now[:alert] = @club.errors.full_messages.to_sentence
+      render :new
+    end
   end
 
   def index
@@ -15,7 +25,7 @@ class ClubsController < ApplicationController
       @clubs = Club.all # Mostra todos os clubes se a busca estiver vazia
     end
   end
-  
+
   def show
     @quinielas = @club.quinielas
     @active_quinielas = @club.quinielas.where("start_date >= ?", DateTime.now)
@@ -23,6 +33,7 @@ class ClubsController < ApplicationController
   end
 
   def edit
+    @club = current_user.clubs.find(params[:id])
   end
 
   def update
@@ -37,7 +48,9 @@ class ClubsController < ApplicationController
   private
 
   def set_club
-    @club = Club.find(params[:id])
+    if params[:id]
+      @club = Club.find(params[:id])
+    end
   end
 
   def authorize_admin
