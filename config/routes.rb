@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  
+
   resources :clubs, only: [:index, :show, :edit, :update] do
-    resources :quinielas, only: [:new, :create]
+    resources :quinielas, only: [:new, :create, :edit, :update]
   end
 
   devise_for :users

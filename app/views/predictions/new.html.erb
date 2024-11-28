@@ -24,7 +24,6 @@
         <div class="match">
           <p><%= local %> vs <%= visitor %></p>
           <div class="options" data-selection-target="selectedElement">
-            <%# add hidden-radio class when all is working %>
             <%= f.radio_button :result, "1", name: "prediction[result][#{index}]", id: "result_1_#{index}", class: "hidden-radio", data: { action: "change->selection#select" } %>
             <%= f.label "result_1_#{index}", "1", for: "result_1_#{index}", class: "result-button btn-local" %>
 
