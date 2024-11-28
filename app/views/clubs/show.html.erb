@@ -1,10 +1,18 @@
 
 <div class="club-profile-images">
   <div class="club-picture">
-    <%= cl_image_tag @club.header_img.key if @club.header_img.attached? %>
+    <% if @club.header_img.attached? %>
+      <%= cl_image_tag @club.header_img.key, transformation: { width: 800, height: 400, crop: :fill, gravity: :center } %> %>
+    <% else %>
+      <img src="/default_header.jpg" alt="Default Header Image">
+    <% end %>
 
     <div class="club-logo">
-      <%= cl_image_tag @club.logo.key if @club.logo.attached? %>
+      <% if @club.logo.attached? %>
+        <%= cl_image_tag @club.logo.key, transformation: { width: 100, height: 100, crop: :fill } %>
+      <% else %>
+        <img src="/default_logo.jpg" alt="Default Logo">
+      <% end %>
     </div>
   </div>
 </div>
