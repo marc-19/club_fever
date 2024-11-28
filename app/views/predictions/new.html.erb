@@ -28,11 +28,7 @@
             name: "prediction[result][#{index}]",
             id: "result_1_#{index}",
             class: "hidden-radio",
-            checked: begin
-              is_checked = @prediction.result.present? && @prediction.result[index] == "1"
-              Rails.logger.debug("Checked for Match #{index + 1}, Button 1: #{is_checked}")
-              is_checked
-            end,
+            checked: @prediction.result.present? && @prediction.result[index] == "1",
             data: { action: "change->selection#select" } %>
       <%= f.label "result_1_#{index}", "1", for: "result_1_#{index}", class: "result-button btn-local" %>
 
@@ -41,11 +37,7 @@
             name: "prediction[result][#{index}]",
             id: "result_x_#{index}",
             class: "hidden-radio",
-            checked: begin
-              is_checked = @prediction.result.present? && @prediction.result[index] == "X"
-              Rails.logger.debug("Checked for Match #{index + 1}, Button X: #{is_checked}")
-              is_checked
-            end,
+            checked: @prediction.result.present? && @prediction.result[index] == "X",
             data: { action: "change->selection#select" } %>
       <%= f.label "result_x_#{index}", "X", for: "result_x_#{index}", class: "result-button btn-draw" %>
 
@@ -54,11 +46,7 @@
             name: "prediction[result][#{index}]",
             id: "result_2_#{index}",
             class: "hidden-radio",
-            checked: begin
-              is_checked = @prediction.result.present? && @prediction.result[index] == "2"
-              Rails.logger.debug("Checked for Match #{index + 1}, Button 2: #{is_checked}")
-              is_checked
-            end,
+            checked: @prediction.result.present? && @prediction.result[index] == "2",
             data: { action: "change->selection#select" } %>
       <%= f.label "result_2_#{index}", "2", for: "result_2_#{index}", class: "result-button btn-visitor" %>
     </div>

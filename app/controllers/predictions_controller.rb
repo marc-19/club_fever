@@ -25,7 +25,7 @@ class PredictionsController < ApplicationController
     existing_prediction = current_user.predictions.find_by(quiniela: @quiniela)
 
     if existing_prediction
-      redirect_to quiniela_path(@quiniela), alert: "You have already submitted a prediction for this quiniela."
+      redirect_to club_path(@quiniela.club), alert: "You have already submitted a prediction for this quiniela."
     else
       # Create a new prediction
       @prediction = current_user.predictions.new(prediction_params)
