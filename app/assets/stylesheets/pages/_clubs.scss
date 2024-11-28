@@ -5,7 +5,7 @@ $white: #F9FAFA;
 $dark-blue: #0C161C;
 $blue: #1A2329;
 $yellow: #DEE517;
-$red: #D72626;
+$red: #FD1015;
 $grey: #D9D9D9;
 $green: #02542D;
 
@@ -78,12 +78,12 @@ $green: #02542D;
   }
 }
 
-.active-quinielas{
-  h2 {
+.active-quinielas-show {
+  .h2-show {
     margin-left: 25px;
     font-weight: 400;
   }
-  .quiniela-card{
+  .quiniela-card-show {
     background-color: $blue;
     border-style: solid;
     border-color: $red;
@@ -97,11 +97,11 @@ $green: #02542D;
     color: $white;
 
 
-    .quiniela-header{
+    .quiniela-header-show {
       display: flex;
     }
 
-    h3 {
+    .h3-show {
       margin-left: 10px;
       margin-top: 7px;
     }
@@ -149,13 +149,13 @@ $green: #02542D;
   }
 }
 
-.past-quinielas{
-  h2 {
+.past-quinielas-show{
+  .h2-show {
   margin-left: 25px;
   font-weight: 400;
   }
 
-  .quiniela-card{
+  .quiniela-card-show {
     background-color: $blue;
     border-style: solid;
     border-color: $grey;
@@ -169,11 +169,11 @@ $green: #02542D;
     color: $white;
 
 
-    .quiniela-header{
+    .quiniela-header-show {
       display: flex;
     }
 
-    h3 {
+    .h3-show {
       margin-left: 10px;
       margin-top: 7px;
     }
@@ -218,7 +218,6 @@ $green: #02542D;
         filter: brightness(70%);
       }
     }
-
   }
 }
 
@@ -241,6 +240,7 @@ $green: #02542D;
     font-size: 16px;
     font-weight: bolder;
     line-height: 1.4;
+    font-weight: 400;
   }
 
   .prize{
@@ -258,12 +258,5 @@ $green: #02542D;
     margin-top: 10px;
     justify-content: center;
     margin-bottom: 0px;
-
-    p{
-      color: $dark-blue;
-      font-family: "Inter", sans-serif;
-      font-size: 16px;
-      font-weight: 400;
-    }
   }
 }
