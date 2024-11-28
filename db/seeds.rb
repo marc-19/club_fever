@@ -91,3 +91,4 @@ clubs.each_with_index do |club, i|
     puts "Error creating quiniela for #{club.name}: #{quiniela.errors.full_messages.join(", ")}"
   end
 end
+end

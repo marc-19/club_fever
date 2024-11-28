@@ -9,16 +9,14 @@ body {
 }
 #main-title {
   color: $red;
-}
-/* Título */
-h1 {
-  margin-top: 20px;
-  font-size: 2rem;
-}
 
-/* Subtítulo */
-p {
-  margin-bottom: 20px;
+  h1 {
+    margin-top: 20px;
+    font-size: 2rem;
+  }
+  p {
+    margin-bottom: 20px;
+  }
 }
 
 /* Barra de busca */
@@ -27,23 +25,25 @@ p {
   justify-content: center; /* Centraliza os itens horizontalmente */
   align-items: center; /* Centraliza os itens verticalmente */
   margin-top: 20px; /* Adiciona espaçamento superior, se necessário */
+
+  .input {
+    width: 300px;
+    height: 35px;
+    border: 2px solid #ffcc00;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 16px;
+    background-color: #101010;
+    color: #fff;
+    text-align: center; /* Opcional: centraliza o texto dentro da barra */
+  }
+
+  .input::placeholder {
+    color: #888;
+  }
+
 }
 
-.search-bar-clubs input {
-  width: 300px;
-  height: 35px;
-  border: 2px solid #ffcc00;
-  border-radius: 5px;
-  padding: 5px 10px;
-  font-size: 16px;
-  background-color: #101010;
-  color: #fff;
-  text-align: center; /* Opcional: centraliza o texto dentro da barra */
-}
-
-.search-bar-clubs input::placeholder {
-  color: #888;
-}
 
 /* Resultados da busca */
 #results {

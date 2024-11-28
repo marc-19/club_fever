@@ -24,15 +24,22 @@ class QuinielasController < ApplicationController
   end
 
   def update
-    @quiniela.result = params[:quiniela][:result].values # assign result array to quiniela result
+    if @quiniela.result.present?
+      redirect_to edit_club_path(@club), alert: "This quiniela has already been solved and cannot be edited."
+      return
+    end
+
+    # Assign result array to quiniela result
+    @quiniela.result = params[:quiniela][:result].values
 
     if @quiniela.save
-      redirect_to club_path(@club), notice: "Quiniela results have been successfully updated."
+      redirect_to edit_club_path(@club), notice: "Quiniela results have been successfully updated."
     else
       flash.now[:alert] = "There was an error updating the quiniela results."
       render :edit, status: :unprocessable_entity
     end
   end
+
 
   private
 

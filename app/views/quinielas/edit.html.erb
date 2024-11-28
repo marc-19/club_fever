@@ -4,17 +4,6 @@
   <div class="quiniela-header">
     <h3 class="reward-title">Reward</h3>
     <p class="reward-text"><%= @quiniela.reward %></p>
-
-    <div class="quiniela-dates">
-      <div class="start-end">
-        <p class="label">STARTS</p>
-        <p class="label">ENDS</p>
-      </div>
-      <div class="dates">
-        <p class="date"><%= @quiniela.start_date.strftime("%d %B") %></p>
-        <p class="date"><%= @quiniela.end_date.strftime("%d %B") %></p>
-      </div>
-    </div>
   </div>
 
   <%= simple_form_for [@club, @quiniela], html: { class: "prediction-form", data: { controller: "selection" } } do |f| %>
