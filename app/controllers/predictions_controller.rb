@@ -42,4 +42,3 @@ class PredictionsController < ApplicationController
     @visitor_teams = @quiniela.visitor_teams.map(&:strip)
   end
 end
-
