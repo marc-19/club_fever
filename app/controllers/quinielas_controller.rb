@@ -1,8 +1,15 @@
 class QuinielasController < ApplicationController
   before_action :set_club
+  before_action :set_quiniela, only: [:show]
 
   def new
     @quiniela = @club.quinielas.new
+  end
+
+  def show
+    # No need for authentication here; user can view the quiniela
+    # Check if user is logged in when they try to submit a prediction
+    @prediction = Prediction.new  # Prepare a new prediction instance
   end
 
   def create

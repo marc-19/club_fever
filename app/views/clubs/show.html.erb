@@ -37,8 +37,11 @@
             <p><%= quiniela.reward %></p>
           </div>
         </div>
+      <div class="btn-play">
 
-      <button class="btn-yellow">PLAY</button>
+        <%= link_to 'PLAY',  new_quiniela_prediction_path(quiniela), class: 'btn-yellow' %>
+      </div>
+
       </div>
       <% end %>
     <% else %>
