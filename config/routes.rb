@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  resources :clubs, only: [:index, :show] do
+  
+  resources :clubs, only: [:index, :show, :edit, :update] do
     resources :quinielas, only: [:new, :create]
   end
 

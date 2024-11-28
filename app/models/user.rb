@@ -8,7 +8,3 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 end
-
-def show
-  @user = User.find(params[:id]) # Busca o usuário com o ID da URL
-end

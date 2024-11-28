@@ -1,0 +1,95 @@
+.club-edit-card {
+  background-color: $blue;
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 600px;
+  width: 90%;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px; 
+  color: $white;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+
+  h2 {
+    text-align: center;
+    color: $yellow;
+    font-size: 1.5rem;
+    margin-bottom: 0px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+
+    label {
+      font-size: 1rem;
+      font-weight: bold;
+      color: $white;
+      margin-top: 15px;
+      margin-bottom: 7px;
+    }
+
+    input,
+    textarea {
+      border: 1px solid lighten($blue, 30%);
+      border-radius: 5px;
+      padding: 10px;
+      font-size: 1rem;
+      width: 100%;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+
+      &:focus {
+        outline: none;
+        border-color: $yellow;
+        box-shadow: 0px 0px 5px rgba(255, 255, 0, 0.5);
+      }
+    }
+
+    textarea {
+      resize: none;
+    }
+
+    // Specific styling for file input
+    input[type="file"] {
+      border: 2px dashed lighten($blue, 20%);
+      background-color: darken($blue, 5%);
+      color: $white;
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: 0.3s ease;
+
+      &:hover {
+        background-color: lighten($blue, 10%);
+        border-color: $yellow;
+      }
+
+      &:focus {
+        outline: none;
+        border-color: $yellow;
+        box-shadow: 0px 0px 5px rgba(255, 255, 0, 0.5);
+      }
+
+      &::file-selector-button { // this is the "select a file button"
+        background-color: $yellow;
+        color: $dark-blue;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: 0.3s ease;
+        margin-right: 10px;
+
+        &:hover {
+          background-color: lighten($yellow, 10%);
+        }
+      }
+    }
+  }
+  .card-footer {
+    margin-top: 15px;
+  }
+}
