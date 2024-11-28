@@ -1,7 +1,24 @@
-  <%# <div class="link-to-quinielas">
-    link_to "Manage Quinielas", new_club_quiniela_path(@club), class: "btn-quinielas" for creating quiniela
-  </div> %>
 
+<div class = club-edit-card>
+  <h2>Create Quiniela</h2>
+    <div class="card-footer">
+    <%= link_to "Create Quiniela", new_club_quiniela_path(@club), class: "btn-yellow" %>
+    </div>
+</div>
+
+<div class = club-edit-card>
+  <h2>Solve Quinielas</h2>
+    <div class="card-footer">
+    <%= link_to "Solve",root_path, class: "btn-yellow" %>
+    </div>
+</div>
+
+<div class = club-edit-card>
+  <h2> Quinielas Winners </h2>
+    <div class="card-footer">
+    <%= link_to "Check",root_path, class: "btn-yellow" %>
+    </div>
+</div>
 
 <div class="club-edit-card">
   <h2>Edit Club Information</h2>

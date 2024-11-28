@@ -12,43 +12,68 @@
   <input type="text" id="search-club" placeholder="Search for new club" />
 </div>
 
-  <!-- Quinielas ativas -->
-  <div id="active-quinielas">
-    <h2>Active Quinielas</h2>
-    <div class="quiniela-card">
-      <h3>Quiniela 3</h3>
-      <p>Starting in: 12h 30min 12s</p>
-      <div class="prize">
-        <p>You can win:</p>
-        <p>Prize not provided</p>
+<div class="active-quinielas-show">
+  <h2 class="h2-show">Active Quinielas</h2>
+  <% if @active_quinielas.any? %>
+    <% @active_quinielas.each do |quiniela| %>
+      <div class="quiniela-card-show">
+        <div class="quiniela-header-show">
+          <div class="quiniela-logo">
+            <%= image_tag @club.logo if @club.logo.present? %>
+          </div>
+          <h3 class="h3-show"><%= quiniela.title %> <p>Starts in: <%= distance_of_time_in_words(Time.now, quiniela.start_date) %></p></h3>
+        </div>
+        <div class="prize-card">
+          <p>You can win: </p>
+          <div class="prize">
+            <p><%= quiniela.reward %></p>
+          </div>
+        </div>
+      <button class="btn-yellow">PLAY</button>
       </div>
-      <button class="play-button">PLAY</button>
-    </div>
-  </div>
+      <% end %>
+    <% else %>
+      <p>No active quinielas at the moment.</p>
+    <% end %>
+</div>
 
-  <!-- Quinielas finalizadas -->
-  <div id="done-quinielas">
-    <h2>Your Done Quinielas</h2>
+<div class="past-quinielas">
+  <h2>Played Quinielas</h2>
+<% if @past_predictions.any? %>
+  <% @past_predictions.each do |prediction| %>
     <div class="quiniela-card">
-      <h3>Past Quiniela</h3>
-      <p>Ended: 21st November</p>
-      <p>340 Participants</p>
-      <p>5 Winners</p>
-      <button class="results-button">RESULTS</button>
+    <div class='quiniela-header'>
+      <h3><%= prediction.quiniela.title %></h3>
+      </div>
+      <p><strong>Submitted:</strong> <%= prediction.created_at.strftime("%d %B %Y") %></p>
+      <p><strong>Your Prediction:</strong> <%= prediction.result.join(", ") %></p>
+      <button class="btn-yellow">Results</button>
     </div>
-  </div>
+    </div>
+  <% end %>
+<% else %>
+  <p>No past predictions recorded.</p>
+<% end %>
+</div>
 
   <!-- Perfil do usuário -->
-  <div id="user-profile">
-  <h1>Your profile</h1>
-  <h2><%= @user.first_name %></h2>
-  <div class="profile-info">
+<div class="profile-section">
+  <div class="profile-card">
+  <h2>Your Profile</h2>
+    <!-- Avatar -->
     <% if @user.avatar.attached? %>
-  <img src="<%= url_for(@user.avatar) %>" alt="<%= @user.first_name %>'s Avatar" class="profile-avatar" />
-<% else %>
-  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2BbQk-mYW4VgUkiL_vuEOWXtVBFyRNPcvCQ&s" alt="Default Avatar" class="profile-avatar" />
-<% end %>
-    <p>10 quinielas</p>
+      <img src="<%= url_for(@user.avatar) %>" alt="<%= @user.first_name %>'s Avatar" class="profile-avatar" />
+    <% else %>
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2BbQk-mYW4VgUkiL_vuEOWXtVBFyRNPcvCQ&s" alt="Default Avatar" class="profile-avatar" />
+    <% end %>
+
+    <!-- Username -->
+    <h3 class="profile-username"><%= @user.first_name %></h3>
+
+    <!-- Quinielas Information -->
+    <p class="profile-details">10 quinielas played</p>
+
+    <!-- Edit Profile Button -->
+    <button class="btn-yellow">Edit Profile</button>
   </div>
-  <button class="edit-profile">Edit Profile</button>
 </div>
