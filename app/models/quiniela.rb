@@ -1,6 +1,6 @@
 class Quiniela < ApplicationRecord
   belongs_to :club
-  has_many :predictions
+  has_many :predictions, dependent: :destroy
   has_many :wins
 
   validates :local_teams, :visitor_teams, presence: true
