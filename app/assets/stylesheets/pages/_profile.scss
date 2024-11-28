@@ -82,6 +82,16 @@ section {
   }
 }
 
+.play-button, .results-button, .edit-profile {
+  background: linear-gradient(90deg, #ffc107, #ff5722);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
 
 .play-button:hover, .results-button:hover, .edit-profile:hover {
   transform: scale(1.05);
