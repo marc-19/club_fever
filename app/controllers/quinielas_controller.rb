@@ -17,7 +17,7 @@ class QuinielasController < ApplicationController
      Rails.logger.debug "Quiniela Params: #{quiniela_params.inspect}"
 
     if valid_matches?(@quiniela.local_teams, @quiniela.visitor_teams) && @quiniela.save
-      render plain: "Quiniela was successfully created."
+      redirect_to club_path(@club), notice: "Quiniela was successfully created!"
     else
       flash.now[:alert] = "Please provide exactly 10 matches with local and visitor teams."
       render :new, status: :unprocessable_entity

@@ -28,7 +28,8 @@ class PredictionsController < ApplicationController
       # @prediction.quiniela = @quiniela
 
       if @prediction.save
-        redirect_to user_profile_path(current_user), notice: "Your prediction has been submitted!"
+        redirect_to user_path(current_user), notice: "Your prediction has been submitted!"
+
       else
         flash.now[:alert] = "There was an error submitting your prediction."
         render :new, status: :unprocessable_entity
