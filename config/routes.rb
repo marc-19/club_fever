@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :clubs, only: [:index, :show]
+  resources :clubs, only: [:index, :show, :edit, :update] do
+    resources :quinielas, only: [:new, :create]
+  end
 
   resources :users, only: [:show]
   root "pages#home"
@@ -18,7 +20,5 @@ Rails.application.routes.draw do
     resources :predictions, only: [:new, :create]
   end
 
-
   # root "posts#index"
-  resources :clubs, only: :show
 end
