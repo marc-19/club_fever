@@ -86,9 +86,10 @@ clubs.each_with_index do |club, i|
     local_teams: ["Team A#{i}", "Team B#{i}", "Team C#{i}", "Team D#{i}"],
     visitor_teams: ["Team X#{i}", "Team Y#{i}", "Team Z#{i}", "Team W#{i}"]
   )
-  if quiniela.persisted?
-    puts "Quiniela for #{club.name} created successfully!"
-  else
-    puts "Error creating quiniela for #{club.name}: #{quiniela.errors.full_messages.join(", ")}"
+    if quiniela.persisted?
+      puts "Quiniela for #{club.name} created successfully!"
+    else
+      puts "Error creating quiniela for #{club.name}: #{quiniela.errors.full_messages.join(", ")}"
+    end
   end
 end

@@ -2,33 +2,43 @@ class PredictionsController < ApplicationController
   def new
     @quiniela = Quiniela.find(params[:quiniela_id])
     set_teams
+
     @prediction = Prediction.new
+    if session[:results].present?
+      @prediction.result = session[:results]
+    end
   end
 
   def create
     @quiniela = Quiniela.find(params[:quiniela_id])
     set_teams
 
-    # Check if the user already has a prediction for this quiniela
-    existing_prediction = current_user.predictions.find_by(quiniela: @quiniela)
+    if current_user.nil?
+      session[:results] = params[:prediction][:result].values
+      session[:return_to] =  new_quiniela_prediction_path
+      redirect_to new_user_session_path, alert: 'Please sign in to submit your prediction.'
+      return
+    end
 
+    existing_prediction = current_user.predictions.find_by(quiniela: @quiniela)
     if existing_prediction
       redirect_to quiniela_path(@quiniela), alert: "You have already submitted a prediction for this quiniela."
-    else
-      # Create a new prediction
-      @prediction = current_user.predictions.new(prediction_params)
-      @prediction.result = params[:prediction][:result].values # Assign result array
-      @prediction.quiniela = @quiniela
+      return
+    end
 
-      if @prediction.save
-        redirect_to user_path(current_user), notice: "Your prediction has been submitted!"
-      else
-        flash.now[:alert] = "There was an error submitting your prediction."
-        render :new, status: :unprocessable_entity
-      end
+    @prediction = @quiniela.predictions.new(prediction_params)
+    @prediction.user = current_user
+    @prediction.result = params[:prediction][:result].values
+    @prediction.quiniela = @quiniela
+
+    if @prediction.save
+      session.delete(:results)
+      redirect_to user_path(current_user), notice: "Your prediction has been submitted!"
+    else
+      flash.now[:alert] = "There was an error submitting your prediction."
+      render :new, status: :unprocessable_entity
     end
   end
-
 
   private
 

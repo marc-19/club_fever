@@ -1,8 +1,13 @@
 class QuinielasController < ApplicationController
   before_action :set_club
+  before_action :set_quiniela, only: [:show]
 
   def new
     @quiniela = @club.quinielas.new
+  end
+
+  def show
+    @prediction = Prediction.new
   end
 
   def create
