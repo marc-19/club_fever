@@ -8,7 +8,7 @@
   <% end %>
 </div>
 
-<div id="clubs-list">
+<div class="clubs-list">
   <% if @clubs.present? %>
     <% @clubs.each do |club| %>
       <%= link_to club_path(club), class: "club-card-link" do %>
