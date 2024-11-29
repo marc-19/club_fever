@@ -2,16 +2,6 @@
   <h3>Create a New Quiniela</h3>
 </div>
 
-<% if flash[:notice] %>
-  <div class="alert alert-success">
-    <%= flash[:notice] %>
-  </div>
-<% elsif flash[:alert] %>
-  <div class="alert alert-danger">
-    <%= flash[:alert] %>
-  </div>
-<% end %>
-
 <div class="top-container">
   <%= form_with(model: [@club, @quiniela], local: true) do |form| %>
     <div class="quiniela-title">
