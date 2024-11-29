@@ -1,60 +1,55 @@
-<div class="create-title">
-  <h3>Create a New Quiniela</h3>
-</div>
+<div class="club-edit-card">
+  <h2>Create a New Quiniela</h2>
 
-<div class="top-container">
-  <%= form_with(model: [@club, @quiniela], local: true) do |form| %>
-    <div class="quiniela-title">
-      <%= form.label :title, "Quiniela Title" %>
-      <%= form.text_field :title, placeholder: "max. 20 characters" %>
+  <%= simple_form_for [@club, @quiniela], html: { class: "quiniela-form" } do |form| %>
+    <div class="form-group">
+      <%= form.input :title, label: "Quiniela Title", input_html: { placeholder: "max. 20 characters" } %>
     </div>
 
-    <div class="reward-input">
-      <%= form.label :reward, "Reward" %>
-      <%= form.text_field :reward, placeholder: "Enter the reward for the quiniela" %>
+    <div class="form-group">
+      <%= form.input :reward, label: "Reward", input_html: { placeholder: "Enter the reward for the quiniela" } %>
     </div>
 
-    <div class="start-date">
-      <%= form.label :start_date, "Start Date" %>
-      <%= form.date_field :start_date %>
+    <div class="form-group">
+      <%= form.input :start_date, as: :date, label: "Start Date" %>
     </div>
 
-    <div class="end-date">
-      <%= form.label :end_date, "End Date" %>
-      <%= form.date_field :end_date %>
+    <div class="form-group">
+      <%= form.input :end_date, as: :date, label: "End Date" %>
     </div>
-</div>
 
-<div class="matches-container">
-  <h3>Matches</h3>
-  <table>
-    <thead>
-      <tr>
-        <th>Match #</th>
-        <th>Local Team</th>
-        <th>Visitor Team</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% 10.times do |i| %>
-        <tr>
-          <td><%= i + 1 %></td>
-          <td>
-            <%= form.text_field :local_teams, name: "quiniela[local_teams][]", placeholder: "Local team" %>
-          </td>
-          <td>
-            <%= form.text_field :visitor_teams, name: "quiniela[visitor_teams][]", placeholder: "Visitor team" %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-  <div class="create-button">
-  <%= form.submit "Create Quiniela" %>
-</div>
-<% end %>
-</div>
+    <div class="matches-container">
+      <h3>Matches</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Match</th>
+            <th>Local Team</th>
+            <th>Visitor Team</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% 10.times do |i| %>
+            <tr>
+              <td><%= i + 1 %></td>
+              <td>
+                <%= form.text_field :local_teams, name: "quiniela[local_teams][]", placeholder: "Local team", class: "team-input" %>
+              </td>
+              <td>
+                <%= form.text_field :visitor_teams, name: "quiniela[visitor_teams][]", placeholder: "Visitor team", class: "team-input" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
 
-<div class="back-button">
-  <%= link_to "Back to Club", club_path(@club), class: "btn btn-secondary" %>
+    <div class="card-footer">
+      <%= form.submit "Create Quiniela", class: "btn-yellow" %>
+    </div>
+  <% end %>
+
+  <div class="back-button">
+    <%= link_to "Back to Club", club_path(@club), class: "btn btn-secondary" %>
+  </div>
 </div>
