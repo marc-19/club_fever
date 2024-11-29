@@ -16,7 +16,7 @@
   <%= form_with(model: [@club, @quiniela], local: true) do |form| %>
     <div class="quiniela-title">
       <%= form.label :title, "Quiniela Title" %>
-      <%= form.text_field :title, placeholder: "Enter the quiniela title" %>
+      <%= form.text_field :title, placeholder: "max. 20 characters" %>
     </div>
 
     <div class="reward-input">

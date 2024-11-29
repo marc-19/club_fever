@@ -5,6 +5,7 @@ class Quiniela < ApplicationRecord
 
   validates :local_teams, :visitor_teams, presence: true
   validate :teams_length_match
+  validates :title, length: { maximum: 20, message: "must be 20 characters or less" }
 
   private
 
