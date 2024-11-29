@@ -161,6 +161,9 @@
   padding: 20px; /* Espaçamento interno */
   border-top: 2px solid #ffcc00; /* Linha superior */
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5); /* Sombra no topo */
+  position: fixed; /* Fixa na tela */
+  bottom: 0; /* Alinha ao rodapé */
+  width: 100%; /* Garante que o footer ocupe toda a largura */
 }
 
 #footer-message h2 {
