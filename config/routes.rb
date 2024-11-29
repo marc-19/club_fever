@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
+
   devise_for :users
+
   resources :clubs, only: [:index, :show, :edit, :update, :create, :new] do
-    resources :quinielas, only: [:new, :create]
+    resources :quinielas, only: [:new, :create, :edit, :update]
+
   end
   resources :users, only: [:show]
   root "pages#home"

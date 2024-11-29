@@ -1,3 +1,10 @@
+$white: #F9FAFA;
+$dark-blue: #0C161C;
+$blue: #1A2329;
+$yellow: #DEE517;
+$red: #D72626;
+$grey: #D9D9D9;
+
 .club-edit-card {
   background-color: $blue;
   border-radius: 10px;
@@ -7,7 +14,7 @@
   margin: 20px auto;
   display: flex;
   flex-direction: column;
-  gap: 10px; 
+  gap: 10px;
   color: $white;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 
@@ -91,5 +98,33 @@
   }
   .card-footer {
     margin-top: 15px;
+
+    .not-finished {
+      display: inline-block;
+      min-width: 100px;
+      padding: 10px 16px;
+      font-size: 16px;
+      font-weight: bold;
+      color: $white;
+      background-color: $blue;
+      border: none;
+      border-radius: 5px;
+      text-align: center;
+    }
   }
+}
+
+
+.solve-quiniela-card {
+  background-color: $dark-blue;
+  border-style: solid;
+  border-color: $grey;
+  border-radius: 12px;
+  padding: 25px;
+  max-width: 400px;
+  width: 90%;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  color: $white;
 }

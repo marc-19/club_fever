@@ -28,7 +28,7 @@ class ClubsController < ApplicationController
 
   def show
     @quinielas = @club.quinielas
-    @active_quinielas = @club.quinielas.where("start_date >= ?", DateTime.now)
+    @active_quinielas = @club.quinielas.where("end_date > ?", DateTime.now)
     @past_quinielas = @club.quinielas.where("end_date < ?", DateTime.now)
   end
 
@@ -55,7 +55,7 @@ class ClubsController < ApplicationController
 
   def authorize_admin
     unless current_user == @club.user
-      redirect_to root_path, alert: "Not authorized to edit this club."
+      redirect_to club_path(@club), alert: "You are not authorized to edit this club."
     end
   end
 

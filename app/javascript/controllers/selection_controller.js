@@ -6,19 +6,33 @@ export default class extends Controller {
 
   connect() {
     console.log("Stimulus controller connected");
+    this.setInitialSelectedClass();
+  }
+
+  setInitialSelectedClass() {
+    // Iterate through all radio buttons in the group
+    this.selectedElementTargets.forEach((group) => {
+      const checkedRadio = group.querySelector("input[type='radio']:checked");
+
+      if (checkedRadio) {
+        const correspondingLabel = group.querySelector(`label[for="${checkedRadio.id}"]`);
+        if (correspondingLabel) {
+          correspondingLabel.classList.add("selected");
+        }
+      }
+    });
   }
 
   select(event) {
-
     const selectedTarget = event.target;
-    const group = selectedTarget.closest(".options"); // its to select the actual option that corresponds (see new.html predictions)
+    const group = selectedTarget.closest(".options");
 
-    // clean selected class for all the groups 1 X 2 (so just one appears selected)
+    // Remove 'selected' class from all labels in the group
     group.querySelectorAll(".result-button").forEach((label) => {
       label.classList.remove("selected");
     });
 
-    // add selected class to the correct selected label
+    // Add 'selected' class to the clicked label
     const selectedLabel = group.querySelector(`label[for="${selectedTarget.id}"]`);
     selectedLabel.classList.add("selected");
   }

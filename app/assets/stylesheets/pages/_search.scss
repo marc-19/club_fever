@@ -1,24 +1,13 @@
-/* Estilos gerais */
-body {
-  font-family: Arial, sans-serif;
-  background-color: #101010;
-  color: white;
-  margin: 0;
-  padding: 0;
-  text-align: center;
-}
 #main-title {
   color: $red;
-}
-/* Título */
-h1 {
-  margin-top: 20px;
-  font-size: 2rem;
-}
 
-/* Subtítulo */
-p {
-  margin-bottom: 20px;
+  h1 {
+    margin-top: 20px;
+    font-size: 2rem;
+  }
+  p {
+    margin-bottom: 20px;
+  }
 }
 
 /* Barra de busca */
@@ -53,7 +42,28 @@ p {
   font-size: 20px;
   color: black;
   pointer-events: none;
+  display: flex; /* Torna o contêiner flexível */
+  justify-content: center; /* Centraliza os itens horizontalmente */
+  align-items: center; /* Centraliza os itens verticalmente */
+  margin-top: 20px; /* Adiciona espaçamento superior, se necessário */
+
+  .input {
+    width: 300px;
+    height: 35px;
+    border: 2px solid #ffcc00;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 16px;
+    background-color: #101010;
+    color: #fff;
+    text-align: center; /* Opcional: centraliza o texto dentro da barra */
+  }
+
+  .input::placeholder {
+    color: #888;
+  }
 }
+
 
 /* Resultados da busca */
 #results {
@@ -69,9 +79,8 @@ p {
   gap: 20px;
 }
 
-/* Estilo de cada clube */
-/* Club item */
-.club-item {
+.club-list {
+  .club-item {
   text-align: center;
   background: $blue;
   padding: 10px;
@@ -82,36 +91,36 @@ p {
   align-items: center;
   margin: 10px auto;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+  }
 
 .club-item:hover {
   transform: scale(1.1);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
+ }
 
 .club-item img {
   width: 100px;
   height: 100px;
   border-radius: 50%;
-}
+ }
 
 .club-item p {
   margin-top: 10px;
   font-size: 14px;
   color: #ffffff;
-}
+ }
 
 #clubs-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
-}
+ }
 
 .club-item {
   text-decoration: none;
   color: inherit;
-}
+ }
 
 .club-card {
   background-color: #101010;
@@ -122,19 +131,19 @@ p {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-}
+ }
 
 .club-card:hover {
   transform: scale(1.05);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-}
+ }
 
 .club-image {
   width: 100px; /* Define uma largura fixa */
   height: 100px; /* Define uma altura fixa */
   object-fit: cover; /* Garante que a imagem se ajuste ao espaço sem distorcer */
   border-radius: 50%; /* Adiciona o formato arredondado */
-}
+ }
 
 .club-logo {
   display: flex;
@@ -142,13 +151,16 @@ p {
   align-items: center;
   width: 120px; /* Opcional para centralizar */
   height: 120px;
-}
+  }
 
 .club-name {
   font-size: 16px;
   color: white;
   font-weight: bold;
+  }
 }
+/* Estilo de cada clube */
+/* Club item */
 
 .image-card-clubs {
   background-image: url("https://images.mlssoccer.com/image/private/t_editorial_landscape_12_desktop_2x/f_auto/prd-league/efueku3tliqfkjxvsqfx.jpg");
