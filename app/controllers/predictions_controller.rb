@@ -7,9 +7,7 @@ class PredictionsController < ApplicationController
 
     # Load predictions from session if present
     if session[:results].present?
-      Rails.logger.debug "Session Results: #{session[:results]}"
       @prediction.result = session.delete(:results)
-      Rails.logger.debug "Prediction Results: #{@prediction.result}"
     end
   end
 
