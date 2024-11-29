@@ -1,12 +1,3 @@
-/* Estilos gerais */
-body {
-  font-family: Arial, sans-serif;
-  background-color: #101010;
-  color: white;
-  margin: 0;
-  padding: 0;
-  text-align: center;
-}
 #main-title {
   color: $red;
 
@@ -21,6 +12,36 @@ body {
 
 /* Barra de busca */
 .search-bar-clubs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px auto;
+  padding: 0;
+}
+
+.search-bar-clubs input {
+  width: 300px;
+  height: 40px;
+  padding-left: 40px; /* Espaço para o ícone */
+  font-size: 16px;
+  border: none;
+  border-radius: 20px;
+  background-color: #ffeb3b; /* Amarelo */
+  color: black;
+  outline: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.search-bar-clubs input::placeholder {
+  color: #444;
+}
+
+.search-bar-clubs .search-icon {
+  position: absolute;
+  left: 10px;
+  font-size: 20px;
+  color: black;
+  pointer-events: none;
   display: flex; /* Torna o contêiner flexível */
   justify-content: center; /* Centraliza os itens horizontalmente */
   align-items: center; /* Centraliza os itens verticalmente */
@@ -41,7 +62,6 @@ body {
   .input::placeholder {
     color: #888;
   }
-
 }
 
 
@@ -59,9 +79,8 @@ body {
   gap: 20px;
 }
 
-/* Estilo de cada clube */
-/* Club item */
-.club-item {
+.club-list {
+  .club-item {
   text-align: center;
   background: $blue;
   padding: 10px;
@@ -72,51 +91,114 @@ body {
   align-items: center;
   margin: 10px auto;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+  }
 
 .club-item:hover {
   transform: scale(1.1);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
+ }
 
 .club-item img {
   width: 100px;
   height: 100px;
   border-radius: 50%;
-}
+ }
 
 .club-item p {
   margin-top: 10px;
   font-size: 14px;
   color: #ffffff;
-}
+ }
 
 #clubs-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
-  padding: 20px;
+ }
 
-  .club-item {
-    background-color: #1e1e1e;
-    color: white;
-    padding: 15px;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    width: 150px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+.club-item {
+  text-decoration: none;
+  color: inherit;
+ }
 
-    &:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-    }
+.club-card {
+  background-color: #101010;
+  border-radius: 10px;
+  text-align: center;
+  padding: 15px;
+  width: 150px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+ }
 
-    p {
-      margin: 10px 0 0;
-      font-size: 16px;
-      font-weight: bold;
-    }
+.club-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+ }
+
+.club-image {
+  width: 100px; /* Define uma largura fixa */
+  height: 100px; /* Define uma altura fixa */
+  object-fit: cover; /* Garante que a imagem se ajuste ao espaço sem distorcer */
+  border-radius: 50%; /* Adiciona o formato arredondado */
+ }
+
+.club-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 120px; /* Opcional para centralizar */
+  height: 120px;
   }
+
+.club-name {
+  font-size: 16px;
+  color: white;
+  font-weight: bold;
+  }
+}
+/* Estilo de cada clube */
+/* Club item */
+
+.image-card-clubs {
+  background-image: url("https://images.mlssoccer.com/image/private/t_editorial_landscape_12_desktop_2x/f_auto/prd-league/efueku3tliqfkjxvsqfx.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.club-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+#footer-message {
+  background-color: #101010; /* Fundo escuro */
+  color: #ffffff; /* Cor do texto branca */
+  text-align: center; /* Centraliza o texto */
+  padding: 20px; /* Espaçamento interno */
+  border-top: 2px solid #ffcc00; /* Linha superior */
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5); /* Sombra no topo */
+}
+
+#footer-message h2 {
+  font-size: 1.2rem; /* Ajusta o tamanho da fonte */
+  margin: 0; /* Remove margens padrão */
+  font-weight: 400; /* Deixa o texto mais leve */
+  display: flex; /* Flex para alinhar o ícone */
+  justify-content: center; /* Centraliza conteúdo horizontalmente */
+  align-items: center; /* Centraliza conteúdo verticalmente */
+}
+
+#footer-message h2::after {
+  content: "⚽"; /* Ícone no final */
+  margin-left: 8px; /* Espaço entre o texto e o ícone */
+  font-size: 1.5rem; /* Tamanho maior para o ícone */
 }
