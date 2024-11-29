@@ -25,6 +25,43 @@ $grey: #D9D9D9;
     margin-bottom: 0px;
   }
 
+  .matches-container {
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+
+      th, td {
+        border: 1px solid lighten($blue, 20%);
+        text-align: center;
+        padding: 10px;
+      }
+
+      th {
+        background-color: $yellow;
+        color: $dark-blue;
+        font-weight: bold;
+      }
+
+      td {
+        input {
+          width: 100%;
+          padding: 8px;
+          border-radius: 5px;
+          border: 1px solid lighten($blue, 30%);
+          background-color: darken($blue, 5%);
+          color: $white;
+
+          &:focus {
+            outline: none;
+            border-color: $yellow;
+            box-shadow: 0px 0px 5px rgba(255, 255, 0, 0.5);
+          }
+        }
+      }
+    }
+  }
+
   .form-group {
     display: flex;
     flex-direction: column;
