@@ -51,6 +51,34 @@ $green: #02542D;
   }
 }
 
+.edit-club {
+
+  a {
+  display: inline-block;
+  min-width: 100px;
+  padding: 5px 8px;
+  font-size: 16px;
+  font-weight: bold;
+  color: $dark-blue;
+  background-color: $yellow;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+
+  &:hover {
+    transition: 0.3s ease-in;
+    filter: brightness(80%);
+  }
+
+  &:active {
+    filter: brightness(70%);
+
+  }
+}
+}
+
 .bnt-follow {
   display: inline-block;
   min-width: 100px;
