@@ -1,2 +1,39 @@
-<h1>Quinielas#show</h1>
-<p>Find me in app/views/quinielas/show.html.erb</p>
+<div class="quiniela-details-card">
+  <h2><%= @quiniela.title %></h2>
+
+  <div class="quiniela-header">
+    <h3 class="reward-title">Reward</h3>
+    <p class="reward-text"><%= @quiniela.reward %></p>
+
+    <div class="quiniela-dates">
+      <div class="start-end">
+        <p class="label">STARTS</p>
+        <p class="label">ENDS</p>
+      </div>
+      <div class="dates">
+        <p class="date"><%= @quiniela.start_date.strftime("%d %B") %></p>
+        <p class="date"><%= @quiniela.end_date.strftime("%d %B") %></p>
+      </div>
+    </div>
+  </div>
+
+  <% if @quiniela.result.length > 1 %>
+    <div class="quiniela-matches" data-controller="results">
+      <% @local_teams.zip(@visitor_teams, @quiniela.result).each_with_index do |(local, visitor, result), index| %>
+        <div class="match">
+          <p><%= local %> vs <%= visitor %></p>
+          <div class="options" data-results-target="option" data-result="<%= result %>">
+            <label for="result_1_<%= index %>" class="result-button btn-local" data-results-target="button">1</label>
+            <label for="result_x_<%= index %>" class="result-button btn-draw" data-results-target="button">X</label>
+            <label for="result_2_<%= index %>" class="result-button btn-visitor" data-results-target="button">2</label>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <p>Quiniela not resolved yet, results available soon</p>
+  <% end %>
+   <div class="form-actions">
+      <%= link_to "Winners", quiniela_path(@quiniela), class: "btn-grey"%>
+    </div>
+</div>

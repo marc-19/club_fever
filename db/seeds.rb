@@ -93,3 +93,4 @@ clubs.each_with_index do |club, i|
     end
   end
 end
+end

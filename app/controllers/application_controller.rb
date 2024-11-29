@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
-
+  #before_action :authenticate_user!
   def after_sign_in_path_for(resource)
-    session[:return_to] || super  # Redirect to the stored URL or default
+    session.delete(:return_to) || root_path # Redirect to the stored path or default to root_path
   end
 end

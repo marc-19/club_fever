@@ -48,11 +48,7 @@
             <p><%= quiniela.reward %></p>
           </div>
         </div>
-        
-        <div class="btn-play">
-          <%= link_to 'PLAY',  new_quiniela_prediction_path(quiniela), class: 'btn-yellow' %>
-        </div>
-        
+      <%= link_to "Play", new_quiniela_prediction_path(quiniela), class: "btn-yellow" %>
       </div>
     <% end %>
   <% else %>
@@ -69,13 +65,13 @@
           <div class="quiniela-logo">
             <%= cl_image_tag @club.logo.key if @club.logo.attached? %>
           </div>
-          <h3 class="h3-show"><%= quiniela.title %><p>Ended on: <%= quiniela.end_date.strftime("%B %d, %Y") %></p></h3>
-          </div>
-            <button class=“results-btn”>Results</button>
-          </div>
-        <% end %>
-      <% else %>
-      <p>No past quinielas recorded.</p>
+        <h3 class="h3-show"><%= quiniela.title %><p>Ended on: <%= quiniela.end_date.strftime("%B %d, %Y") %></p></h3>
+      </div>
+        <%= link_to "Results", quiniela_path(quiniela), class: "results-btn" %>
+      </div>
+    <% end %>
+  <% else %>
+    <p>No past quinielas recorded.</p>
   <% end %>
 </div>
 <%#

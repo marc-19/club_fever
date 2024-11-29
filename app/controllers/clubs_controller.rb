@@ -28,7 +28,7 @@ class ClubsController < ApplicationController
 
   def show
     @quinielas = @club.quinielas
-    @active_quinielas = @club.quinielas.where("start_date >= ?", DateTime.now)
+    @active_quinielas = @club.quinielas.where("end_date > ?", DateTime.now)
     @past_quinielas = @club.quinielas.where("end_date < ?", DateTime.now)
   end
 
