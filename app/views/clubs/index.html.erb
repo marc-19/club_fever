@@ -1,14 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Club Fever</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <h1 id="main-title">Club Fever</h1>
-  <p>Participate in your club's betting pool</p>
+<div class="image-card-clubs">
+    <h3>CLUB <br><span class="italic">FEVER.</span></h3>
+  </div>
 
 <div class="search-bar-clubs">
   <%= simple_form_for :search, url: clubs_path, method: :get do |f| %>
@@ -16,32 +8,27 @@
   <% end %>
 </div>
 
-<div id="clubs-list">
+<div class="clubs-list">
   <% if @clubs.present? %>
     <% @clubs.each do |club| %>
-      <div class="club-item">
-        <p><%= club.name %></p>
-      </div>
+      <%= link_to club_path(club), class: "club-card-link" do %>
+        <div class="club-card">
+          <div class="club-logo">
+            <% if club.logo.attached? %>
+              <%= cl_image_tag club.logo.key, class: "club-image" %>
+            <% else %>
+              <img src="https://static.vecteezy.com/system/resources/thumbnails/005/544/708/small/profile-icon-design-free-vector.jpg" alt="Default logo" />
+            <% end %>
+          </div>
+          <p class="club-name"><%= club.name %></p>
+        </div>
+      <% end %>
     <% end %>
   <% else %>
     <p>No clubs found</p>
   <% end %>
 </div>
 
-
-  <!-- Exemplo de clubes abaixo da barra de busca -->
-  <div id="carousel-container">
-  <!-- Botão para a esquerda -->
-  <button id="prev-btn" class="carousel-btn">&#9664;</button>
-
-  <!-- Carrossel -->
-
-  <!-- Botão para a direita -->
-  <button id="next-btn" class="carousel-btn">&#9654;</button>
-</div>
 <div id="footer-message">
-  <h2>Your support makes the difference!⚽</h2>
+  <h2>Your support makes the difference!</h2>
 </div>
-  <script src="script.js"></script>
-</body>
-</html>
