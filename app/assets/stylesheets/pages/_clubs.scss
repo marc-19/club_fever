@@ -51,6 +51,34 @@ $green: #02542D;
   }
 }
 
+.edit-club {
+
+  a {
+  display: inline-block;
+  min-width: 100px;
+  padding: 5px 8px;
+  font-size: 16px;
+  font-weight: bold;
+  color: $dark-blue;
+  background-color: $yellow;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+
+  &:hover {
+    transition: 0.3s ease-in;
+    filter: brightness(80%);
+  }
+
+  &:active {
+    filter: brightness(70%);
+
+  }
+}
+}
+
 .bnt-follow {
   display: inline-block;
   min-width: 100px;
@@ -120,30 +148,32 @@ $green: #02542D;
       }
     }
 
-    .btn-yellow {
-      display: inline-block;
-      min-width: 100px;
-      padding: 10px 16px;
-      font-size: 16px;
-      font-weight: bold;
-      color: $dark-blue;
-      background-color: $yellow;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      text-align: center;
-      text-decoration: none;
-      margin-left: 45px;
-      margin-right: 45px;
-      margin-top: 10px;
+    .bnt-play{
+      .btn-yellow {
+        display: inline-block;
+        min-width: 100px;
+        padding: 10px 16px;
+        font-size: 16px;
+        font-weight: bold;
+        color: $dark-blue;
+        background-color: $yellow;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        margin-left: 45px;
+        margin-right: 45px;
+        margin-top: 10px;
 
-      &:hover {
-        transition: 0.3s ease-in;
-        filter: brightness(80%);
-      }
+        &:hover {
+          transition: 0.3s ease-in;
+          filter: brightness(80%);
+        }
 
-      &:active {
-        filter: brightness(70%);
+        &:active {
+          filter: brightness(70%);
+        }
       }
     }
   }
@@ -220,7 +250,6 @@ $green: #02542D;
     }
   }
 }
-
 
 .prize-card{
   background-color: $grey;

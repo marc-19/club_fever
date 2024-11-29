@@ -22,6 +22,7 @@ class PredictionsController < ApplicationController
 
     existing_prediction = current_user.predictions.find_by(quiniela: @quiniela)
 
+    existing_prediction = current_user.predictions.find_by(quiniela: @quiniela)
     if existing_prediction
       redirect_to club_path(@quiniela.club), alert: "You have already submitted a prediction for this quiniela."
     else
@@ -30,12 +31,17 @@ class PredictionsController < ApplicationController
       @prediction.result = params[:prediction][:result].values # Assign result array
       @prediction.quiniela = @quiniela # need this?
 
-      if @prediction.save
-        redirect_to user_path(current_user), notice: "Your prediction has been submitted!"
-      else
-        flash.now[:alert] = "There was an error submitting your prediction."
-        render :new, status: :unprocessable_entity
-      end
+    @prediction = @quiniela.predictions.new(prediction_params)
+    @prediction.user = current_user
+    @prediction.result = params[:prediction][:result].values
+    @prediction.quiniela = @quiniela
+
+    if @prediction.save
+      session.delete(:results)
+      redirect_to user_path(current_user), notice: "Your prediction has been submitted!"
+    else
+      flash.now[:alert] = "There was an error submitting your prediction."
+      render :new, status: :unprocessable_entity
     end
   end
 
