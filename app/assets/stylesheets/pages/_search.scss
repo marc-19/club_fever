@@ -17,26 +17,25 @@
   justify-content: center;
   margin: 20px auto;
   padding: 0;
-}
 
-.search-bar-clubs input {
+  input {
   width: 300px;
   height: 40px;
-  padding-left: 40px; /* Espaço para o ícone */
+  padding-left: 40px; /* space for icon */
   font-size: 16px;
   border: none;
   border-radius: 20px;
-  background-color: #ffeb3b; /* Amarelo */
+  background-color: $yellow;
   color: black;
   outline: none;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-}
+  }
 
-.search-bar-clubs input::placeholder {
+  input::placeholder {
   color: #444;
-}
+  }
 
-.search-bar-clubs .search-icon {
+  search-icon {
   position: absolute;
   left: 10px;
   font-size: 20px;
@@ -46,22 +45,8 @@
   justify-content: center; /* Centraliza os itens horizontalmente */
   align-items: center; /* Centraliza os itens verticalmente */
   margin-top: 20px; /* Adiciona espaçamento superior, se necessário */
-
-  .input {
-    width: 300px;
-    height: 35px;
-    border: 2px solid #ffcc00;
-    border-radius: 5px;
-    padding: 5px 10px;
-    font-size: 16px;
-    background-color: #101010;
-    color: #fff;
-    text-align: center; /* Opcional: centraliza o texto dentro da barra */
   }
 
-  .input::placeholder {
-    color: #888;
-  }
 }
 
 
