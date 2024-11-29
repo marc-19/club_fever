@@ -12,10 +12,6 @@ class QuinielasController < ApplicationController
     @quiniela = @club.quinielas.new
   end
 
-  def show
-    @prediction = Prediction.new
-  end
-
   def create
     @quiniela = @club.quinielas.new(quiniela_params)
 
