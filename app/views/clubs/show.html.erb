@@ -24,6 +24,11 @@
     <button class=“bnt-follow”>Follow</button>
   </div>
 </div>
+<% if @club.user == current_user %>
+  <div class="edit-club">
+    <%= link_to "Edit Club", edit_club_path(@club), class: "btn-edit-club" %>
+  </div>
+<% end %>
 
 
 <div class="active-quinielas-show">
