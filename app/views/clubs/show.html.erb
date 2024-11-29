@@ -17,13 +17,16 @@
 </div>
 
 
-<div class=“club-information”>
-  <h1 class=“club-name”><%= @club.name %></h1>
+<div class="club-information">
+  <h1 class="club-name"><%= @club.name %></h1>
     <p><%= @club.description %></p>
-    <div class=“club-action”>
-    <button class=“bnt-follow”>Follow</button>
-  </div>
+    <%# <div class="club-action"> %>
+    <%# <button class="bnt-follow">Follow</button> %>
 </div>
+  <div class="annoying">
+  <a href="#" class="following-button">Follow</a>
+  </div>
+  <%# </div> %>
 <% if @club.user == current_user %>
   <div class="edit-club">
     <%= link_to "Edit Club", edit_club_path(@club), class: "btn-edit-club" %>
@@ -42,9 +45,9 @@
           </div>
           <h3 class="h3-show"><%= quiniela.title %> <p>Starts in: <%= distance_of_time_in_words(Time.now, quiniela.start_date) %></p></h3>
         </div>
-        <div class=“prize-card-show”>
+        <div class="prize-card-show">
           <p>You can win: </p>
-          <div class=“prize”>
+          <div class="prize">
             <p><%= quiniela.reward %></p>
           </div>
         </div>
