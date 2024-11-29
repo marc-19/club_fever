@@ -70,10 +70,11 @@ users.each_with_index do |user, i|
     clubs << club
   end
 
-if clubs.size == 5
-  puts "5 clubs created successfully!"
-else
-  puts "Error creating clubs."
+  if clubs.size == 5
+    puts "5 clubs created successfully!"
+  else
+    puts "Error creating clubs."
+  end
 end
 
 clubs.each_with_index do |club, i|
