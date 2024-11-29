@@ -14,19 +14,20 @@ $red: #FD1015;
   background: $blue;
   padding: 0px 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-
-  h3 {
-    color: $red;
-    font-family: "Inter", sans-serif;
-    font-size: 20px;
-    font-weight: 450;
-    text-align: center;
-    font-weight: bold;
+  
+    h3 {
+      color: $red;
+      font-family: "Inter", sans-serif;
+      font-size: 20px;
+      font-weight: 450;
+      text-align: center;
+      font-weight: bold;
 
       .italic {
-      font-style: italic;
+        font-style: italic;
       }
     }
+
 
   .navbar-toggler {
     border: none;
