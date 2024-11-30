@@ -1,0 +1,41 @@
+<div class="quiniela-details-card">
+  <h2><%= @quiniela.title %></h2>
+
+  <div class="quiniela-header">
+    <h3 class="reward-title">Reward</h3>
+    <p class="reward-text"><%= @quiniela.reward %></p>
+
+    <div class="quiniela-dates">
+      <div class="start-end">
+        <p class="label">STARTS</p>
+        <p class="label">ENDS</p>
+      </div>
+      <div class="dates">
+        <p class="date"><%= @quiniela.start_date.strftime("%d %B") %></p>
+        <p class="date"><%= @quiniela.end_date.strftime("%d %B") %></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="quiniela-matches">
+    <% @local_teams.zip(@visitor_teams, @prediction.result).each_with_index do |(local, visitor, result), index| %>
+      <div class="match">
+        <p><%= local %> vs <%= visitor %></p>
+        <div class="options">
+          <%= radio_button_tag "result[#{index}]", "1", result == "1", disabled: true, class: "hidden-radio" %>
+          <%= label_tag "result_1_#{index}", "1", class: "result-button btn-local #{'selected' if result == '1'}" %>
+
+          <%= radio_button_tag "result[#{index}]", "X", result == "X", disabled: true, class: "hidden-radio" %>
+          <%= label_tag "result_x_#{index}", "X", class: "result-button btn-draw #{'selected' if result == 'X'}" %>
+
+          <%= radio_button_tag "result[#{index}]", "2", result == "2", disabled: true, class: "hidden-radio" %>
+          <%= label_tag "result_2_#{index}", "2", class: "result-button btn-visitor #{'selected' if result == '2'}" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="form-actions">
+    <%= link_to "Back", request.referer || user_path(current_user), class: "btn-red" %>
+  </div>
+</div>

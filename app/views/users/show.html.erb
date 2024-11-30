@@ -52,11 +52,11 @@ the followed clubs, when follower system %>
       </div>
       <p><strong>Submitted:</strong> <%= prediction.created_at.strftime("%d %B") %></p>
       <p><strong>End date:</strong> <%= prediction.quiniela.end_date.strftime("%d %B") %></p>
-      <p><strong>Your Prediction:</strong> <%= prediction.result.join(", ") %></p>
       <% if prediction.quiniela.result.length > 1 %>
         <%= link_to "Results", quiniela_path(prediction.quiniela), class: "btn-yellow" %>
       <% else %>
-        <p><em>We don't have results for this quiniela yet.</em></p>
+        <p><em>No results yet</em></p>
+        <%= link_to "View your Prediction", quiniela_prediction_path(prediction.quiniela, prediction), class: "btn-grey" %>
       <% end %>
     </div>
     </div>

@@ -1,6 +1,13 @@
 class PredictionsController < ApplicationController
   before_action :set_quiniela
-  before_action :set_teams
+  before_action :set_teams, except: [:show]
+
+  def show
+    @prediction = Prediction.find(params[:id])
+    @quiniela = @prediction.quiniela
+    @local_teams = @quiniela.local_teams.map(&:strip)
+    @visitor_teams = @quiniela.visitor_teams.map(&:strip)
+  end
 
   def new
     @prediction = Prediction.new
