@@ -9,8 +9,8 @@ class UsersController < ApplicationController
     end
     @past_predictions = @user.predictions.includes(:quiniela)
 
-    @active_quinielas = [] # Lógica para buscar quinielas ativas
+    @active_quinielas = [] 
     @done_quinielas = []
-    @past_quinielas = [] # Lógica para buscar quinielas encerradas
+    @past_quinielas = []
   end
 end
