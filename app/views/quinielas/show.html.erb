@@ -13,27 +13,40 @@
       <div class="dates">
         <p class="date"><%= @quiniela.start_date.strftime("%d %B") %></p>
         <p class="date"><%= @quiniela.end_date.strftime("%d %B") %></p>
+
       </div>
     </div>
   </div>
 
   <% if @quiniela.result.length > 1 %>
+    <div class="correct-answers">
+    <% if current_user && @user_prediction %>
+      <p>Your Correct Answers: <strong> <%= @correct_answers %> </strong> out of <strong> <%= @total_matches %> </strong></p>
+    <% else %>
+      <%= link_to "Log in to see your results", new_user_session_path, class: "login-link" %>
+    <% end %>
+  </div>
     <div class="quiniela-matches" data-controller="results">
-      <% @local_teams.zip(@visitor_teams, @quiniela.result).each_with_index do |(local, visitor, result), index| %>
-        <div class="match">
-          <p><%= local %> vs <%= visitor %></p>
-          <div class="options" data-results-target="option" data-result="<%= result %>">
-            <label for="result_1_<%= index %>" class="result-button btn-local" data-results-target="button">1</label>
-            <label for="result_x_<%= index %>" class="result-button btn-draw" data-results-target="button">X</label>
-            <label for="result_2_<%= index %>" class="result-button btn-visitor" data-results-target="button">2</label>
-          </div>
+      <% @local_teams.zip(@visitor_teams, @results, @user_prediction&.result || []).each_with_index do |(local, visitor, result, user_prediction), index| %>
+      <div class="match">
+        <p><%= local %> vs <%= visitor %></p>
+        <div class="options" data-results-target="option" data-result="<%= result %>">
+          <label for="result_1_<%= index %>" class="result-button btn-local <%= 'correct' if user_prediction == "1" && user_prediction == result %> <%= 'incorrect' if user_prediction == "1" && user_prediction != result %>">1</label>
+          <label for="result_x_<%= index %>" class="result-button btn-draw <%= 'correct' if user_prediction == "X" && user_prediction == result %> <%= 'incorrect' if user_prediction == "X" && user_prediction != result %>">X</label>
+          <label for="result_2_<%= index %>" class="result-button btn-visitor <%= 'correct' if user_prediction == "2" && user_prediction == result %> <%= 'incorrect' if user_prediction == "2" && user_prediction != result %>">2</label>
         </div>
-      <% end %>
+        <% if user_prediction.present? %>
+          <p class="<%= user_prediction == result ? 'text-success' : 'text-wrong' %>">
+            Your Prediction: <%= user_prediction %>
+          </p>
+        <% end %>
+      </div>
+    <% end %>
     </div>
   <% else %>
-    <p>Quiniela not resolved yet, results available soon</p>
+      <p>Quiniela not resolved yet, results available soon</p>
   <% end %>
-   <div class="form-actions">
+    <div class="form-actions">
       <%= link_to "Winners", quiniela_path(@quiniela), class: "btn-grey"%>
     </div>
 </div>
