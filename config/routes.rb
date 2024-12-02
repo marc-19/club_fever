@@ -2,6 +2,10 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+  devise_scope :user do
+    get 'users/admin_sign_up', to: 'devise/registrations#new_admin', as: :new_admin_registration
+  end
+
   resources :clubs, only: [:index, :show, :edit, :update, :create, :new] do
     resources :quinielas, only: [:new, :create, :edit, :update]
 
