@@ -1,7 +1,7 @@
 
 <% if current_user && @is_winner %>
 <script>
-const duration = 4 * 1000,
+const duration = 2 * 1000,
   animationEnd = Date.now() + duration,
   defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
 
@@ -35,16 +35,22 @@ const interval = setInterval(function() {
 </script>
 <% end %>
 
+<% if current_user %>
 <div data-controller="popup">
-  <% if current_user && @is_winner %>
-    <%= render "shared/popup", controller_name: "popup" do %>
-      <p>🎉 Congratulations! You WON this quiniela! 🎉</p>
-    <% end %>
-  <% elsif current_user %>
-    <%= render "shared/popup", controller_name: "popup" do %>
-      <p>😞 Better luck next time! 😞</p>
-    <% end %>
-  <% end %>
+  <div data-popup-target="rootPopup" class="popup-overlay">
+    <div data-popup-target="popupContent" class="popup-content">
+      <% if @is_winner %>
+        <h2>🎉 Congratulations! 🎉</h2>
+        <p>You WON this quiniela!</p>
+      <% else %>
+        <h2>😞 Better Luck Next Time! 😞</h2>
+        <p>You didn't win this time, keep playing!</p>
+      <% end %>
+      <button data-action="click->popup#closePopup" class="btn-grey">Close</button>
+    </div>
+  </div>
+</div>
+<% end %>
 
 <div class="quiniela-details-card">
   <h2><%= @quiniela.title %></h2>

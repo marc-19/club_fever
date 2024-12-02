@@ -1,6 +1,8 @@
 import { Controller } from "@hotwired/stimulus";
 
-// this popup always appear when you load the page, if we want to do same popup
+// this popup always appear when you load the page, if we want to do same popup but calling
+// it in an action like click we have to do a new controller and set the data action
+// action#openPopup where we want
 export default class extends Controller {
   static targets = ["rootPopup", "popupContent"];
 
