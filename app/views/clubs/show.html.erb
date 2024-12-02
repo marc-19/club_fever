@@ -16,6 +16,13 @@
   </div>
 </div>
 
+<% if user_signed_in? && @club.user_id == current_user.id %>
+    <div class="admin-dashboard-card">
+      <%# <h3>Manage Your Club</h3> %>
+      <p>You are the admin of this club. Access your dashboard to manage the club profile and activities.</p>
+      <%= link_to "Go to Club Dashboard", edit_club_path(@club), class: "btn-yellow" %>
+    </div>
+<% end %>
 
 <div class="club-information">
   <h1 class="club-name"><%= @club.name %></h1>
@@ -26,12 +33,11 @@
   <div class="annoying">
   </div>
   <%# </div> %>
-<% if user_signed_in? %>
-  <% if current_user.followed_clubs.include?(@club) %>
+
+<% if user_signed_in? && current_user.followed_clubs.include?(@club) %>
     <%= button_to "Unfollow", unfollow_club_path(@club), method: :delete, class: "btn-unfollow" %>
-  <% else %>
+<% else %>
     <%= button_to "Follow", follow_club_path(@club), method: :post, class: "btn-follow" %>
-  <% end %>
 <% end %>
 
 

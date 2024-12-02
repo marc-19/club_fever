@@ -1,0 +1,20 @@
+<div class="authenticate-card">
+  <h2>Sign up as a Club Admin</h2>
+  <p> Fill the information of the user who is going to be the administrator of the club </p>
+  <div class="input-container">
+    <%= simple_form_for(@user, url: create_admin_registration_path) do |f| %>
+      <%= f.error_notification %>
+      <div class="form-inputs">
+        <%= f.input :first_name, required: true, autofocus: true %>
+        <%= f.input :last_name, required: true %>
+        <%= f.input :email, required: true, input_html: { autocomplete: "email" } %>
+        <%= f.input :phone_number, required: true %>
+        <%= f.input :password, required: true, hint: "6 characters minimum" %>
+        <%= f.input :password_confirmation, required: true %>
+      </div>
+      <div class="form-actions">
+        <%= f.button :submit, "Sign up", class: "btn-yellow" %>
+      </div>
+    <% end %>
+  </div>
+</div>
