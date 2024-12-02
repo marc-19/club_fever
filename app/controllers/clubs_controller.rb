@@ -28,12 +28,16 @@ class ClubsController < ApplicationController
 
   def show
     @quinielas = @club.quinielas
-    @active_quinielas = @club.quinielas.where("end_date > ?", DateTime.now)
+    @active_quinielas = @club.quinielas.where("end_date >= ?", DateTime.now)
     @past_quinielas = @club.quinielas.where("end_date < ?", DateTime.now)
   end
 
   def edit
     @club = current_user.clubs.find(params[:id])
+    @resolved_quinielas = @club.quinielas
+                                .where("array_length(result, 1) > 0")
+                                .order(end_date: :desc)
+                                .limit(5)
   end
 
   def update
