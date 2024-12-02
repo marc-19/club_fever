@@ -49,35 +49,61 @@ $green: #02542D;
    margin-top: 16px;;
  }
 }
-.annoying {
 
-  .following-button{
-      display: inline-block;
-      min-width: 100px;
-      padding: 10px 16px;
-      font-size: 16px;
-      font-weight: bold;
-      color: $grey;
-      background-color: $dark-blue;
-       border-style: solid;
-       border-color: $grey;
-       border-radius: 10px;
-       cursor: pointer;
-      text-align: center;
-      text-decoration: none;
-      margin-top: 10px;
-      margin-bottom: 30px;
+.btn-unfollow{
+  display: inline-block;
+    min-width: 100px;
+    padding: 10px 16px;
+    font-size: 16px;
+    font-weight: bold;
+    color: $grey;
+    background-color: $dark-blue;
+     border-style: solid;
+     border-color: $grey;
+     border-radius: 10px;
+     cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 10px;
+    margin-bottom: 30px;
 
-      &:hover {
-        transition: 0.2s ease-in;
-        filter: brightness(80%);
-      }
+    &:hover {
+      transition: 0.2s ease-in;
+      filter: brightness(80%);
+    }
 
-      &:active {
-        filter: brightness(70%);
-      }
-  }
+    &:active {
+      filter: brightness(70%);
+    }
 }
+
+.btn-follow{
+  display: inline-block;
+    min-width: 100px;
+    padding: 10px 16px;
+    font-size: 16px;
+    font-weight: bold;
+    color: $grey;
+    background-color: $dark-blue;
+     border-style: solid;
+     border-color: $grey;
+     border-radius: 10px;
+     cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 10px;
+    margin-bottom: 30px;
+
+    &:hover {
+      transition: 0.2s ease-in;
+      filter: brightness(80%);
+    }
+
+    &:active {
+      filter: brightness(70%);
+    }
+}
+
 
 .edit-club {
 
