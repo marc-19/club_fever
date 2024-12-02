@@ -2,6 +2,7 @@ class ClubsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_club, only: [:show, :edit, :update, :follow, :unfollow]
   before_action :authorize_admin, only: [:edit, :update]
+  before_action :ensure_admin_access, only: [:new, :create]
 
   def new
     @club = Club.new
@@ -78,8 +79,16 @@ class ClubsController < ApplicationController
   def club_params
     params.require(:club).permit(:name, :description, :logo, :header_img)
   end
-end
 
-def all
-  @clubs = Club.all
+  def ensure_admin_access
+    unless current_user&.is_admin
+      redirect_to root_path, alert: "Only admins can create clubs."
+      return
+    end
+
+    if Club.exists?(user_id: current_user.id)
+      redirect_to club_path(Club.find_by(user_id: current_user.id)), alert: "You already have a club."
+    end
+  end
+
 end

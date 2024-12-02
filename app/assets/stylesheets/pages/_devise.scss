@@ -28,6 +28,12 @@
       flex-direction: column;
       gap: 5px;
 
+      .form-text {
+        color: $grey;
+        font-size: 10px;
+        margin-bottom: -10px;
+      }
+
       .input {
         display: flex;
         flex-direction: column;

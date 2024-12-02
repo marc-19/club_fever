@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'registrations' }
 
   devise_scope :user do
-    get 'users/admin_sign_up', to: 'devise/registrations#new_admin', as: :new_admin_registration
+    get 'users/admin_sign_up', to: 'registrations#new_admin', as: :new_admin_registration
+    post 'users/admin_sign_up', to: 'registrations#create_admin', as: :create_admin_registration
   end
 
   resources :clubs, only: [:index, :show, :edit, :update, :create, :new] do
