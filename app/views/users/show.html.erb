@@ -1,53 +1,63 @@
-<div id="profile-page">
-  <!-- Título -->
-  <h1 class='profile-title'>Club Fever</h1>
-  <!-- Clubes Seguidos -->
-  <div id="clubs-followed">
-    <h2>Clubs you follow</h2>
-    <div class="clubs">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRj7kHgyd9GHcPpVcJ8FMmOjOQVk6JyHMq3Rw&s" alt="Club Logo" />
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2BbQk-mYW4VgUkiL_vuEOWXtVBFyRNPcvCQ&s" alt="Club Logo" />
-    </div>
-    <div class="search-bar">
-  <input type="text" id="search-club" placeholder="Search for new club" />
+<div class="profile-section">
+  <div class="profile-card">
+  <h2>Your Profile</h2>
+    <% if @user.avatar.attached? %>
+      <img src="<%= url_for(@user.avatar) %>" alt="<%= @user.first_name %>'s Avatar" class="profile-avatar" />
+    <% else %>
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2BbQk-mYW4VgUkiL_vuEOWXtVBFyRNPcvCQ&s" alt="Default Avatar" class="profile-avatar" />
+    <% end %>
+
+    <h3 class="profile-username"><%= @user.first_name %></h3>
+
+    <p class="profile-details">10 quinielas played</p>
+
+    <button class="btn-yellow">Edit Profile</button>
+  </div>
 </div>
+
+<div class = club-edit-card>
+  <h2>Clubs you follow</h2>
+    <div class="card-footer">
+      <p> Display clubs logos followed here</p>
+      <br>
+      <p> Search for new club to follow:</p>
+      <div class="search-bar-clubs">
+        <%= simple_form_for :search, url: clubs_path, method: :get do |f| %>
+          <%= f.input :search, placeholder: "Search for your club...", label: false %>
+        <% end %>
+      </div>
+    </div>
+</div>
+
+<%# copy paste show.html.erb active-quiniela-show but dislpaying the quinielas of
+the followed clubs, when follower system %>
 
 <div class="active-quinielas-show">
-  <h2 class="h2-show">Active Quinielas</h2>
-  <% if @active_quinielas.any? %>
-    <% @active_quinielas.each do |quiniela| %>
-      <div class="quiniela-card-show">
-        <div class="quiniela-header-show">
-          <div class="quiniela-logo">
-            <%= image_tag @club.logo if @club.logo.present? %>
-          </div>
-          <h3 class="h3-show"><%= quiniela.title %> <p>Starts in: <%= distance_of_time_in_words(Time.now, quiniela.start_date) %></p></h3>
-        </div>
-        <div class="prize-card">
-          <p>You can win: </p>
-          <div class="prize">
-            <p><%= quiniela.reward %></p>
-          </div>
-        </div>
-      <button class="btn-yellow">PLAY</button>
-      </div>
-      <% end %>
-    <% else %>
-      <p>No active quinielas at the moment.</p>
-    <% end %>
+  <h2 class="h2-show">Playable Quinielas</h2>
+  <p>You can see the quinielas that you can play of your clubs here</p>
 </div>
 
-<div class="past-quinielas">
-  <h2>Played Quinielas</h2>
+<div class="past-quinielas-show">
+  <h2 class="h2-show">Played Quinielas</h2>
+  </div>
 <% if @past_predictions.any? %>
   <% @past_predictions.each do |prediction| %>
-    <div class="quiniela-card">
-    <div class='quiniela-header'>
-      <h3><%= prediction.quiniela.title %></h3>
+  <div class="past-quinielas-show">
+    <div class="quiniela-card-show">
+    <div class='quiniela-header-show'>
+      <div class="quiniela-logo">
+        <%= cl_image_tag prediction.quiniela.club.logo.key if prediction.quiniela.club.logo.attached? %>
       </div>
-      <p><strong>Submitted:</strong> <%= prediction.created_at.strftime("%d %B %Y") %></p>
-      <p><strong>Your Prediction:</strong> <%= prediction.result.join(", ") %></p>
-      <button class="btn-yellow">Results</button>
+      <h3 class="h3-show"><%= prediction.quiniela.title %></h3>
+      </div>
+      <p><strong>Submitted:</strong> <%= prediction.created_at.strftime("%d %B") %></p>
+      <p><strong>End date:</strong> <%= prediction.quiniela.end_date.strftime("%d %B") %></p>
+      <% if prediction.quiniela.result.length > 1 %>
+        <%= link_to "Results", quiniela_path(prediction.quiniela), class: "btn-yellow" %>
+      <% else %>
+        <p><em>No results yet</em></p>
+        <%= link_to "View your Prediction", quiniela_prediction_path(prediction.quiniela, prediction), class: "btn-grey" %>
+      <% end %>
     </div>
     </div>
   <% end %>
@@ -56,24 +66,4 @@
 <% end %>
 </div>
 
-  <!-- Perfil do usuário -->
-<div class="profile-section">
-  <div class="profile-card">
-  <h2>Your Profile</h2>
-    <!-- Avatar -->
-    <% if @user.avatar.attached? %>
-      <img src="<%= url_for(@user.avatar) %>" alt="<%= @user.first_name %>'s Avatar" class="profile-avatar" />
-    <% else %>
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2BbQk-mYW4VgUkiL_vuEOWXtVBFyRNPcvCQ&s" alt="Default Avatar" class="profile-avatar" />
-    <% end %>
-
-    <!-- Username -->
-    <h3 class="profile-username"><%= @user.first_name %></h3>
-
-    <!-- Quinielas Information -->
-    <p class="profile-details">10 quinielas played</p>
-
-    <!-- Edit Profile Button -->
-    <button class="btn-yellow">Edit Profile</button>
-  </div>
-</div>
+<%# I need to do this predictions work to get access to the results quiniela and also displaying the club logo%>

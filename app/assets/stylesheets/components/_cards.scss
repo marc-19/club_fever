@@ -18,6 +18,23 @@ $red: #FD1015;
   color: $white;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 
+  h2 {
+    text-align: center;
+    color: $white;
+    font-size: 24px;
+  }
+
+  p {
+    font-size: 14px;
+    text-align: center;
+    margin: 5px 0;
+
+    &:nth-child(2) {
+      font-weight: bold;
+      color: $yellow;
+    }
+  }
+
   .quiniela-header {
     display: flex;
     flex-direction: column;
@@ -42,6 +59,7 @@ $red: #FD1015;
       color: $white;
 
     }
+
 
     .quiniela-dates {
       width: 100%;
@@ -70,29 +88,39 @@ $red: #FD1015;
     }
   }
 
-  // Header styling for title and details
-  h2 {
-    text-align: center;
-    color: $white;
-    font-size: 24px;
-  }
+  .correct-answers {
 
-  p {
-    font-size: 14px;
-    text-align: center;
-    margin: 5px 0;
-
-    &:nth-child(2) {
-      font-weight: bold; // Highlight reward
+    p{
       color: $yellow;
+      font-size: 16px;
     }
+
+    a {
+      color: $yellow ;
+      text-decoration: none;
+      font-weight: bold;
+      border-bottom: 1px solid $yellow;
+      transition: color 0.3s ease, border-bottom-color 0.3s ease;
+
+      &:hover {
+        color: lighten($yellow, 15%);
+        border-bottom-color: lighten($yellow, 15%);
+      }
+    }
+
   }
 
-  // Matches section
   .quiniela-matches {
     display: flex;
     flex-direction: column;
     gap: 10px;
+
+    .text-success {
+      color: #155724;
+    }
+    .text-wrong {
+      color: #9c1725;
+    }
 
     .match {
       padding: 15px;

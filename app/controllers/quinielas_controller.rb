@@ -3,9 +3,18 @@ class QuinielasController < ApplicationController
   before_action :set_quiniela, only: [:edit, :show, :update]
 
   def show
+    store_location_for_login
     @local_teams = @quiniela.local_teams
     @visitor_teams = @quiniela.visitor_teams
     @results = @quiniela.result
+
+    if current_user
+      @user_prediction = @quiniela.predictions.find_by(user: current_user)
+      if @user_prediction
+        @correct_answers = calculate_correct_answers(@user_prediction.result, @results)
+        @total_matches = @results.length
+      end
+    end
   end
 
   def new
@@ -69,4 +78,13 @@ class QuinielasController < ApplicationController
   def valid_matches?(local_teams, visitor_teams)
     local_teams.size == 10 && visitor_teams.size == 10
   end
+
+  def calculate_correct_answers(user_results, quiniela_results)
+    count = 0
+    user_results.each_with_index do |user_result, index|
+      count += 1 if user_result == quiniela_results[index]
+    end
+    count
+  end
+
 end

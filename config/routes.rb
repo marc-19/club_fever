@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
 
   resources :quinielas, only: [:show] do
-    resources :predictions, only: [:new, :create]
+    resources :predictions, only: [:new, :create, :show]
   end
 
   # root "posts#index"
