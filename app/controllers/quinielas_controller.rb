@@ -13,6 +13,7 @@ class QuinielasController < ApplicationController
       if @user_prediction
         @correct_answers = calculate_correct_answers(@user_prediction.result, @results)
         @total_matches = @results.length
+        @is_winner = @quiniela.wins.exists?(user: current_user)
       end
     end
   end
