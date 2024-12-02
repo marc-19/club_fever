@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_11_27_085040) do
+ActiveRecord::Schema[7.1].define(version: 2024_12_02_104550) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -48,9 +48,26 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_27_085040) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "description"
-    t.string "logo"
-    t.string "picture"
     t.index ["user_id"], name: "index_clubs_on_user_id"
+  end
+
+  create_table "followings", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "club_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["club_id"], name: "index_followings_on_club_id"
+    t.index ["user_id"], name: "index_followings_on_user_id"
+  end
+
+  create_table "follows", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "club_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["club_id"], name: "index_follows_on_club_id"
+    t.index ["user_id", "club_id"], name: "index_follows_on_user_id_and_club_id", unique: true
+    t.index ["user_id"], name: "index_follows_on_user_id"
   end
 
   create_table "predictions", force: :cascade do |t|
@@ -105,6 +122,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_27_085040) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "clubs", "users"
+  add_foreign_key "followings", "clubs"
+  add_foreign_key "followings", "users"
+  add_foreign_key "follows", "clubs"
+  add_foreign_key "follows", "users"
   add_foreign_key "predictions", "quinielas"
   add_foreign_key "predictions", "users"
   add_foreign_key "quinielas", "clubs"

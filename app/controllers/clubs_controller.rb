@@ -1,6 +1,6 @@
 class ClubsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_club, only: [:show, :edit, :update]
+  before_action :set_club, only: [:show, :edit, :update, :follow, :unfollow]
   before_action :authorize_admin, only: [:edit, :update]
 
   def new
@@ -43,6 +43,18 @@ class ClubsController < ApplicationController
       flash.now[:alert] = "Failed to update club details."
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def follow
+    current_user.followed_clubs << @club
+    redirect_to @club, notice: "You are now following #{@club.name}!"
+  rescue ActiveRecord::RecordInvalid
+    redirect_to @club, alert: "You are already following this club."
+  end
+
+  def unfollow
+    current_user.followed_clubs.destroy(@club)
+    redirect_to @club, notice: "You have unfollowed #{@club.name}."
   end
 
   private
