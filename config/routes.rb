@@ -7,6 +7,15 @@ Rails.application.routes.draw do
 
   end
   resources :users, only: [:show]
+
+  resources :quinielas, only: [:show] do
+    member do
+      get :winners
+    end
+    resources :predictions, only: [:new, :create, :show]
+  end
+
+
   root "pages#home"
   get "/search", to: "clubs#search"
   #get '/user/:id', to: 'users#show', as: 'user_profile'
@@ -16,11 +25,4 @@ Rails.application.routes.draw do
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
 
-  # Defines the root path route ("/")
-
-  resources :quinielas, only: [:show] do
-    resources :predictions, only: [:new, :create, :show]
-  end
-
-  # root "posts#index"
 end

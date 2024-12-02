@@ -1,6 +1,6 @@
 class QuinielasController < ApplicationController
-  before_action :set_club, except: [:show]
-  before_action :set_quiniela, only: [:edit, :show, :update]
+  before_action :set_club, except: [:show, :winners]
+  before_action :set_quiniela, only: [:edit, :show, :update, :winners]
 
   def show
     store_location_for_login
@@ -46,10 +46,23 @@ class QuinielasController < ApplicationController
     @quiniela.result = params[:quiniela][:result].values
 
     if @quiniela.save
-      redirect_to edit_club_path(@club), notice: "Quiniela results have been successfully updated."
+      resolve_winners(@quiniela)
+      redirect_to edit_club_path(@club), notice: "Quiniela results have been successfully updated and winners resolved."
     else
       flash.now[:alert] = "There was an error updating the quiniela results."
       render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def winners
+    @winners = @quiniela.wins.includes(:user)
+    @is_club_admin = current_user == @quiniela.club.user
+    @club = @quiniela.club
+
+    if request.referer&.include?(edit_club_path(@club))
+      @back_path = edit_club_path(@club)
+    else
+      @back_path = club_path(@club)
     end
   end
 
@@ -85,6 +98,16 @@ class QuinielasController < ApplicationController
       count += 1 if user_result == quiniela_results[index]
     end
     count
+  end
+
+  def resolve_winners(quiniela)
+    winners = quiniela.predictions.select do |prediction|
+      prediction.result == quiniela.result
+    end
+
+    winners.each do |prediction|
+      Win.find_or_create_by(quiniela: quiniela, user: prediction.user)
+    end
   end
 
 end
