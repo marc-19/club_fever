@@ -1,45 +1,26 @@
-<div class="profile-section">
-  <div class="profile-card">
-  <h2>Your Profile</h2>
-    <% if @user.avatar.attached? %>
-      <img src="<%= url_for(@user.avatar) %>" alt="<%= @user.first_name %>'s Avatar" class="profile-avatar" />
-    <% else %>
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2BbQk-mYW4VgUkiL_vuEOWXtVBFyRNPcvCQ&s" alt="Default Avatar" class="profile-avatar" />
-    <% end %>
-
-    <h3 class="profile-username"><%= @user.first_name %></h3>
-
-    <p class="profile-details">10 quinielas played</p>
-
-    <button class="btn-yellow">Edit Profile</button>
+<div class="container-home-profile">
+  <div class="image-card">
+    <h3>CLUB <br><span class="italic">FEVER.</span></h3>
+  </div>
+  <div class="slogan">Clubs you follow</div>
+    <div class="Logo-list">
+    <img src="">
+  </div>
+  <div class="search-button">
+    <%= link_to 'Search for new clubs', clubs_path, class: 'btn-yellow' %>
   </div>
 </div>
 
-<div class = club-edit-card>
-  <h2>Clubs you follow</h2>
-    <div class="card-footer">
-      <p> Display clubs logos followed here</p>
-      <br>
-      <p> Search for new club to follow:</p>
-      <div class="search-bar-clubs">
-        <%= simple_form_for :search, url: clubs_path, method: :get do |f| %>
-          <%= f.input :search, placeholder: "Search for your club...", label: false %>
-        <% end %>
-      </div>
-    </div>
-</div>
 
-<%# copy paste show.html.erb active-quiniela-show but dislpaying the quinielas of
-the followed clubs, when follower system %>
 
 <div class="active-quinielas-show">
-  <h2 class="h2-show">Playable Quinielas</h2>
-  <p>You can see the quinielas that you can play of your clubs here</p>
+  <h2 class="h2-show">Active Quinielas </h2>
+  <p>No active Quinelas.</p>
 </div>
 
 <div class="past-quinielas-show">
   <h2 class="h2-show">Played Quinielas</h2>
-  </div>
+</div>
 <% if @past_predictions.any? %>
   <% @past_predictions.each do |prediction| %>
   <div class="past-quinielas-show">
@@ -66,4 +47,19 @@ the followed clubs, when follower system %>
 <% end %>
 </div>
 
-<%# I need to do this predictions work to get access to the results quiniela and also displaying the club logo%>
+<div class="profile-section">
+  <div class="profile-card">
+   <h2>Your Profile</h2>
+    <% if @user.avatar.attached? %>
+      <img src="<%= url_for(@user.avatar) %>" alt="<%= @user.first_name %>'s Avatar" class="profile-avatar" />
+    <% else %>
+      <img src="https://www.strasys.uk/wp-content/uploads/2022/02/Depositphotos_484354208_S.jpg" alt="Default Avatar" class="profile-avatar" />
+    <% end %>
+
+    <h3 class="profile-username"><%= @user.email %></h3>
+
+    <p class="profile-details"><%= @user.predictions.count %> quinielas played</p>
+
+    <button class="btn-yellow">Edit Profile</button>
+  </div>
+</div>
