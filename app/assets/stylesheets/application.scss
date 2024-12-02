@@ -60,3 +60,32 @@ p {
   line-height: 1.4;
   margin-bottom: 12px;
 }
+
+#loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $dark-blue; /* Black background with transparency */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.loading-content {
+  text-align: center;
+  color: white;
+  font-size: 24px;
+}
+
+#loading-screen h1 {
+  margin-top: 20px;
+  font-size: 32px;
+}
+
+#loading-screen img {
+  width: 100px;
+  height: auto;
+}

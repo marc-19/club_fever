@@ -14,7 +14,7 @@ $red: #FD1015;
   background: $blue;
   padding: 0px 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  
+
     h3 {
       color: $red;
       font-family: "Inter", sans-serif;
@@ -98,7 +98,7 @@ $red: #FD1015;
           width: 40px;
           height: 40px;
           border-radius: 50%;
-          border: 2px solid $white;
+          //border: 2px solid $white;
           transition: transform 0.2s ease-in-out;
 
           &:hover {
