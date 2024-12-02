@@ -24,13 +24,14 @@
     <%# <button class="bnt-follow">Follow</button> %>
 </div>
   <div class="annoying">
-  <a href="#" class="following-button">Follow</a>
   </div>
   <%# </div> %>
-<% if @club.user == current_user %>
-  <div class="edit-club">
-    <%= link_to "Edit Club", edit_club_path(@club), class: "btn-edit-club" %>
-  </div>
+<% if user_signed_in? %>
+  <% if current_user.followed_clubs.include?(@club) %>
+    <%= button_to "Unfollow", unfollow_club_path(@club), method: :delete, class: "btn-unfollow" %>
+  <% else %>
+    <%= button_to "Follow", follow_club_path(@club), method: :post, class: "btn-follow" %>
+  <% end %>
 <% end %>
 
 
