@@ -4,7 +4,7 @@
     <% if @user.avatar.attached? %>
       <img src="<%= url_for(@user.avatar) %>" alt="<%= @user.first_name %>'s Avatar" class="profile-avatar" />
     <% else %>
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2BbQk-mYW4VgUkiL_vuEOWXtVBFyRNPcvCQ&s" alt="Default Avatar" class="profile-avatar" />
+      <img src="https://www.nicepng.com/png/detail/115-1150821_default-avatar-comments-sign-in-icon-png.png" alt="Default Avatar" class="profile-avatar" />
     <% end %>
 
     <h3 class="profile-username"><%= @user.first_name %></h3>
