@@ -15,20 +15,44 @@
   </div>
 </div>
 
-<div class = club-edit-card>
-  <h2>Clubs you follow</h2>
-    <div class="card-footer">
-      <p> Display clubs logos followed here</p>
-      <br>
-      <p> Search for new club to follow:</p>
-      <div class="search-bar-clubs">
-        <%= simple_form_for :search, url: clubs_path, method: :get do |f| %>
-          <%= f.input :search, placeholder: "Search for your club...", label: false %>
-        <% end %>
-      </div>
-    </div>
+<div class="club-edit-card">
+  <h2>Clubs You Follow</h2>
+  <div class="followed-clubs">
+    <% if current_user.followed_clubs.any? %>
+      <% current_user.followed_clubs.each do |club| %>
+        <div class="club-card">
+          <%= link_to club_path(club) do %>
+            <%= image_tag club.logo_url, alt: club.name, class: "club-logo" %>
+          <% end %>
+        </div>
+      <% end %>
+    <% else %>
+      <p>You are not following any clubs yet.</p>
+    <% end %>
+  </div>
 </div>
 
+<h3>Active Quinielas from Followed Clubs</h3>
+  <% active_quinielas = current_user.followed_clubs.includes(:quinielas).flat_map { |club| club.quinielas.where("end_date > ?", Time.now) } %>
+  <% if active_quinielas.any? %>
+    <% active_quinielas.each do |quiniela| %>
+    <div class="quiniela-card">
+      <h3><%= quiniela.title %></h3>
+        <div class="quiniela-reward">
+          <p><strong>Reward:</strong> <%= quiniela.reward %></p>
+        </div>
+        <div class="quiniela-dates">
+          <p><strong>Starts:</strong> <%= quiniela.start_date.strftime("%B %d, %Y") %></p>
+          <p><strong>Ends:</strong> <%= quiniela.end_date.strftime("%B %d, %Y") %></p>
+        </div>
+        <div class="action-button">
+          <%= link_to "Play Now", new_quiniela_prediction_path(quiniela) %>
+        </div>
+    </div>
+    <% end %>
+  <% else %>
+    <p>No active quinielas from followed clubs at the moment.</p>
+<% end %>
 <%# copy paste show.html.erb active-quiniela-show but dislpaying the quinielas of
 the followed clubs, when follower system %>
 

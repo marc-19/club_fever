@@ -22,5 +22,12 @@ Rails.application.routes.draw do
     resources :predictions, only: [:new, :create, :show]
   end
 
+  resources :clubs do
+    member do
+      post :follow
+      delete :unfollow
+    end
+  end
+
   # root "posts#index"
 end
