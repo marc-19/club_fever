@@ -1,86 +1,91 @@
-section {
-  margin: 20px 0;
-  padding: 20px;
-  border-radius: 10px;
-  background-color: transparent;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+@import "config/fonts";
+$white: #F9FAFA;
+$dark-blue: #0C161C;
+$blue: #1A2329;
+$yellow: #DEE517;
+$red: #FD1015;
+$grey: #D9D9D9;
+
+.container-home-profile {
+  width: 100%;
+  height: 100%;
+
+  .image-card {
+    background-image: url("https://images.mlssoccer.com/image/private/t_editorial_landscape_12_desktop_2x/f_auto/prd-league/efueku3tliqfkjxvsqfx.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    h3 {
+    color: $white;
+    font-family: "Inter", sans-serif;
+    font-size: 24px;
+    font-weight: 450;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    text-align: center;
+    font-weight: bold;
+
+      .italic {
+      font-style: italic;
+      }
+    }
+  }
+
+  .slogan {
+    text-align: center;
+    color: $white;
+    margin-top: 10px;
+    font-family: "Inter", sans-serif;
+    font-size: 20px;
+  }
+
+  .search-button {
+    text-align: center;
+    margin-bottom: 20px;
+    a {
+      width: 200px;
+      padding: 3px 5px;
+    }
+  }
 }
 
-
-.play-button, .results-button, .edit-profile {
-  background: linear-gradient(90deg, #ffc107, #ff5722);
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.play-button:hover, .results-button:hover, .edit-profile:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-}
-
-/* Seção Geral do Perfil */
 .profile-section {
   display: flex;
   justify-content: center;
   margin-top: 20px;
+  margin-bottom: 30px;
 
   .profile-card {
-    background-color: #101010;
-    color: white;
+    background-color: $blue;
+    color: $white;
     padding: 20px;
     border-radius: 10px;
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     width: 400px;
   }
-
-  /* Avatar */
-  .profile-avatar {
-    border-radius: 50%;
-    width: 100px;
-    height: 100px;
-    margin-bottom: 15px;
-    border: 2px solid #ffcc00;
-  }
-
-  /* Nome do Usuário */
-  .profile-username {
-    font-size: 20px;
-    margin-bottom: 10px;
-    color: #ffcc00;
-  }
-
-  /* Informações do Perfil */
-  .profile-details {
-    font-size: 16px;
-    margin-bottom: 20px;
-    color: #ddd;
-  }
-
-  /* Botão de Edição */
-  .edit-profile-button {
-    background-color: #ffcc00;
-    color: #101010;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.3s ease;
-  }
-
-  .edit-profile-button:hover {
-    background-color: #e6b800;
-  }
-
-  .profile-title {
-    color:$red;
-  }
+    .profile-avatar {
+      border-radius: 50%;
+      width: 100px;
+      height: 100px;
+      margin-bottom: 15px;
+      border: 2px solid $yellow;
+    }
+    .profile-username {
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: $yellow;
+    }
+    .profile-details {
+      font-size: 16px;
+      margin-bottom: 20px;
+      color: #F9FAFA;
+    }
 }
 
 .quiniela-card {
