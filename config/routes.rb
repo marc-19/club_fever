@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :quinielas, only: [:new, :create, :edit, :update]
 
   end
-  resources :users, only: [:show]
+  resources :users, only: [:show, :edit, :update]
 
   root "pages#home"
   get "/search", to: "clubs#search"

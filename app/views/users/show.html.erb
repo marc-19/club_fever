@@ -91,6 +91,6 @@ the followed clubs, when follower system %>
 
     <p class="profile-details"><%= @user.predictions.count %> quinielas played</p>
 
-    <button class="btn-yellow">Edit Profile</button>
+    <%= link_to "Edit Profile", edit_user_registration_path, class: "btn-yellow" %>
   </div>
 </div>
