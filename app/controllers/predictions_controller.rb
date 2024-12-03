@@ -38,7 +38,7 @@ class PredictionsController < ApplicationController
 
       if @prediction.save
         session.delete(:results)
-        redirect_to user_path(current_user), notice: "Your prediction has been submitted!"
+        redirect_to user_path(current_user, confirmation: true, quiniela_id: @quiniela.id)
       else
         flash.now[:alert] = "There was an error submitting your prediction."
         render :new, status: :unprocessable_entity

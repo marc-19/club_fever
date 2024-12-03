@@ -56,13 +56,12 @@
       <%= f.label "result_2_#{index}", "2", for: "result_2_#{index}", class: "result-button btn-visitor" %>
     </div>
   </div>
-<% end %>
-
+  <% end %>
   </div>
 
   <div class="form-actions">
-    <%= f.submit "Submit Prediction", class: "btn-yellow" %>
+    <%= f.submit "Submit Prediction", class: "btn-yellow", data: { action: "confirmation#openConfirmation" } %>
   </div>
-<% end %>
+  <% end %>
 
 </div>

@@ -1,3 +1,28 @@
+<%if params[:confirmation].present? && @quiniela.present?%>
+  <div data-controller="confirmation" >
+    <div class="confirmation-alert">
+
+      <div class="club-confirmation-logo">
+        <%= cl_image_tag (@quiniela.club.logo.key) if @quiniela.club.logo.attached? %>
+      </div>
+      <h2><%= @quiniela.club.name %></h2>
+
+      <p>Thank you for taking part in the Quiniela!</p>
+      <img width="80" height="80" src="https://img.icons8.com/color/48/checked--v1.png" alt="checked--v1"/>
+
+      <p><%= @quiniela.end_date.strftime("%B %d, %Y")%></p>
+      <p>A confirmation email will be sent to <br><%= @user.email %></p>
+
+      <div class="confirmation-overlay">
+        <div data-confirmation-target="confirmationContent" class="confirmation-content">
+          <button data-action="click->confirmation#closeConfirmation" class="btn-grey">Done</button>
+        </div>
+      </div>
+     </div>
+   </div>
+  <% else %>
+<% end %>
+
 <div class="container-home-profile">
   <div class="image-card">
     <h3>CLUB <br><span class="italic">FEVER.</span></h3>
@@ -24,7 +49,6 @@
   </div>
 </div>
 
-
 <h2 class="h2-show">Active Quinielas </h2>
   <% active_quinielas = current_user.followed_clubs.includes(:quinielas).flat_map { |club| club.quinielas.where("end_date > ?", Time.now) } %>
   <% if active_quinielas.any? %>
@@ -44,10 +68,8 @@
     </div>
     <% end %>
   <% else %>
-    <p>No active quinielas from followed clubs at the moment.</p>
+    <p>No active quinielas at the moment.</p>
 <% end %>
-<%# copy paste show.html.erb active-quiniela-show but dislpaying the quinielas of
-the followed clubs, when follower system %>
 
 <div class="past-quinielas-show">
   <h2 class="h2-show">Played Quinielas</h2>
