@@ -3,7 +3,7 @@ class Prediction < ApplicationRecord
   belongs_to :user
   has_many :predictions, dependent: :destroy
 
-  validate :result_matches_quiniela
+  validate :result_change
   validates :user_id, uniqueness: { scope: :quiniela_id, message: "You can only submit one prediction per quiniela." }
   validates :result, presence: true
 

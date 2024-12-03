@@ -1,5 +1,10 @@
 <div class="quiniela-details-card">
   <h2><%= @quiniela.title %></h2>
+  <div class="quiniela-rules">
+    <div class="rules-button">
+    <%= link_to '💡 Don not know the rules? Click here! ', rules_path, class: 'rules-button' %>
+  </div>
+  </div>
 
   <div class="quiniela-header">
     <h3 class="reward-title">Reward</h3>
@@ -17,47 +22,44 @@
     </div>
   </div>
 
-<%= simple_form_for [@quiniela, @prediction], html: { class: "prediction-form", data: { controller: "selection" } } do |f| %>
+  <%= simple_form_for [@quiniela, @prediction], html: { class: "prediction-form", data: { controller: "selection" } } do |f| %>
   <div class="quiniela-matches">
- <% @local_teams.zip(@visitor_teams).each_with_index do |(local, visitor), index| %>
-  <div class="match">
-    <p><%= local %> vs <%= visitor %></p>
-    <div class="options" data-selection-target="selectedElement">
-      <%# Radio button for "1" %>
-      <%= f.radio_button :result, "1",
-            name: "prediction[result][#{index}]",
-            id: "result_1_#{index}",
-            class: "hidden-radio",
-            checked: @prediction.result.present? && @prediction.result[index] == "1",
-            data: { action: "change->selection#select" } %>
-      <%= f.label "result_1_#{index}", "1", for: "result_1_#{index}", class: "result-button btn-local" %>
+    <% @local_teams.zip(@visitor_teams).each_with_index do |(local, visitor), index| %>
+      <% if local.present? && visitor.present? %>
+        <div class="match">
+          <p><%= local %> vs <%= visitor %></p>
+          <div class="options" data-selection-target="selectedElement">
+            <%= f.radio_button :result, "1",
+                  name: "prediction[result][#{index}]",
+                  id: "result_1_#{index}",
+                  class: "hidden-radio",
+                  checked: @prediction.result.present? && @prediction.result[index] == "1",
+                  data: { action: "change->selection#select" } %>
+            <%= f.label "result_1_#{index}", "1", for: "result_1_#{index}", class: "result-button btn-local" %>
 
-      <%# Radio button for "X" %>
-      <%= f.radio_button :result, "X",
-            name: "prediction[result][#{index}]",
-            id: "result_x_#{index}",
-            class: "hidden-radio",
-            checked: @prediction.result.present? && @prediction.result[index] == "X",
-            data: { action: "change->selection#select" } %>
-      <%= f.label "result_x_#{index}", "X", for: "result_x_#{index}", class: "result-button btn-draw" %>
+            <%= f.radio_button :result, "X",
+                  name: "prediction[result][#{index}]",
+                  id: "result_x_#{index}",
+                  class: "hidden-radio",
+                  checked: @prediction.result.present? && @prediction.result[index] == "X",
+                  data: { action: "change->selection#select" } %>
+            <%= f.label "result_x_#{index}", "X", for: "result_x_#{index}", class: "result-button btn-draw" %>
 
-      <%# Radio button for "2" %>
-      <%= f.radio_button :result, "2",
-            name: "prediction[result][#{index}]",
-            id: "result_2_#{index}",
-            class: "hidden-radio",
-            checked: @prediction.result.present? && @prediction.result[index] == "2",
-            data: { action: "change->selection#select" } %>
-      <%= f.label "result_2_#{index}", "2", for: "result_2_#{index}", class: "result-button btn-visitor" %>
-    </div>
-  </div>
-<% end %>
-
+            <%= f.radio_button :result, "2",
+                  name: "prediction[result][#{index}]",
+                  id: "result_2_#{index}",
+                  class: "hidden-radio",
+                  checked: @prediction.result.present? && @prediction.result[index] == "2",
+                  data: { action: "change->selection#select" } %>
+            <%= f.label "result_2_#{index}", "2", for: "result_2_#{index}", class: "result-button btn-visitor" %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
   </div>
 
   <div class="form-actions">
     <%= f.submit "Submit Prediction", class: "btn-yellow" %>
   </div>
-<% end %>
-
+  <% end %>
 </div>

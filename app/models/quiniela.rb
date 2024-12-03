@@ -7,6 +7,8 @@ class Quiniela < ApplicationRecord
   scope :past, -> { where("end_date < ?", Date.today) }
   validates :local_teams, :visitor_teams, presence: true
   validate :teams_length_match
+  validate :minimum_matches
+  validate :teams_not_blank
   validates :title, length: { maximum: 20, message: "must be 20 characters or less" }
 
   def teams_length_match
@@ -19,4 +21,18 @@ class Quiniela < ApplicationRecord
     predictions.count
   end
 
+  def minimum_matches
+    if local_teams.reject(&:blank?).size < 5 || visitor_teams.reject(&:blank?).size < 5
+      errors.add(:base, "At least 5 matches must be filled in.")
+    end
+  end
+
+  def teams_not_blank
+    filled_local_teams = local_teams.reject(&:blank?)
+    filled_visitor_teams = visitor_teams.reject(&:blank?)
+
+    if filled_local_teams.size < 5 || filled_visitor_teams.size < 5
+      errors.add(:base, "At least 5 matches must be filled out with both local and visitor teams.")
+    end
+  end
 end

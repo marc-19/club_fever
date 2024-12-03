@@ -143,3 +143,36 @@ $grey: #D9D9D9;
     text-decoration: none;
   }
 }
+
+.quiniela-rules{
+  margin-bottom: 20px;
+  background-color: $dark-blue;
+  border-radius: 5px;
+  .rules-button{
+    text-align: center;
+    display: inline-block;
+    min-width: 100px;
+    padding: 10px 16px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #b7c1ca;
+    background-color: $dark-blue;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+
+    &:hover {
+      transition: 0.3s ease-in;
+      filter: brightness(80%);
+    }
+
+    &:active {
+      filter: brightness(70%);
+    }
+    a {
+      padding: 3px 5px;
+    }
+  }
+}

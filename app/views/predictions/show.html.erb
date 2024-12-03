@@ -19,19 +19,21 @@
 
   <div class="quiniela-matches">
     <% @local_teams.zip(@visitor_teams, @prediction.result).each_with_index do |(local, visitor, result), index| %>
-      <div class="match">
-        <p><%= local %> vs <%= visitor %></p>
-        <div class="options">
-          <%= radio_button_tag "result[#{index}]", "1", result == "1", disabled: true, class: "hidden-radio" %>
-          <%= label_tag "result_1_#{index}", "1", class: "result-button btn-local #{'selected' if result == '1'}" %>
+      <% if local.present? && visitor.present? %>
+        <div class="match">
+          <p><%= local %> vs <%= visitor %></p>
+          <div class="options">
+            <%= radio_button_tag "result[#{index}]", "1", result == "1", disabled: true, class: "hidden-radio" %>
+            <%= label_tag "result_1_#{index}", "1", class: "result-button btn-local #{'selected' if result == '1'}" %>
 
-          <%= radio_button_tag "result[#{index}]", "X", result == "X", disabled: true, class: "hidden-radio" %>
-          <%= label_tag "result_x_#{index}", "X", class: "result-button btn-draw #{'selected' if result == 'X'}" %>
+            <%= radio_button_tag "result[#{index}]", "X", result == "X", disabled: true, class: "hidden-radio" %>
+            <%= label_tag "result_x_#{index}", "X", class: "result-button btn-draw #{'selected' if result == 'X'}" %>
 
-          <%= radio_button_tag "result[#{index}]", "2", result == "2", disabled: true, class: "hidden-radio" %>
-          <%= label_tag "result_2_#{index}", "2", class: "result-button btn-visitor #{'selected' if result == '2'}" %>
+            <%= radio_button_tag "result[#{index}]", "2", result == "2", disabled: true, class: "hidden-radio" %>
+            <%= label_tag "result_2_#{index}", "2", class: "result-button btn-visitor #{'selected' if result == '2'}" %>
+          </div>
         </div>
-      </div>
+      <% end %>
     <% end %>
   </div>
 
