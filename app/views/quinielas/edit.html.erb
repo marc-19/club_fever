@@ -7,23 +7,25 @@
   </div>
 
   <%= simple_form_for [@club, @quiniela], html: { class: "prediction-form", data: { controller: "selection" } } do |f| %>
-    <div class="quiniela-matches">
-      <% @local_teams.zip(@visitor_teams).each_with_index do |(local, visitor), index| %>
-        <div class="match">
-          <p><%= local %> vs <%= visitor %></p>
-          <div class="options" data-selection-target="selectedElement">
-            <%= f.radio_button :result, "1", name: "quiniela[result][#{index}]", id: "result_1_#{index}", class: "hidden-radio", data: { action: "change->selection#select" } %>
-            <%= f.label "result_1_#{index}", "1", for: "result_1_#{index}", class: "result-button btn-local" %>
+  <div class="quiniela-matches">
+    <% @local_teams.zip(@visitor_teams).each_with_index do |(local, visitor), index| %>
+      <% if local.present? && visitor.present? %>
+      <div class="match">
+        <p><%= local %> vs <%= visitor %></p>
+        <div class="options" data-selection-target="selectedElement">
+          <%= f.radio_button :result, "1", name: "quiniela[result][#{index}]", id: "result_1_#{index}", class: "hidden-radio", required: true, data: { action: "change->selection#select" } %>
+          <%= f.label "result_1_#{index}", "1", for: "result_1_#{index}", class: "result-button btn-local" %>
 
-            <%= f.radio_button :result, "X", name: "quiniela[result][#{index}]", id: "result_x_#{index}", class: "hidden-radio", data: { action: "change->selection#select" } %>
-            <%= f.label "result_x_#{index}", "X", for: "result_x_#{index}", class: "result-button btn-draw" %>
+          <%= f.radio_button :result, "X", name: "quiniela[result][#{index}]", id: "result_x_#{index}", class: "hidden-radio", required: true, data: { action: "change->selection#select" } %>
+          <%= f.label "result_x_#{index}", "X", for: "result_x_#{index}", class: "result-button btn-draw" %>
 
-            <%= f.radio_button :result, "2", name: "quiniela[result][#{index}]", id: "result_2_#{index}", class: "hidden-radio", data: { action: "change->selection#select" } %>
-            <%= f.label "result_2_#{index}", "2", for: "result_2_#{index}", class: "result-button btn-visitor" %>
-          </div>
+          <%= f.radio_button :result, "2", name: "quiniela[result][#{index}]", id: "result_2_#{index}", class: "hidden-radio", required: true, data: { action: "change->selection#select" } %>
+          <%= f.label "result_2_#{index}", "2", for: "result_2_#{index}", class: "result-button btn-visitor" %>
         </div>
+      </div>
       <% end %>
-    </div>
+    <% end %>
+  </div>
 
     <div class="form-actions">
       <%= f.submit "Submit Results", class: "btn-yellow" %>
