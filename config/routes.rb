@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
   root "pages#home"
   get "/search", to: "clubs#search"
+  get 'rules', to: 'pages#rules'
+  
   #get '/user/:id', to: 'users#show', as: 'user_profile'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
