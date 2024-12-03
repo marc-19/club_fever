@@ -11,42 +11,50 @@
     </div>
 
     <div class="form-group">
-      <%= form.input :start_date, as: :date, label: "Start Date" %>
+      <%= form.input :start_date, as: :date, label: "Start Date (Date of first match)" %>
     </div>
 
     <div class="form-group">
       <%= form.input :end_date, as: :date, label: "End Date" %>
     </div>
 
-    <div class="matches-container">
-      <h3>Matches</h3>
-      <table>
-        <thead>
-          <tr>
-            <th>Match</th>
-            <th>Local Team</th>
-            <th>Visitor Team</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% 10.times do |i| %>
-            <tr>
-              <td><%= i + 1 %></td>
-              <td>
-                <%= form.text_field :local_teams, name: "quiniela[local_teams][]", placeholder: "Local team", class: "team-input" %>
-              </td>
-              <td>
-                <%= form.text_field :visitor_teams, name: "quiniela[visitor_teams][]", placeholder: "Visitor team", class: "team-input" %>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
+  <div class="matches-container">
+  <h3>Matches</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Match</th>
+        <th>Local Team</th>
+        <th>Visitor Team</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% 10.times do |i| %>
+        <tr>
+          <td><%= i + 1 %></td>
+          <td>
+            <%= form.text_field :local_teams,
+              name: "quiniela[local_teams][]",
+              value: @quiniela.local_teams[i],
+              placeholder: "Local team",
+              class: "team-input" %>
+          </td>
+          <td>
+            <%= form.text_field :visitor_teams,
+              name: "quiniela[visitor_teams][]",
+              value: @quiniela.visitor_teams[i],
+              placeholder: "Visitor team",
+              class: "team-input" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  </div>
 
-    <div class="card-footer">
-      <%= form.submit "Create Quiniela", class: "btn-yellow" %>
-    </div>
+  <div class="card-footer">
+    <%= form.submit "Create Quiniela", class: "btn-yellow" %>
+  </div>
   <% end %>
 
   <div class="back-button">

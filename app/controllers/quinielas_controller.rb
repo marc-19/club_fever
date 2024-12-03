@@ -28,7 +28,7 @@ class QuinielasController < ApplicationController
     if valid_matches?(@quiniela.local_teams, @quiniela.visitor_teams) && @quiniela.save
       redirect_to club_path(@club), notice: "Quiniela was successfully created!"
     else
-      flash.now[:alert] = "Please provide exactly 10 matches with local and visitor teams."
+      flash.now[:alert] = "Please provide at least 5 matches with local and visitor teams."
       render :new, status: :unprocessable_entity
     end
   end
