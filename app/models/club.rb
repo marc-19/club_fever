@@ -10,6 +10,9 @@ class Club < ApplicationRecord
   validates :name, presence: true
   validates :description, length: { maximum: 300 }
 
+  def followers_count
+    followers.count
+  end
 
   def logo_url
     logo || "https://via.placeholder.com/150" # Default placeholder if no logo exists

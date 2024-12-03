@@ -16,41 +16,46 @@
   </div>
 </div>
 
+<div class="club-information">
+  <h1 class="club-name"><%= @club.name %></h1>
+    <p><%= @club.description %></p>
+</div>
+
+<div class="followers-count-card">
+  <div class="followers">
+  <p class="followers-number"><%= @club.followers.count %></p>
+  <p class="followers-label">Followers</p>
+  </div>
+  <div class="separator"></div>
+  <div class="button">
+    <% if user_signed_in? && current_user.followed_clubs.include?(@club) %>
+    <%= button_to "Following", unfollow_club_path(@club), method: :delete, class: "btn-unfollow" %>
+  <% else %>
+    <%= button_to "Follow", follow_club_path(@club), method: :post, class: "btn-follow" %>
+  <% end %>
+  </div>
+</div>
+
 <% if user_signed_in? && @club.user_id == current_user.id %>
     <div class="admin-dashboard-card">
-      <%# <h3>Manage Your Club</h3> %>
       <p>You are the admin of this club. Access your dashboard to manage the club profile and activities.</p>
       <%= link_to "Go to Club Dashboard", edit_club_path(@club), class: "btn-yellow" %>
     </div>
 <% end %>
 
-<div class="club-information">
-  <h1 class="club-name"><%= @club.name %></h1>
-    <p><%= @club.description %></p>
-    <%# <div class="club-action"> %>
-    <%# <button class="bnt-follow">Follow</button> %>
-</div>
-  <div class="annoying">
-  </div>
-  <%# </div> %>
-
-<% if user_signed_in? && current_user.followed_clubs.include?(@club) %>
-    <%= button_to "Unfollow", unfollow_club_path(@club), method: :delete, class: "btn-unfollow" %>
-<% else %>
-    <%= button_to "Follow", follow_club_path(@club), method: :post, class: "btn-follow" %>
-<% end %>
-
-
-<div class="active-quinielas-show">
+<div class="playable-quinielas-show">
   <h2 class="h2-show">Playable Quinielas</h2>
-    <% if @active_quinielas.any? %>
-    <% @active_quinielas.each do |quiniela| %>
+  <% if @club.quinielas.playable.any? %>
+    <% @club.quinielas.playable.each do |quiniela| %>
       <div class="quiniela-card-show">
+        <div class="participant-count">
+          <p><%= quiniela.participants_count + 5 %> participants 🔥</p>
+        </div>
         <div class="quiniela-header-show">
           <div class="quiniela-logo">
             <%= cl_image_tag @club.logo.key if @club.logo.attached? %>
           </div>
-          <h3 class="h3-show"><%= quiniela.title %> <p>Starts in: <%= distance_of_time_in_words(Time.now, quiniela.start_date) %></p></h3>
+          <h3 class="h3-show"><%= quiniela.title %> <p>Starts in: <%= distance_of_time_in_words(Time.now, quiniela.start_date.beginning_of_day) %></p></h3>
         </div>
         <div class="prize-card-show">
           <p>You can win: </p>
@@ -58,7 +63,40 @@
             <p><%= quiniela.reward %></p>
           </div>
         </div>
-      <%= link_to "Play", new_quiniela_prediction_path(quiniela), class: "btn-yellow" %>
+        <% if user_signed_in? && (prediction = quiniela.predictions.find_by(user: current_user)) %>
+          <p class="hint-text">
+            You have already played this quiniela. <%= link_to "View your Prediction", quiniela_prediction_path(quiniela, prediction), class: "hint-link" %>
+          </p>
+        <% else %>
+          <%= link_to "Play", new_quiniela_prediction_path(quiniela), class: "btn-yellow" %>
+        <% end %>
+      </div>
+    <% end %>
+  <% else %>
+    <p>No playable quinielas at the moment.</p>
+  <% end %>
+</div>
+
+<div class="active-quinielas-show">
+  <h2 class="h2-show">Active Quinielas</h2>
+  <% if @club.quinielas.active.any? %>
+    <% @club.quinielas.active.each do |quiniela| %>
+      <div class="quiniela-card-show">
+        <div class="quiniela-header-show">
+          <div class="quiniela-logo">
+            <%= cl_image_tag @club.logo.key if @club.logo.attached? %>
+          </div>
+          <h3 class="h3-show"><%= quiniela.title %> <p>Ends in: <%= distance_of_time_in_words(Time.now, quiniela.end_date.end_of_day) %></p></h3>
+        </div>
+        <% if user_signed_in? && (prediction = quiniela.predictions.find_by(user: current_user)) %>
+          <p class="hint-text">
+            Matches are ongoing. <%= link_to "View your Prediction", quiniela_prediction_path(quiniela, prediction), class: "hint-link" %>
+          </p>
+        <% elsif user_signed_in? && !(prediction = quiniela.predictions.find_by(user: current_user))%>
+          <p class="hint-text">Matches are ongoing, we don't have your prediction for this quiniela </p>
+        <% else %>
+        <p class="hint-text">Matches are ongoing, wait to finish for results. <br>Good luck!</p>
+        <% end %>
       </div>
     <% end %>
   <% else %>
@@ -66,17 +104,22 @@
   <% end %>
 </div>
 
+
 <div class="past-quinielas-show">
   <h2 class="h2-show">Past Quinielas</h2>
-    <% if @past_quinielas.any? %>
-    <% @past_quinielas.each do |quiniela| %>
+  <% past_quinielas = @club.quinielas.past.order(end_date: :desc).limit(5) %>
+  <% if past_quinielas.any? %>
+    <% past_quinielas.each do |quiniela| %>
       <div class="quiniela-card-show">
         <div class="quiniela-header-show">
           <div class="quiniela-logo">
             <%= cl_image_tag @club.logo.key if @club.logo.attached? %>
           </div>
-        <h3 class="h3-show"><%= quiniela.title %><p>Ended on: <%= quiniela.end_date.strftime("%B %d, %Y") %></p></h3>
-      </div>
+          <h3 class="h3-show">
+            <%= quiniela.title %>
+            <p>Ended on: <%= quiniela.end_date.strftime("%B %d, %Y") %></p>
+          </h3>
+        </div>
         <%= link_to "Results", quiniela_path(quiniela), class: "results-btn" %>
       </div>
     <% end %>
@@ -84,6 +127,7 @@
     <p>No past quinielas recorded.</p>
   <% end %>
 </div>
+
 <%#
 <p><%= quiniela.participants_count Participants<br> %>
     <%# <%= quiniela.winners_count %>
