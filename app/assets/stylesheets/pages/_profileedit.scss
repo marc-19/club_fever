@@ -1,0 +1,143 @@
+.simple-form-edit {
+  max-width: 600px;
+  margin: 50px auto; /* Centraliza o formulário */
+  padding: 20px;
+  background-color: #1a2329; /* Cor de fundo */
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+  h2 {
+    color: #f9fafa; /* Cor do título */
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+  }
+
+  .form-inputs-edit {
+    margin-bottom: 20px;
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #dee517; /* Cor da borda */
+      border-radius: 5px;
+      background-color: #0c161c; /* Fundo dos campos */
+      color: #f9fafa; /* Cor do texto */
+      font-size: 16px;
+
+      &:focus {
+        outline: none;
+        border-color: #28a745; /* Verde no foco */
+        box-shadow: 0 0 5px #28a745; /* Sombra verde no foco */
+      }
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      color: #dee517; /* Cor do texto do label */
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .form-text {
+      color: white; /* Cor do texto auxiliar */
+      font-size: 12px;
+      margin-top: -10px;
+      margin-bottom: 15px;
+    }
+
+    p {
+      color: #fd1015; /* Mensagem de confirmação pendente */
+      font-size: 14px;
+    }
+  }
+
+  .simple-form-edit {
+    .form-actions-edit {
+      text-align: center;
+
+      button {
+        background-color: #fd1015; /* Cor de fundo */
+        color: #f9fafa; /* Cor do texto */
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px; /* Bordas arredondadas */
+        cursor: pointer;
+        transition: all 0.3s ease; /* Transição suave */
+
+        &:hover {
+          background-color: #dee517; /* Cor de fundo no hover */
+          color: #1a2329; /* Cor do texto no hover */
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra no hover */
+        }
+
+        &:focus {
+          outline: none;
+          border: 2px solid #fd1015; /* Realce ao focar no botão */
+        }
+      }
+    }
+  }
+
+  div {
+    text-align: center;
+    margin-top: 20px;
+
+    .button_to {
+      .btn {
+        background-color: transparent;
+        color: #fd1015;
+        border: 1px solid #fd1015;
+        border-radius: 5px;
+        padding: 10px 15px;
+        cursor: pointer;
+        transition: all 0.3s;
+
+        &:hover {
+          background-color: #fd1015;
+          color: #f9fafa;
+        }
+      }
+    }
+
+    a {
+      color: #dee517;
+      text-decoration: none;
+
+      &:hover {
+        color: #fd1015;
+      }
+    }
+  }
+}
+
+.cancel-account-card {
+  max-width: 300px; /* Largura máxima do card */
+  margin: 20px auto; /* Centraliza o card horizontalmente */
+  padding: 15px;
+  background-color: #0c161c; /* Cor de fundo */
+  border-radius: 8px; /* Bordas arredondadas */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra */
+  text-align: center;
+
+  h3 {
+    color: white; /* Cor do texto */
+    font-size: 16px; /* Tamanho do texto */
+    margin-bottom: 10px;
+  }
+  .back-link {
+    display: block;
+    margin-top: 10px;
+    color: #dee517; /* Cor amarela para o link */
+    font-size: 14px;
+
+    &:hover {
+      color: #fd1015; /* Vermelho no hover */
+      text-decoration: underline; /* Sublinhado no hover */
+    }
+  }
+}
