@@ -18,27 +18,33 @@ $grey: #D9D9D9;
   color: $dark-blue;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 
-  h1{
+  hr {
     color: #D9D9D9;
   }
 
+  h1{
+    color: $grey;
+  }
+
   h2 {
-    color: $blue;
+    color: $grey;
     font-size: 25px;
     font-weight: bold;
   }
   p {
-    color: $blue;
+    color: $grey;
   }
 
   h3 {
-    color: #1A2329;
+    color: $grey;
     font-size: 20px;
     font-weight: bold;
   }
 
   .success-rules{
-    background-color: #D9D9D9;
+    background-color: #0C161C;
+    border-style: solid;
+    border-color: $grey;
     border-radius: 10px;
     padding: 20px;
     max-width: 600px;
@@ -60,7 +66,9 @@ $grey: #D9D9D9;
 
 
 .quiniela-definition {
-  background-color: #D9D9D9;
+  background-color: #0C161C;
+  border-style: solid;
+  border-color: $grey;
   border-radius: 10px;
   padding: 20px;
   max-width: 600px;
@@ -72,7 +80,9 @@ $grey: #D9D9D9;
 }
 
 .quiniela-step-by-step {
-  background-color: #D9D9D9;
+  background-color: #0C161C;
+  border-style: solid;
+  border-color: $red;
   border-radius: 10px;
   padding: 20px;
   max-width: 600px;
