@@ -38,6 +38,7 @@ Rails.application.routes.draw do
     member do
       post :follow
       delete :unfollow
+      get :dashboard
     end
   end
 end
