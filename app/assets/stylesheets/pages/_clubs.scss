@@ -50,6 +50,76 @@ $green: #02542D;
  }
 }
 
+.followers-count-card {
+  text-align: center;
+
+  .followers-number {
+    font-size: 1.3rem;
+    color: $yellow;
+    font-weight: bold;
+    margin-bottom: 0;
+    margin-top: 10px;
+  }
+
+  .followers-label {
+    font-size: 0.9rem;
+    color: $grey;
+    margin-top: -5px;
+  }
+}
+.btn-unfollow{
+  display: inline-block;
+  min-width: 100px;
+  padding: 10px 16px;
+  font-size: 16px;
+  font-weight: bold;
+  color: $grey;
+  background-color: $dark-blue;
+  border-style: solid;
+  border-color: $grey;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  margin-top: 0px;
+  margin-bottom: 15px;
+
+  &:hover {
+    transition: 0.2s ease-in;
+    filter: brightness(80%);
+  }
+  &:active {
+    filter: brightness(70%);
+  }
+}
+.btn-follow{
+  display: inline-block;
+  min-width: 100px;
+  padding: 10px 16px;
+  font-size: 16px;
+  font-weight: bold;
+  color: $grey;
+  background-color: $dark-blue;
+  border-style: solid;
+  border-color: $grey;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  margin-top: 0px;
+  margin-bottom: 15px;
+
+  &:hover {
+    transition: 0.2s ease-in;
+    filter: brightness(80%);
+  }
+  &:active {
+    filter: brightness(70%);
+  }
+}
+
+
+
 .admin-dashboard-card {
   background-color: $blue;
   border-radius: 10px;
@@ -75,60 +145,6 @@ $green: #02542D;
     margin-bottom: 15px;
     color: lighten($white, 20%);
   }
-}
-
-.btn-unfollow{
-  display: inline-block;
-    min-width: 100px;
-    padding: 10px 16px;
-    font-size: 16px;
-    font-weight: bold;
-    color: $grey;
-    background-color: $dark-blue;
-     border-style: solid;
-     border-color: $grey;
-     border-radius: 10px;
-     cursor: pointer;
-    text-align: center;
-    text-decoration: none;
-    margin-top: 10px;
-    margin-bottom: 30px;
-
-    &:hover {
-      transition: 0.2s ease-in;
-      filter: brightness(80%);
-    }
-
-    &:active {
-      filter: brightness(70%);
-    }
-}
-
-.btn-follow{
-  display: inline-block;
-    min-width: 100px;
-    padding: 10px 16px;
-    font-size: 16px;
-    font-weight: bold;
-    color: $grey;
-    background-color: $dark-blue;
-     border-style: solid;
-     border-color: $grey;
-     border-radius: 10px;
-     cursor: pointer;
-    text-align: center;
-    text-decoration: none;
-    margin-top: 10px;
-    margin-bottom: 30px;
-
-    &:hover {
-      transition: 0.2s ease-in;
-      filter: brightness(80%);
-    }
-
-    &:active {
-      filter: brightness(70%);
-    }
 }
 
 
@@ -158,7 +174,67 @@ $green: #02542D;
   }
 }
 }
+.playable-quinielas-show {
+  .h2-show {
+    margin-left: 25px;
+    font-weight: 400;
+  }
+  .quiniela-card-show {
+    background-color: $blue;
+    border-style: solid;
+    border-color: green;
+    border-radius: 12px;
+    padding: 25px;
+    max-width: 400px;
+    width: 90%;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    color: $white;
 
+
+    .quiniela-header-show {
+      display: flex;
+    }
+
+    .h3-show {
+      margin-left: 10px;
+      margin-top: 7px;
+    }
+
+    .quiniela-logo {
+      bottom: 10px;
+      left: 10px;
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    .hint-text {
+      font-size: 12px;
+      margin-top: 10px;
+      color: $grey;
+
+      .hint-link {
+        font-weight: bold;
+        color: $yellow;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+          color: lighten($yellow, 10%);
+        }
+      }
+    }
+
+  }
+}
 .active-quinielas-show {
   .h2-show {
     margin-left: 25px;
@@ -201,32 +277,22 @@ $green: #02542D;
       }
     }
 
-      .btn-yellow {
-        display: inline-block;
-        min-width: 100px;
-        padding: 10px 16px;
-        font-size: 16px;
+    .hint-text {
+      font-size: 12px;
+      margin-top: 10px;
+      color: $grey;
+
+      .hint-link {
         font-weight: bold;
-        color: $dark-blue;
-        background-color: $yellow;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        text-align: center;
+        color: $yellow;
         text-decoration: none;
-        margin-left: 45px;
-        margin-right: 45px;
-        margin-top: 10px;
 
         &:hover {
-          transition: 0.3s ease-in;
-          filter: brightness(80%);
-        }
-
-        &:active {
-          filter: brightness(70%);
+          text-decoration: underline;
+          color: lighten($yellow, 10%);
         }
       }
+    }
   }
 }
 
@@ -297,6 +363,22 @@ $green: #02542D;
 
       &:active {
         filter: brightness(70%);
+      }
+    }
+    .hint-text {
+      font-size: 8px;
+      margin-top: 10px;
+      color: $grey;
+
+      .hint-link {
+        font-weight: bold;
+        color: $yellow;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+          color: lighten($yellow, 10%);
+        }
       }
     }
   }
