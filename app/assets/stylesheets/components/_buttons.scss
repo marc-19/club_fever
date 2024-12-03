@@ -8,7 +8,7 @@ $grey: #D9D9D9;
 
 .btn-yellow {
   display: inline-block;
-  min-width: 100px;
+  min-width: 200px;
   padding: 10px 16px;
   font-size: 16px;
   font-weight: bold;
@@ -19,6 +19,7 @@ $grey: #D9D9D9;
   cursor: pointer;
   text-align: center;
   text-decoration: none;
+  margin-top: 10px;
 
   &:hover {
     transition: 0.3s ease-in;
@@ -32,7 +33,7 @@ $grey: #D9D9D9;
 
 .btn-green {
   display: inline-block;
-  min-width: 100px;
+  min-width: 200px;
   padding: 10px 16px;
   font-size: 16px;
   font-weight: bold;
@@ -43,6 +44,7 @@ $grey: #D9D9D9;
   cursor: pointer;
   text-align: center;
   text-decoration: none;
+  margin-top: 10px;
 
   &:hover {
     transition: 0.3s ease-in;
@@ -56,7 +58,7 @@ $grey: #D9D9D9;
 
 .btn-red {
   display: inline-block;
-  min-width: 100px;
+  min-width: 200px;
   padding: 10px 16px;
   font-size: 16px;
   font-weight: bold;
@@ -67,6 +69,7 @@ $grey: #D9D9D9;
   cursor: pointer;
   text-align: center;
   text-decoration: none;
+  margin-top: 10px;
 
   &:hover {
     transition: 0.3s ease-in;
@@ -80,7 +83,7 @@ $grey: #D9D9D9;
 
 .btn-grey {
   display: inline-block;
-  min-width: 100px;
+  min-width: 200px;
   padding: 10px 16px;
   font-size: 16px;
   font-weight: bold;
@@ -91,6 +94,7 @@ $grey: #D9D9D9;
   cursor: pointer;
   text-align: center;
   text-decoration: none;
+  margin-top: 10px;
 
   &:hover {
     transition: 0.3s ease-in;
