@@ -21,6 +21,20 @@
     <p><%= @club.description %></p>
 </div>
 
+<div class="followers-count-card">
+  <div class="followers">
+  <p class="followers-number"><%= @club.followers.count %></p>
+  <p class="followers-label">Followers</p>
+  </div>
+  <div class="separator"></div>
+  <div class="button">
+    <% if user_signed_in? && current_user.followed_clubs.include?(@club) %>
+    <%= button_to "Following", unfollow_club_path(@club), method: :delete, class: "btn-unfollow" %>
+  <% else %>
+    <%= button_to "Follow", follow_club_path(@club), method: :post, class: "btn-follow" %>
+  <% end %>
+  </div>
+</div>
 
 <% if user_signed_in? && @club.user_id == current_user.id %>
     <div class="admin-dashboard-card">
@@ -29,22 +43,14 @@
     </div>
 <% end %>
 
-
-<div class="followers-count-card">
-  <p class="followers-number"><%= @club.followers.count %></p>
-  <p class="followers-label">Followers</p>
-  <% if user_signed_in? && current_user.followed_clubs.include?(@club) %>
-    <%= button_to "Unfollow", unfollow_club_path(@club), method: :delete, class: "btn-unfollow" %>
-  <% else %>
-      <%= button_to "Follow", follow_club_path(@club), method: :post, class: "btn-follow" %>
-  <% end %>
-</div>
-
 <div class="playable-quinielas-show">
   <h2 class="h2-show">Playable Quinielas</h2>
   <% if @club.quinielas.playable.any? %>
     <% @club.quinielas.playable.each do |quiniela| %>
       <div class="quiniela-card-show">
+        <div class="participant-count">
+          <p><%= quiniela.participants_count + 5 %> participants 🔥</p>
+        </div>
         <div class="quiniela-header-show">
           <div class="quiniela-logo">
             <%= cl_image_tag @club.logo.key if @club.logo.attached? %>
