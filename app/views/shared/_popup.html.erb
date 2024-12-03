@@ -1,0 +1,9 @@
+<div data-<%= controller_name %>-target="rootPopup" class="my-popup">
+  <div class="my-popup-background"></div>
+  <div data-<%= controller_name %>-target="popupContent" class="my-popup-content">
+    <div class="my-popup-close-btn-wrapper">
+      <button data-action="click-><%= controller_name %>#closePopup" class="my-popup-close-btn">✕</button>
+    </div>
+    <%= yield %>
+  </div>
+</div>

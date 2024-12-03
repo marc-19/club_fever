@@ -5,23 +5,5 @@ $yellow: #DEE517;
 $red: #D72626;
 $grey: #D9D9D9;
 
-.club-create-form {
-  margin: 20px 20px;
-  background-color: $blue;
-  border-radius: 10px;
-  padding: auto 10px;
+// same style as club-edit-card but different background color
 
-    .form-group {
-      margin: 0 15px;
-      color: $yellow;
-    }
-
-  h2 {
-    color: $yellow;
-    padding-top: 10px;
-  }
-
-  .form-actions {
-    padding-bottom: 20px;
-  }
-}

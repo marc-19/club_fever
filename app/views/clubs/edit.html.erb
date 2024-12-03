@@ -1,37 +1,5 @@
 
-<div class = club-edit-card>
-  <h2>Create Quiniela</h2>
-    <div class="card-footer">
-    <%= link_to "Create Quiniela", new_club_quiniela_path(@club), class: "btn-yellow" %>
-    </div>
-</div>
-
-<div class = club-edit-card>
-  <h2>Active Quinielas</h2>
-    <% @club.quinielas.where(result: []).order(:end_date).each do |quiniela| %>
-    <div class="solve-quiniela-card">
-      <h3><%= quiniela.title %></h3>
-      <p>Reward: <%= quiniela.reward %></p>
-      <p>Start: <%= quiniela.start_date.strftime("%d %B %Y") %></p>
-      <p>End: <%= quiniela.end_date.strftime("%d %B %Y") %></p>
-
-      <div class="card-footer">
-        <% if quiniela.end_date <= Date.today %>
-          <%= link_to "Solve", edit_club_quiniela_path(@club, quiniela), class: "btn-yellow" %>
-        <% else %>
-        <p class="not-finished"> Quiniela not finished </p>
-        <% end %>
-      </div>
-    </div>
-  <% end %>
-</div>
-
-<div class = club-edit-card>
-  <h2> Quinielas Winners </h2>
-    <div class="card-footer">
-    <%= link_to "Check",root_path, class: "btn-yellow" %>
-    </div>
-</div>
+<%= link_to "Access Public Profile", club_path(@club), class: "btn-grey"  %>
 
 <div class="club-edit-card">
   <h2>Edit Club Information</h2>
@@ -62,6 +30,49 @@
       </div>
     </div>
   <% end %>
+</div>
 
+<div class = club-edit-card>
+  <h2>Create Quiniela</h2>
+    <div class="card-footer">
+    <%= link_to "Create Quiniela", new_club_quiniela_path(@club), class: "btn-yellow" %>
+    </div>
+</div>
 
+<div class = club-edit-card>
+  <h2>Active Quinielas</h2>
+    <% @club.quinielas.where(result: []).order(:end_date).each do |quiniela| %>
+    <div class="solve-quiniela-card">
+      <h3><%= quiniela.title %></h3>
+      <p>Reward: <%= quiniela.reward %></p>
+      <p>Start: <%= quiniela.start_date.strftime("%d %B %Y") %></p>
+      <p>End: <%= quiniela.end_date.strftime("%d %B %Y") %></p>
+
+      <div class="card-footer">
+        <% if quiniela.end_date <= Date.today %>
+          <%= link_to "Solve", edit_club_quiniela_path(@club, quiniela), class: "btn-yellow" %>
+        <% else %>
+        <p class="not-finished"> Quiniela not finished </p>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="club-edit-card">
+  <h2>Quinielas Winners</h2>
+  <% if @resolved_quinielas.present? %>
+    <% @resolved_quinielas.sort_by(&:end_date).each do |quiniela| %>
+      <div class="solve-quiniela-card">
+        <h3><%= quiniela.title %></h3>
+        <p>Reward: <%= quiniela.reward %></p>
+        <p>Ended: <%= quiniela.end_date.strftime("%d %B") %></p>
+        <div class="card-footer">
+          <%= link_to "Check Winners", winners_quiniela_path(quiniela), class: "btn-yellow" %>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+  <p> Any quiniela resolved yet </p>
+  <% end %>
 </div>

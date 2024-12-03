@@ -1,0 +1,28 @@
+<div class="quiniela-details-card">
+  <h2>Winners for "<%= @quiniela.title %>"</h2>
+
+<div class="winners-section">
+  <% if @winners.any? %>
+    <% @winners.each_with_index do |win, index| %>
+      <div class="winner-card">
+        <div class="winner-details">
+          <% if @is_club_admin %>
+            <h3 class="winner-name"> <%= win.user.first_name %> <%= win.user.last_name %></h3>
+            <p class="winner-contact"><strong>Email:</strong> <%= win.user.email %></p>
+            <p class="winner-contact"><strong>Phone:</strong> <%= win.user.phone_number || "N/A" %></p>
+          <% else %>
+            <h3 class="winner-name"> 🏆 <%= win.user.first_name %></h3>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <p class="no-winners">No winners for this quiniela.</p>
+  <% end %>
+</div>
+
+
+  <div class="form-actions">
+    <%= link_to "Back to Club Profile", @back_path, class: "btn-grey" %>
+  </div>
+</div>
