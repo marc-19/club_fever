@@ -2,25 +2,25 @@
   <div data-controller="confirmation" >
 
     <div  data-confirmation-target="rootConfirmation" class="popup-overlay active" >
-    <div data-confirmation-target="confirmationContent" class="confirmation-content">
+      <div data-confirmation-target="confirmationContent" class="confirmation-content">
 
-      <div class="club-confirmation-logo">
-        <%= cl_image_tag (@quiniela.club.logo.key) if @quiniela.club.logo.attached? %>
-      </div>
-      <h2><%= @quiniela.club.name %></h2>
-
-      <p>Thank you for taking part in the Quiniela!</p>
-      <img width="80" height="80" src="https://img.icons8.com/color/48/checked--v1.png" alt="checked--v1"/>
-
-      <p><%= @quiniela.end_date.strftime("%B %d, %Y")%></p>
-      <p>A confirmation email will be sent to <br><%= @user.email %></p>
-
-      <button data-action="click->confirmation#closeConfirmation" class="btn-grey">Done</button>
-
+        <div class="club-confirmation-logo">
+          <%= cl_image_tag (@quiniela.club.logo.key) if @quiniela.club.logo.attached? %>
         </div>
-      </div>
+        <h2><%= @quiniela.club.name %></h2>
 
-   </div>
+        <p>Thank you for taking part in the Quiniela!</p>
+        <img width="80" height="80" src="https://img.icons8.com/color/48/checked--v1.png" alt="checked--v1"/>
+
+        <p><%= @quiniela.end_date.strftime("%B %d, %Y")%></p>
+        <p>A confirmation email will be sent to <br><%= @user.email %></p>
+
+        <button data-action="click->confirmation#closeConfirmation" class="btn-grey">Done</button>
+
+      </div>
+    </div>
+
+  </div>
   <% else %>
 <% end %>
 
@@ -29,40 +29,44 @@
     <h3>CLUB <br><span class="italic">FEVER.</span></h3>
   </div>
 
-  <div class="club-edit-card">
-  <h2>Clubs you follow</h2>
-  <div class="followed-clubs">
-    <% if current_user.followed_clubs.any? %>
-      <% current_user.followed_clubs.each do |club| %>
-        <div class="club-card">
-          <%= link_to club_path(club) do %>
-            <%= image_tag club.logo_url, alt: club.name, class: "club-logo" %>
-          <% end %>
-        </div>
+
+  <div class="profile-section">
+    <div class="profile-card">
+
+      <% if @user.avatar.attached? %>
+        <img src="<%= url_for(@user.avatar) %>" alt="<%= @user.first_name %>'s Avatar" class="profile-avatar" />
+      <% else %>
+        <img src="https://www.strasys.uk/wp-content/uploads/2022/02/Depositphotos_484354208_S.jpg" alt="Default Avatar" class="profile-avatar" />
       <% end %>
-    <% else %>
-      <p>You are not following any clubs yet.</p>
-    <% end %>
+      <h2 class="profile-username"><%= @user.email %></h2>
+
+      <p class="profile-details"><%= @user.predictions.count %> Quinielas played</p>
+
+      <div class="club-edit-card">
+      <h2>Clubs you follow</h2>
+
+      <div class="followed-clubs">
+        <% if current_user.followed_clubs.any? %>
+          <% current_user.followed_clubs.each do |club| %>
+            <div class="club-card">
+              <%= link_to club_path(club) do %>
+                <%= image_tag club.logo_url, alt: club.name, class: "club-logo" %>
+              <% end %>
+            </div>
+          <% end %>
+        <% else %>
+          <p>You are not following any clubs yet.</p>
+        <% end %>
+      </div>
+
+      </div>
+
+      <%= link_to "Edit", edit_user_registration_path, class: "btn-yellow" %>
+    </div>
   </div>
-  </div>
-  <div class="search-button">
-    <%= link_to 'Search for new clubs', clubs_path, class: 'btn-yellow' %>
-  </div>
+
 </div>
 
-
-<h2 class="h2-show">Active Quinielas </h2>
-  <% active_quinielas = current_user.followed_clubs.includes(:quinielas).flat_map { |club| club.quinielas.where("end_date > ?", Time.now) } %>
-  <% if active_quinielas.any? %>
-    <% active_quinielas.each do |quiniela| %>
-    <div class="quiniela-card">
-      <h3><%= quiniela.title %></h3>
-        <div class="quiniela-reward">
-          <p><strong>Reward:</strong> <%= quiniela.reward %></p>
-        </div>
-    </div>
-  <% end %>
-<% end %>
 
 <div class="quinielas-section playable-quinielas-show">
   <h2 class="h2-show">Playable Quinielas</h2>
@@ -96,13 +100,13 @@
     <% end %>
   <% else %>
 
-    <p>No playable quinielas from followed clubs at the moment.</p>
+    <p>No playable quinielas at the moment.</p>
   <% end %>
 
 </div>
 
 <div class="quinielas-section active-quinielas-show">
-  <h2 class="h2-show">Active Quinielas</h2>
+  <h2 class="h2-show">Played Quinielas</h2>
   <% if @past_predictions.any? %>
     <% @past_predictions.each do |prediction| %>
       <div class="quiniela-card-show">
@@ -129,25 +133,4 @@
   <% else %>
     <p>No past predictions recorded.</p>
   <% end %>
-</div>
-
-
-
-
-
-<div class="profile-section">
-  <div class="profile-card">
-   <h2>Your Profile</h2>
-    <% if @user.avatar.attached? %>
-      <img src="<%= url_for(@user.avatar) %>" alt="<%= @user.first_name %>'s Avatar" class="profile-avatar" />
-    <% else %>
-      <img src="https://www.strasys.uk/wp-content/uploads/2022/02/Depositphotos_484354208_S.jpg" alt="Default Avatar" class="profile-avatar" />
-    <% end %>
-
-    <h3 class="profile-username"><%= @user.email %></h3>
-
-    <p class="profile-details"><%= @user.predictions.count %> quinielas played</p>
-
-    <%= link_to "Edit Profile", edit_user_registration_path, class: "btn-yellow" %>
-  </div>
 </div>
