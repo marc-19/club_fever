@@ -77,13 +77,10 @@
         <% end %>
       </div>
     <% end %>
-  <% else %>
-    <p>No playable quinielas at the moment.</p>
   <% end %>
 </div>
 
 <div class="quinielas-section active-quinielas-show">
-  <h2 class="h2-show">Active Quinielas</h2>
   <% if @club.quinielas.active.any? %>
     <% @club.quinielas.active.each do |quiniela| %>
       <div class="quiniela-card-show">
@@ -107,8 +104,6 @@
         <% end %>
       </div>
     <% end %>
-  <% else %>
-    <p>No active quinielas at the moment.</p>
   <% end %>
 </div>
 
