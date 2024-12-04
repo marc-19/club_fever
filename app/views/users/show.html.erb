@@ -44,29 +44,28 @@
 
       <%= link_to "Edit", edit_user_registration_path, class: "btn-yellow" %>
 
-
-      <div class="club-edit-card">
-      <h2>Clubs you follow</h2>
-
       <div class="followed-clubs">
+        <p>Clubs you follow</p>
+        <div class="followed-clubs-flex">
         <% if current_user.followed_clubs.any? %>
           <% current_user.followed_clubs.each do |club| %>
             <div class="club-card">
               <%= link_to club_path(club) do %>
-                <%= image_tag club.logo_url, alt: club.name, class: "club-logo" %>
+                <%= cl_image_tag club.logo.key, transformation: { width: 100, height: 100, crop: :fill } %>
               <% end %>
             </div>
           <% end %>
         <% else %>
           <p>You are not following any clubs yet.</p>
         <% end %>
+        </div>
       </div>
-      </div>
-
     </div>
   </div>
-
 </div>
+
+
+
 
 <div class="quinielas-section playable-quinielas-show">
   <h2 class="h2-show">Playable Quinielas</h2>
