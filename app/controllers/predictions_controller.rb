@@ -34,8 +34,7 @@ class PredictionsController < ApplicationController
       # Create a new prediction
       @prediction = current_user.predictions.new(prediction_params)
       @prediction.result = params[:prediction][:result].values # Assign result array
-      @prediction.quiniela = @quiniela # need this?
-
+      @prediction.quiniela = @quiniela
       if @prediction.save
         session.delete(:results)
         redirect_to user_path(current_user, confirmation: true, quiniela_id: @quiniela.id)

@@ -1,35 +1,44 @@
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "simple-form-edit" }) do |f| %>
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
-
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
+  <div class="form-inputs-edit">
+    <!-- Campo para First Name -->
+    <%= f.input :first_name, required: true, label: "First Name" %>
+
+    <!-- Campo para Last Name -->
+    <%= f.input :last_name, required: true, label: "Last Name" %>
+
+    <!-- Campo para Phone Number -->
+    <%= f.input :phone_number, required: false, label: "Phone Number" %>
+
+    <!-- Campo para Email -->
     <%= f.input :email, required: true, autofocus: true %>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
 
+    <!-- Campos para Atualizar Senha -->
     <%= f.input :password,
-                hint: "leave it blank if you don't want to change it",
+                hint: "Leave it blank if you don't want to change it",
                 required: false,
                 input_html: { autocomplete: "new-password" } %>
     <%= f.input :password_confirmation,
                 required: false,
                 input_html: { autocomplete: "new-password" } %>
     <%= f.input :current_password,
-                hint: "we need your current password to confirm your changes",
+                hint: "We need your current password to confirm your changes",
                 required: true,
                 input_html: { autocomplete: "current-password" } %>
   </div>
 
-  <div class="form-actions">
+  <div class="btn-yellow">
     <%= f.button :submit, "Update" %>
   </div>
+  <div class="cancel-account-card">
+  <h3>Unhappy?</h3>
+  <%= link_to "Cancel my account", clubs_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn-cancel" %>
+  <%= link_to "Back", user_path(current_user), class: "back-link" %>
+</div>
 <% end %>
-
-<h3>Cancel my account</h3>
-
-<div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
-
-<%= link_to "Back", :back %>

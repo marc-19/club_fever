@@ -34,7 +34,6 @@ $green: #02542D;
       border-radius: 50%;
       overflow: hidden;
 
-
       img {
         width: 100%;
         height: auto;
@@ -43,12 +42,118 @@ $green: #02542D;
   }
 }
 
+
 .club-information {
- text-align: center;
- .club-name{
-   margin-top: 16px;;
- }
+  text-align: center;
+  margin-top: 16px;
+
+  .club-name {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: $white;
+    text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    letter-spacing: 1.5px;
+  }
+
+  p {
+    margin-top: -16px;
+    font-size: 1rem;
+    color: lighten($blue, 40%);
+    font-style: italic;
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  }
 }
+
+
+
+.followers-count-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+
+  .followers {
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+
+    .followers-number {
+      font-size: 1rem;
+      font-weight: bold;
+      color: $white;
+      margin: 0px;
+    }
+
+    .followers-label {
+      font-size: 1rem;
+      color: $white;
+      margin: 0px;
+    }
+  }
+
+  .separator {
+    height: 20px;
+    background-color: $white;
+    width: 2px;
+    border-radius: 2px;
+    margin: 0 10px;
+  }
+}
+
+
+
+.btn-unfollow{
+  display: inline-block;
+  min-width: 100px;
+  padding: 4px 16px;
+  font-size: 12px;
+  font-weight: bold;
+  color: $yellow;
+  background-color: $blue;
+  border-style: solid;
+  border-color: $yellow;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+
+
+  &:hover {
+    transition: 0.2s ease-in;
+    filter: brightness(80%);
+  }
+  &:active {
+    filter: brightness(70%);
+  }
+}
+
+.btn-follow{
+  display: inline-block;
+  min-width: 100px;
+  padding: 4px 16px;
+  font-size: 12px;
+  font-weight: bold;
+  color: $dark-blue;
+  background-color: $yellow;
+  border-style: none;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+
+  &:hover {
+    transition: 0.2s ease-in;
+    filter: brightness(80%);
+  }
+  &:active {
+    filter: brightness(70%);
+  }
+}
+
+
 
 .admin-dashboard-card {
   background-color: $blue;
@@ -77,266 +182,210 @@ $green: #02542D;
   }
 }
 
-.btn-unfollow{
-  display: inline-block;
-    min-width: 100px;
-    padding: 10px 16px;
-    font-size: 16px;
-    font-weight: bold;
-    color: $grey;
-    background-color: $dark-blue;
-     border-style: solid;
-     border-color: $grey;
-     border-radius: 10px;
-     cursor: pointer;
-    text-align: center;
-    text-decoration: none;
-    margin-top: 10px;
-    margin-bottom: 30px;
-
-    &:hover {
-      transition: 0.2s ease-in;
-      filter: brightness(80%);
-    }
-
-    &:active {
-      filter: brightness(70%);
-    }
-}
-
-.btn-follow{
-  display: inline-block;
-    min-width: 100px;
-    padding: 10px 16px;
-    font-size: 16px;
-    font-weight: bold;
-    color: $grey;
-    background-color: $dark-blue;
-     border-style: solid;
-     border-color: $grey;
-     border-radius: 10px;
-     cursor: pointer;
-    text-align: center;
-    text-decoration: none;
-    margin-top: 10px;
-    margin-bottom: 30px;
-
-    &:hover {
-      transition: 0.2s ease-in;
-      filter: brightness(80%);
-    }
-
-    &:active {
-      filter: brightness(70%);
-    }
-}
-
 
 .edit-club {
   a {
-  display: inline-block;
-  min-width: 100px;
-  padding: 5px 8px;
-  font-size: 16px;
-  font-weight: bold;
-  color: $dark-blue;
-  background-color: $yellow;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
+    display: inline-block;
+    min-width: 100px;
+    padding: 5px 8px;
+    font-size: 16px;
+    font-weight: bold;
+    color: $dark-blue;
+    background-color: $yellow;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
 
-  &:hover {
-    transition: 0.3s ease-in;
-    filter: brightness(80%);
-  }
+    &:hover {
+      transition: 0.3s ease-in;
+      filter: brightness(80%);
+    }
 
-  &:active {
-    filter: brightness(70%);
+    &:active {
+      filter: brightness(70%);
 
+    }
   }
 }
+
+.quinielas-section {
+  margin-bottom: 30px;
+
+  .h2-show {
+    font-weight: 600;
+    font-size: 1.8rem;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: $white;
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    text-align: center;
+  }
+
+  .quiniela-card-show {
+    background-color: $blue;
+    border-style: solid;
+    border-radius: 12px;
+    padding: 25px;
+    max-width: 400px;
+    width: 90%;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    color: $white;
+    position: relative;
+    // Default border color, overridden by specific card types
+    border-color: $grey;
+
+    .participant-count {
+      position: absolute;
+      top: 5px;
+      right: 10px;
+
+      p {
+        color: $red;
+        font-size: 0.8rem;
+      }
+    }
+
+    .quiniela-header-show {
+      display: flex;
+      gap: 10px;
+
+      .quiniela-logo {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        overflow: hidden;
+
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
+
+      .quiniela-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+
+        .h3-show {
+          margin: 0;
+          font-size: 1.2rem;
+          color: $white;
+        }
+
+        .quiniela-timing {
+          margin-top: 5px;
+          font-size: 0.9rem;
+          color: $grey;
+        }
+      }
+    }
+
+    .prize-card-show {
+      background-color: $grey;
+      border-radius: 10px;
+      padding: 16px;
+      max-width: 280px;
+      width: 85%;
+      margin: 15px auto;
+      display: flex;
+      flex-direction: column;
+      color: $white;
+      box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.1);
+
+      .prize-claim {
+        color: $dark-blue;
+        font-size: 20px;
+        text-align: center;
+      }
+
+      p {
+        color: $dark-blue;
+        font-family: "Inter", sans-serif;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 1.4;
+        margin: 5px 0;
+      }
+
+      .prize {
+        background-color: $white;
+        border-radius: 8px;
+        padding: 12px;
+        max-width: 280px;
+        width: 90%;
+        margin: 10px auto;
+        display: flex;
+        flex-direction: column;
+        color: $dark-blue;
+        box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        justify-content: center;
+        margin-bottom: 0;
+
+        p {
+          font-size: 15px;
+          font-weight: 600;
+          margin: 0;
+        }
+      }
+
+      .quiniela-footer {
+        width: 60%;
+        max-width: 250px;
+        margin: 0 auto;
+        text-align: center;
+
+        .btn-yellow {
+          display: block;
+          width: 100%;
+          padding: 10px 0;
+          text-align: center;
+        }
+      }
+    }
+
+
+    .hint-text {
+      font-size: 12px;
+      margin-top: 10px;
+      color: $grey;
+
+      .hint-link {
+        font-weight: bold;
+        color: $yellow;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+          color: lighten($yellow, 10%);
+        }
+      }
+    }
+  }
+}
+
+// Specific Styles for Each Section
+.playable-quinielas-show {
+  .quiniela-card-show {
+    border-color: green;
+  }
 }
 
 .active-quinielas-show {
-  .h2-show {
-    margin-left: 25px;
-    font-weight: 400;
-  }
   .quiniela-card-show {
-    background-color: $blue;
-    border-style: solid;
     border-color: $red;
-    border-radius: 12px;
-    padding: 25px;
-    max-width: 400px;
-    width: 90%;
-    margin: 20px auto;
-    display: flex;
-    flex-direction: column;
-    color: $white;
-
-
-    .quiniela-header-show {
-      display: flex;
-    }
-
-    .h3-show {
-      margin-left: 10px;
-      margin-top: 7px;
-    }
-
-    .quiniela-logo {
-      bottom: 10px;
-      left: 10px;
-      width: 70px;
-      height: 70px;
-      border-radius: 50%;
-      overflow: hidden;
-
-      img {
-        width: 100%;
-        height: auto;
-      }
-    }
-
-      .btn-yellow {
-        display: inline-block;
-        min-width: 100px;
-        padding: 10px 16px;
-        font-size: 16px;
-        font-weight: bold;
-        color: $dark-blue;
-        background-color: $yellow;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        text-align: center;
-        text-decoration: none;
-        margin-left: 45px;
-        margin-right: 45px;
-        margin-top: 10px;
-
-        &:hover {
-          transition: 0.3s ease-in;
-          filter: brightness(80%);
-        }
-
-        &:active {
-          filter: brightness(70%);
-        }
-      }
   }
 }
 
-.past-quinielas-show{
-  .h2-show {
-  margin-left: 25px;
-  font-weight: 400;
-  }
-
+.past-quinielas-show {
   .quiniela-card-show {
-    background-color: $blue;
-    border-style: solid;
     border-color: $grey;
-    border-radius: 12px;
-    padding: 25px;
-    max-width: 400px;
-    width: 90%;
-    margin: 20px auto;
-    display: flex;
-    flex-direction: column;
-    color: $white;
-
-
-    .quiniela-header-show {
-      display: flex;
-    }
-
-    .h3-show {
-      margin-left: 10px;
-      margin-top: 7px;
-    }
-
-    .quiniela-logo {
-      bottom: 10px;
-      left: 10px;
-      width: 70px;
-      height: 70px;
-      border-radius: 50%;
-      overflow: hidden;
-
-      img {
-        width: 100%;
-        height: auto;
-      }
-    }
-
-    .results-btn{
-      display: inline-block;
-      min-width: 100px;
-      padding: 10px 16px;
-      font-size: 16px;
-      font-weight: bold;
-      color: $dark-blue;
-      background-color: $grey;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      text-align: center;
-      text-decoration: none;
-      margin-left: 45px;
-      margin-right: 45px;
-      margin-top: 10px;
-
-      &:hover {
-        transition: 0.3s ease-in;
-        filter: brightness(80%);
-      }
-
-      &:active {
-        filter: brightness(70%);
-      }
-    }
-  }
-}
-
-.prize-card-show{
-  background-color: $grey;
-  border-radius: 12px;
-  padding: 25px;
-  max-width: 300px;
-  width: 90%;
-  margin: 20px auto;
-  display: flex;
-  flex-direction: column;
-  color: $white;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
-
-  p{
-    color: $dark-blue;
-    font-family: "Inter", sans-serif;
-    font-size: 16px;
-    font-weight: bolder;
-    line-height: 1.4;
-    font-weight: 400;
-  }
-
-  .prize{
-    background-color: $white;
-    border-radius: 12px;
-    padding: 15px;
-    max-width: 300px;
-    width: 90%;
-    margin: 10px auto;
-    display: flex;
-    flex-direction: column;
-    color: $white;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
-    text-align: center;
-    margin-top: 10px;
-    justify-content: center;
-    margin-bottom: 0px;
   }
 }

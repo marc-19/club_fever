@@ -3,6 +3,7 @@ class ClubsController < ApplicationController
   before_action :set_club, only: [:show, :edit, :update, :follow, :unfollow]
   before_action :authorize_admin, only: [:edit, :update]
   before_action :ensure_admin_access, only: [:new, :create]
+  before_action :check_admin, only: [:dashboard]
 
   def new
     @club = Club.new
@@ -18,6 +19,12 @@ class ClubsController < ApplicationController
     end
   end
 
+  def dashboard
+    # Certifique-se de carregar os dados necessários para o dashboard
+    @quinielas = @club.quinielas
+    @followers_count = @club.followers.count if @club.respond_to?(:followers) # Exemplo para contagem de seguidores
+  end
+
   def index
     if params[:search].present?
       query = params[:search][:search] # Acessa o campo da busca dentro do form
@@ -29,8 +36,6 @@ class ClubsController < ApplicationController
 
   def show
     @quinielas = @club.quinielas
-    @active_quinielas = @club.quinielas.where("end_date >= ?", DateTime.now)
-    @past_quinielas = @club.quinielas.where("end_date < ?", DateTime.now)
   end
 
   def edit
@@ -91,4 +96,10 @@ class ClubsController < ApplicationController
     end
   end
 
+  def check_admin
+    club = Club.find(params[:id])
+    unless current_user.is_admin? && club.admin == current_user
+      redirect_to root_path, alert: "Access denied."
+    end
+  end
 end
