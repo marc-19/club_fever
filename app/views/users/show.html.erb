@@ -26,9 +26,8 @@
 
 <div class="quinielas-section playable-quinielas-show">
   <h2 class="h2-show">Playable Quinielas</h2>
-  <% playable_quinielas = current_user.followed_clubs.includes(:quinielas).flat_map { |club| club.quinielas.playable } %>
-  <% if playable_quinielas.any? %>
-    <% playable_quinielas.each do |quiniela| %>
+  <% if @playable_quinielas.any? %>
+    <% @playable_quinielas.each do |quiniela| %>
       <div class="quiniela-card-show">
         <div class="participant-count">
           <p><%= quiniela.participants_count + 5 %> participants 🔥</p>
@@ -59,7 +58,7 @@
 </div>
 
 <div class="quinielas-section active-quinielas-show">
-  <h2 class="h2-show">Active Quinielas</h2>
+  <h2 class="h2-show">Played Quinielas</h2>
   <% if @past_predictions.any? %>
     <% @past_predictions.each do |prediction| %>
       <div class="quiniela-card-show">
