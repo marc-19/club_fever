@@ -1,6 +1,8 @@
 <%if params[:confirmation].present? && @quiniela.present?%>
-  <div data-controller="confirmation" data-confirmation-target="rootConfirmation" >
-    <div class="confirmation-alert">
+  <div data-controller="confirmation" >
+
+    <div  data-confirmation-target="rootConfirmation" class="popup-overlay active" >
+    <div data-confirmation-target="confirmationContent" class="confirmation-content">
 
       <div class="club-confirmation-logo">
         <%= cl_image_tag (@quiniela.club.logo.key) if @quiniela.club.logo.attached? %>
@@ -13,12 +15,11 @@
       <p><%= @quiniela.end_date.strftime("%B %d, %Y")%></p>
       <p>A confirmation email will be sent to <br><%= @user.email %></p>
 
-      <div class="confirmation-overlay">
-        <div data-confirmation-target="confirmationContent" class="confirmation-content">
-          <button data-action="click->confirmation#closeConfirmation" class="btn-grey">Done</button>
+      <button data-action="click->confirmation#closeConfirmation" class="btn-grey">Done</button>
+
         </div>
       </div>
-     </div>
+
    </div>
   <% else %>
 <% end %>
