@@ -40,9 +40,9 @@
       <% end %>
 
       <h2 class="profile-username"><%= @user.email %></h2>
-
-
       <p class="profile-details"><%= @user.predictions.count %> Quinielas played</p>
+
+      <%= link_to "Edit", edit_user_registration_path, class: "btn-yellow" %>
 
 
       <div class="club-edit-card">
@@ -61,10 +61,8 @@
           <p>You are not following any clubs yet.</p>
         <% end %>
       </div>
-
       </div>
 
-      <%= link_to "Edit", edit_user_registration_path, class: "btn-yellow" %>
     </div>
   </div>
 

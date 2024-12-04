@@ -67,24 +67,25 @@ $grey: #D9D9D9;
     border-radius: 10px;
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    width: 400px;
+    width: 90%;
   }
     .profile-avatar {
       border-radius: 50%;
-      width: 100px;
-      height: 100px;
+      width: 65px;
+      height: 65px;
       margin-bottom: 15px;
       border: 2px solid $yellow;
     }
     .profile-username {
-      font-size: 28px;
-      margin-bottom: 15px;
+      font-size: 18px;
       color: $yellow;
+      margin-bottom: 0px;
     }
+
     .profile-details {
       font-size: 16px;
-      margin-bottom: 20px;
       color: #F9FAFA;
+      margin-top: 5px;
     }
 }
 
