@@ -20,17 +20,16 @@ class ClubsController < ApplicationController
   end
 
   def dashboard
-    # Certifique-se de carregar os dados necessários para o dashboard
     @quinielas = @club.quinielas
-    @followers_count = @club.followers.count if @club.respond_to?(:followers) # Exemplo para contagem de seguidores
+    @followers_count = @club.followers.count if @club.respond_to?(:followers)
   end
 
   def index
     if params[:search].present?
-      query = params[:search][:search] # Acessa o campo da busca dentro do form
-      @clubs = Club.where('name ILIKE ?', "%#{query}%") # Busca insensível a maiúsculas/minúsculas
+      query = params[:search][:search]
+      @clubs = Club.where('name ILIKE ?', "%#{query}%")
     else
-      @clubs = Club.all # Mostra todos os clubes se a busca estiver vazia
+      @clubs = Club.all
     end
   end
 
