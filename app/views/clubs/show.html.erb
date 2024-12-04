@@ -128,15 +128,22 @@
             <p class="quiniela-timing"> Ended on: <%= quiniela.end_date.strftime("%B %d, %Y") %></p>
           </div>
         </div>
-        <div class="quiniela-footer">
-        <%= link_to "Results", quiniela_path(quiniela), class: "results-btn" %>
-        </div>
+        <% if quiniela.result.length > 1 %>
+          <div class="quiniela-footer">
+            <%= link_to "Results", quiniela_path(quiniela), class: "btn-grey" %>
+          </div>
+        <% else %>
+          <p class="hint-text">
+            The club will solve the quiniela really soon. Results available soon!
+          </p>
+        <% end %>
       </div>
     <% end %>
   <% else %>
     <p>No past quinielas recorded.</p>
   <% end %>
 </div>
+
 
 <%#
 <p><%= quiniela.participants_count Participants<br> %>
