@@ -1,3 +1,29 @@
+<%if params[:confirmation].present? && @quiniela.present?%>
+  <div data-controller="confirmation" >
+
+    <div  data-confirmation-target="rootConfirmation" class="popup-overlay active" >
+    <div data-confirmation-target="confirmationContent" class="confirmation-content">
+
+      <div class="club-confirmation-logo">
+        <%= cl_image_tag (@quiniela.club.logo.key) if @quiniela.club.logo.attached? %>
+      </div>
+      <h2><%= @quiniela.club.name %></h2>
+
+      <p>Thank you for taking part in the Quiniela!</p>
+      <img width="80" height="80" src="https://img.icons8.com/color/48/checked--v1.png" alt="checked--v1"/>
+
+      <p><%= @quiniela.end_date.strftime("%B %d, %Y")%></p>
+      <p>A confirmation email will be sent to <br><%= @user.email %></p>
+
+      <button data-action="click->confirmation#closeConfirmation" class="btn-grey">Done</button>
+
+        </div>
+      </div>
+
+   </div>
+  <% else %>
+<% end %>
+
 <div class="container-home-profile">
   <div class="image-card">
     <h3>CLUB <br><span class="italic">FEVER.</span></h3>
@@ -24,6 +50,16 @@
   </div>
 </div>
 
+
+<h2 class="h2-show">Active Quinielas </h2>
+  <% active_quinielas = current_user.followed_clubs.includes(:quinielas).flat_map { |club| club.quinielas.where("end_date > ?", Time.now) } %>
+  <% if active_quinielas.any? %>
+    <% active_quinielas.each do |quiniela| %>
+    <div class="quiniela-card">
+      <h3><%= quiniela.title %></h3>
+        <div class="quiniela-reward">
+          <p><strong>Reward:</strong> <%= quiniela.reward %></p>
+
 <div class="quinielas-section playable-quinielas-show">
   <h2 class="h2-show">Playable Quinielas</h2>
   <% playable_quinielas = current_user.followed_clubs.includes(:quinielas).flat_map { |club| club.quinielas.playable } %>
@@ -41,6 +77,7 @@
             <h3 class="h3-show"><%= quiniela.title %></h3>
             <p class="quiniela-timing">Starts in: <%= distance_of_time_in_words(Time.now, quiniela.start_date.beginning_of_day) %></p>
           </div>
+
         </div>
         <div class="prize-card-show">
           <p class="prize-claim">You can win: </p>
@@ -54,8 +91,10 @@
       </div>
     <% end %>
   <% else %>
+
     <p>No playable quinielas from followed clubs at the moment.</p>
   <% end %>
+
 </div>
 
 <div class="quinielas-section active-quinielas-show">
