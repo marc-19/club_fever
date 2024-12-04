@@ -13,7 +13,7 @@ $red: #FD1015;
   justify-content: space-between;
   background: $blue;
   padding: 0px 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  //box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 
     h3 {
       color: $red;
@@ -32,6 +32,7 @@ $red: #FD1015;
   .navbar-toggler {
     border: none;
     margin-bottom: 10px;
+    box-shadow: none;
 
     .navbar-toggler-icon {
       background-image: url("data:image/svg+xml;charset=UTF8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba%28255,255,255,1%29' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
@@ -63,17 +64,20 @@ $red: #FD1015;
 
       &.dropdown {
         .dropdown-menu {
+          border-style: solid;
+          border-color:  #F9FAFA;
           background: $blue;
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          border-style: none;
 
           .dropdown-item {
             color: $white;
             padding: 8px 12px;
             font-size: 14px;
             transition: background 0.3s ease-in-out;
+            border-style: none;
 
             &:hover {
-              background: lighten($blue, 10%);
+              background: lighten($blue, 20%);
               color: $yellow;
             }
           }
@@ -98,8 +102,9 @@ $red: #FD1015;
           width: 40px;
           height: 40px;
           border-radius: 50%;
-          //border: 2px solid $white;
+          margin-bottom: 10px;
           transition: transform 0.2s ease-in-out;
+          margin-bottom: 5px;
 
           &:hover {
             transform: scale(1.1);
@@ -127,6 +132,7 @@ $red: #FD1015;
       .dropdown-menu {
         width: 100%;
         text-align: center;
+        border-style: none;
       }
     }
   }

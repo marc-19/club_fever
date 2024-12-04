@@ -1,8 +1,8 @@
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "simple-form-edit" }) do |f| %>
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
   <%= f.error_notification %>
 
-  <div class="form-inputs-edit">
+  <div class="authenticate-card">
+  <h2>Edit <%= resource_name.to_s.humanize %></h2>
     <!-- Campo para First Name -->
     <%= f.input :first_name, required: true, label: "First Name" %>
 

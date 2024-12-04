@@ -1,4 +1,4 @@
-.simple-form-edit {
+.authenticate-card {
   max-width: 600px;
   margin: 50px auto; /* Centraliza o formulário */
   padding: 20px;
@@ -11,6 +11,13 @@
     text-align: center;
     margin-bottom: 20px;
     font-size: 24px;
+  }
+
+  .form-text {
+    color: rgb(217, 217, 217); /* Cor do texto auxiliar */
+    font-size: 12px;
+    margin-top: 10px;
+    margin-bottom: 10px;
   }
 
   .form-inputs-edit {
@@ -41,13 +48,6 @@
       font-size: 14px;
     }
 
-    .form-text {
-      color: white; /* Cor do texto auxiliar */
-      font-size: 12px;
-      margin-top: -10px;
-      margin-bottom: 15px;
-    }
-
     p {
       color: #fd1015; /* Mensagem de confirmação pendente */
       font-size: 14px;
@@ -71,7 +71,7 @@
 
         &:hover {
           background-color: #dee517; /* Cor de fundo no hover */
-          color: #1a2329; /* Cor do texto no hover */
+          color: #e7e7e7; /* Cor do texto no hover */
           box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra no hover */
         }
 
