@@ -24,6 +24,8 @@ class QuinielasController < ApplicationController
 
   def create
     @quiniela = @club.quinielas.new(quiniela_params)
+    @quiniela.local_teams = @quiniela.local_teams.compact.reject(&:blank?)
+    @quiniela.visitor_teams = @quiniela.visitor_teams.compact.reject(&:blank?)
 
     if valid_matches?(@quiniela.local_teams, @quiniela.visitor_teams) && @quiniela.save
       redirect_to club_path(@club), notice: "Quiniela was successfully created!"
@@ -44,7 +46,7 @@ class QuinielasController < ApplicationController
       return
     end
 
-    @quiniela.result = params[:quiniela][:result].values
+    @quiniela.result = params[:quiniela][:result].values.compact.reject(&:blank?)
 
     if @quiniela.save
       resolve_winners(@quiniela)
@@ -90,16 +92,18 @@ class QuinielasController < ApplicationController
   end
 
   def valid_matches?(local_teams, visitor_teams)
-    local_teams.size == 10 && visitor_teams.size == 10
+    local_teams.compact.reject(&:blank?).size >= 5 && visitor_teams.compact.reject(&:blank?).size >= 5
   end
+
 
   def calculate_correct_answers(user_results, quiniela_results)
     count = 0
     user_results.each_with_index do |user_result, index|
-      count += 1 if user_result == quiniela_results[index]
+      count += 1 if user_result == quiniela_results[index] && quiniela_results[index].present?
     end
     count
   end
+
 
   def resolve_winners(quiniela)
     winners = quiniela.predictions.select do |prediction|
