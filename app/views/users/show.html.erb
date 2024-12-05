@@ -32,21 +32,14 @@
 
   <div class="profile-section">
     <div class="profile-card">
-
       <% if @user.avatar.attached? %>
         <img src="<%= url_for(@user.avatar) %>" alt="<%= @user.first_name %>'s Avatar" class="profile-avatar" />
       <% else %>
         <img src="https://www.strasys.uk/wp-content/uploads/2022/02/Depositphotos_484354208_S.jpg" alt="Default Avatar" class="profile-avatar" />
       <% end %>
-
       <h2 class="profile-username"><%= @user.email %></h2>
       <p class="profile-details"><%= @user.predictions.count %> Quinielas played</p>
-      <div class="club-edit-card">
-      <h2>Clubs you follow</h2>
-      <p class="profile-details"><%= @user.predictions.count %> Quinielas played</p>
-
       <%= link_to "Edit", edit_user_registration_path, class: "btn-yellow" %>
-
       <div class="followed-clubs">
         <p>Clubs you follow</p>
         <div class="followed-clubs-flex">
