@@ -195,14 +195,14 @@ $red: #FD1015;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20px; // Optional: Adds some spacing above the button
+    margin-top: 20px;
+    margin-bottom: 10px;
   }
 
   .back-link {
     font-weight: bold;
     color: $grey;
     text-decoration: none;
-    margin-top: 20px;
 
     &:hover {
       text-decoration: none;
