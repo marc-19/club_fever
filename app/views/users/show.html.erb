@@ -41,10 +41,6 @@
 
       <h2 class="profile-username"><%= @user.email %></h2>
       <p class="profile-details"><%= @user.predictions.count %> Quinielas played</p>
-      <div class="club-edit-card">
-      <h2>Clubs you follow</h2>
-      <p class="profile-details"><%= @user.predictions.count %> Quinielas played</p>
-
       <%= link_to "Edit", edit_user_registration_path, class: "btn-yellow" %>
 
       <div class="followed-clubs">
@@ -54,7 +50,7 @@
           <% current_user.followed_clubs.each do |club| %>
             <div class="club-card">
               <%= link_to club_path(club) do %>
-                <%= cl_image_tag club.logo.key, transformation: { width: 100, height: 100, crop: :fill } %>
+                <%= club_logo(club) %>
               <% end %>
             </div>
           <% end %>
