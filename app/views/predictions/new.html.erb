@@ -2,7 +2,7 @@
   <h2><%= @quiniela.title %></h2>
   <div class="quiniela-rules">
     <div class="rules-button">
-    <%= link_to '💡 Don not know the rules? Click here! ', rules_path, class: 'rules-button' %>
+    <%= link_to '💡 Do not know the rules? Click here! ', rules_path, class: 'rules-button' %>
   </div>
   </div>
 
@@ -56,12 +56,12 @@
         </div>
       <% end %>
     <% end %>
-    
+
   </div>
 
   <div class="form-actions">
     <%= f.submit "Submit Prediction", class: "btn-yellow", data: { action: "confirmation#openConfirmation" } %>
   </div>
+  <%= link_to "Back", request.referer || root_path , class: "back-link" %>
   <% end %>
-
 </div>

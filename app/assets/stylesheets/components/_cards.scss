@@ -43,6 +43,7 @@ $red: #FD1015;
     padding: 20px;
     color: $white;
     margin-top: -10px;
+    padding-top: 0;
 
     .reward-title {
       font-size: 18px;
@@ -57,6 +58,7 @@ $red: #FD1015;
       text-align: center;
       margin-top: -5px;
       color: $white;
+      margin-bottom: 15px;
 
     }
 
@@ -183,7 +185,7 @@ $red: #FD1015;
           }
 
           &.btn-draw {
-            background-color: #FFD342; // Yellow for draw
+            background-color: #ffc401; // Yellow for draw
           }
         }
       }
@@ -195,6 +197,18 @@ $red: #FD1015;
     align-items: center;
     margin-top: 20px; // Optional: Adds some spacing above the button
   }
+
+  .back-link {
+    font-weight: bold;
+    color: $grey;
+    text-decoration: none;
+    margin-top: 20px;
+
+    &:hover {
+      text-decoration: none;
+      color: darken($grey, 20%);
+    }
+  }
 }
 
 @media (max-width: 768px) {
@@ -205,4 +219,3 @@ $red: #FD1015;
     }
   }
 }
-
