@@ -14,11 +14,7 @@
       <%= link_to club_path(club), class: "club-card-link" do %>
         <div class="club-card">
           <div class="club-logo">
-            <% if club.logo.attached? %>
-              <%= cl_image_tag club.logo.key, class: "club-image" %>
-            <% else %>
-              <img src="https://static.vecteezy.com/system/resources/thumbnails/005/544/708/small/profile-icon-design-free-vector.jpg" alt="Default logo" />
-            <% end %>
+            <%= club_logo(club) %>
           </div>
           <p class="club-name"><%= club.name %></p>
         </div>
@@ -28,4 +24,3 @@
     <p>No clubs found</p>
   <% end %>
 </div>
-
