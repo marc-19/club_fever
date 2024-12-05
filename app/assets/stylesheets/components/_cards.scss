@@ -200,12 +200,12 @@ $red: #FD1015;
 
   .back-link {
     font-weight: bold;
-    color: $yellow;
+    color: $grey;
     text-decoration: none;
 
     &:hover {
-      text-decoration: underline;
-      color: lighten($yellow, 10%);
+      text-decoration: none;
+      color: darken($grey, 20%);
     }
   }
 }
