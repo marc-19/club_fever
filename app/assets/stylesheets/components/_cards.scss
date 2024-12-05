@@ -183,7 +183,7 @@ $red: #FD1015;
           }
 
           &.btn-draw {
-            background-color: #FFD342; // Yellow for draw
+            background-color: #ffc401; // Yellow for draw
           }
         }
       }
@@ -195,6 +195,17 @@ $red: #FD1015;
     align-items: center;
     margin-top: 20px; // Optional: Adds some spacing above the button
   }
+
+  .back-link {
+    font-weight: bold;
+    color: $yellow;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+      color: lighten($yellow, 10%);
+    }
+  }
 }
 
 @media (max-width: 768px) {
@@ -205,4 +216,3 @@ $red: #FD1015;
     }
   }
 }
-
