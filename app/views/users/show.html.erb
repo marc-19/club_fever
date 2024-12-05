@@ -54,7 +54,7 @@
           <% current_user.followed_clubs.each do |club| %>
             <div class="club-card">
               <%= link_to club_path(club) do %>
-                <%= cl_image_tag club.logo.key, transformation: { width: 100, height: 100, crop: :fill } %>
+                <%= cl_image_tag club.logo.key, transformation: { width: 100, height: 100, crop: :fill } if club.logo.attached?%>
               <% end %>
             </div>
           <% end %>
