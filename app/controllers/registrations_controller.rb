@@ -56,6 +56,10 @@ class RegistrationsController < Devise::RegistrationsController
     devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :phone_number, :email, :password, :password_confirmation, :current_password])
   end
 
+  def after_sign_up_path_for(resource)
+    clubs_path
+  end
+
   private
 
   # Adicionando user_params

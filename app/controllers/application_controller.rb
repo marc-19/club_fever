@@ -8,6 +8,10 @@ class ApplicationController < ActionController::Base
     session[:return_to] = request.fullpath if request.get? && !current_user
   end
 
+  def after_sign_in_path_for(resource)
+    clubs_path
+  end
+
   def after_sign_up_path_for(resource)
     if resource.is_admin?
       new_club_path # Redirect admin to club creation
