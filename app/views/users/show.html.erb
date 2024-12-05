@@ -115,7 +115,7 @@
         </div>
          <% if prediction.quiniela.result.length > 1 %>
           <div class="quiniela-footer">
-            <%= link_to "Results", quiniela_path(prediction.quiniela), class: "btn-yellow" %>
+            <%= link_to "Results", quiniela_path(prediction.quiniela), class: "btn-yellow", "data-turbo": "false" %>
           </div>
         <% else %>
           <p class="hint-text">
