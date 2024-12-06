@@ -78,3 +78,7 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "tailwindcss-rails"
+
+# ./bin/dev do this instead of rails s in development = rails s and run tailwind
